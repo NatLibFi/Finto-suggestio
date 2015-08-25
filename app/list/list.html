@@ -1,0 +1,6 @@
+<h3>Olemassaolevat ehdotukset</h3>
+<table class="table" ng-controller="ListCtrl as data">
+  <tr><th>Tyyppi</th><th>Käsite</th><th>Tila</th><th>Päivämäärä</th><th>Kommentit</th></tr>
+  <tr ng-repeat="suggestion in data.suggestions | orderBy:'!date'"><td>{{suggestion.type}}</td><td><a href="{{suggestion.href}}">{{suggestion.preflabel}}</a></td><td>{{suggestion.state}}</td><td>{{suggestion.date | date}}</td><td>{{suggestion.comments}}</td></tr>
+</table>
+  

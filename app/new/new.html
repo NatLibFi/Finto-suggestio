@@ -1,0 +1,127 @@
+<h3>Ehdota uutta käsitettä YSAan ja YSOon</h3>
+
+<form name="suggestionForm" ng-controller="SuggestionController as suggestionCtrl" ng-submit="suggestionForm.$valid && suggestionCtrl.addSuggestion()" class="form-horizontal" action="" novalidate>
+  <div> suggestionForm is {{suggestionForm.$valid}}</div>
+  <div class="form-group">
+    <label for="preflabel" class="col-sm-4">Päätermi/asiasana: *</label>
+    <div class="col-sm-8">
+      <input name="preflabel" ng-model="suggestionCtrl.suggestion.preflabel" type="text" class="form-control" id="preflabel" new-concept in-vocab="ysa">
+      <span ng-show="suggestionForm.preflabel.$invalid">Ehdottamasi termi löytyy jo YSAsta.</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="altlabel" class="col-sm-4">Vaihtoehtoiset termit ja ilmaisut:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control col-sm-10" id="altlabel">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="preflabel-sv" class="col-sm-4">Termi ruotsiksi:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control col-sm-10" id="preflabel-sv">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="preflabel-en" class="col-sm-4">Termi englanniksi:</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control col-sm-10" id="preflabel-en">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="broader" class="col-sm-4">Yläkäsite YSOssa (LT): *</label>
+    <div class="col-sm-8">
+      <input name="broader" ng-model="suggestionCtrl.suggestion.broader" type="text" class="form-control col-sm-10" id="broader" existing-concept in-vocab="yso">
+      <span ng-show="suggestionForm.broader.$invalid">Asiasanaa ei löytynyt YSAsta.</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="narrower" class="col-sm-4">Alakäsitteet (ST):</label>
+    <div class="col-sm-8">
+      <input name="narrower" ng-model="suggestionCtrl.suggestion.narrower" type="text" class="form-control col-sm-10" id="narrower">
+      <span ng-show="suggestionForm.narrower.$invalid">Asiasanaa ei löytynyt YSAsta.</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="related" class="col-sm-4">Assosiatiiviset (ST):</label>
+    <div class="col-sm-8">
+      <input type="text" class="form-control col-sm-10" id="related">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="groups" class="col-sm-4">YSA/YSO temaattinen ryhmä: *</label>
+    <div class="col-sm-8">
+      <select ng-model="suggestionCtrl.suggestion.groups" name="groups" class="form-control" required>
+        <option value="" selected>Valitse ryhmä</option>
+        <option value="{{group.label}}" ng-repeat="group in groupList">{{group.label}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exactmatch" class="col-sm-4">Vastaava käsite muussa sanastossa:</label>
+    <div class="col-sm-2">
+      <select class="form-control">
+        <option>LCSH</option>
+        <option>Wikipedia</option>
+      </select>
+    </div>
+    <div class="col-sm-6">
+      <input ng-model="suggestionCtrl.suggestion.exactmatch" type="text" class="form-control col-sm-10" id="exactmatch">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="scopenote" class="col-sm-4">Tarkoitusta täsmentävä selite:</label>
+    <div class="col-sm-8">
+      <input ng-model="suggestionCtrl.suggestion.scopenote" type="text" class="form-control col-sm-10" id="scopenote">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="explanation" class="col-sm-4">Perustelut ehdotukselle: *</label>
+    <div class="col-sm-8">
+      <input ng-model="suggestionCtrl.suggestion.explanation" type="text" class="form-control col-sm-10" id="explanation" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="neededfor" class="col-sm-4">Minkä aineiston kuvailussa tarvitsisit käsitettä? (esim. nimeke tai URL):</label>
+    <div class="col-sm-8">
+      <input ng-model="suggestionCtrl.suggestion.neededfor" type="text" class="form-control col-sm-10" id="x">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fromname" class="col-sm-4">Ehdottajan nimi: *</label>
+    <div class="col-sm-8">
+      <input ng-model="suggestionCtrl.suggestion.name" type="text" class="form-control col-sm-10" id="fromname" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fromorg" class="col-sm-4">Ehdottajan organisaatio:</label>
+    <div class="col-sm-8">
+      <input ng-model="suggestionCtrl.suggestion.org" type="text" class="form-control col-sm-10" id="fromorg">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email" class="col-sm-4">Sähköpostiosoite: * <span>Saat sähköpostiisi tietoa käsittelyn etenemisestä.</span></label>
+    <div class="col-sm-8">
+      <input ng-model="suggestionCtrl.suggestion.email" type="email" class="form-control col-sm-10" id="email" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4">
+      <label>Ehdotuksen laatu:</label>
+      <span ng-show="suggestionForm.$invalid" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+      <span ng-show="suggestionForm.$valid" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      <span ng-show="suggestionForm.$invalid || suggestionCtrl.getStars() < 2" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+      <span ng-show="suggestionForm.$valid && suggestionCtrl.getStars() >= 2" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      <span ng-show="suggestionForm.$invalid || suggestionCtrl.getStars() < 3" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+      <span ng-show="suggestionForm.$valid && suggestionCtrl.getStars() >= 3" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      <span ng-show="suggestionForm.$invalid || suggestionCtrl.getStars() < 4" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+      <span ng-show="suggestionForm.$valid && suggestionCtrl.getStars() >= 4" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      <span ng-show="suggestionForm.$invalid || suggestionCtrl.getStars() < 5" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+      <span ng-show="suggestionForm.$valid && suggestionCtrl.getStars() >= 5" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+    </div>
+    <div class="col-sm-2">
+      <input class="btn btn-default" type="submit" value="Lähetä ehdotus">
+    </div>
+    <div class="col-sm-6"><p>* merkityt kohdat ovat pakollisia.</p></div>
+  </div>
+</form>
+<!-- <p>Showing of 'interpolate' filter: {{ 'Current version is v%VERSION%.' | interpolate }}</p> -->

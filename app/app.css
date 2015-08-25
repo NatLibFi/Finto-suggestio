@@ -1,0 +1,25 @@
+/* app css stylesheet */
+.glyphicon {
+ font-size: 24px !important;
+ top: 5px;
+}
+
+.ng-invalid.ng-dirty {
+  border-color: #FA787E;
+}
+
+.navbar {
+  background-color: #83CFC8 !important;
+}
+  
+.navbar {
+  border: none !important;
+}
+
+.navbar * {
+  color: #394554 !important;
+}
+
+#navbar > .navbar-nav > li.active > a {
+  background-color: #ffffff !important;
+}
