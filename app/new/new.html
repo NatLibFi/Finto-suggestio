@@ -5,7 +5,7 @@
   <div class="form-group">
     <label for="preflabel" class="col-sm-4">Päätermi/asiasana: *</label>
     <div class="col-sm-8">
-      <input name="preflabel" ng-model="suggestionCtrl.suggestion.preflabel" type="text" class="form-control" id="preflabel" new-concept in-vocab="ysa">
+      <input name="preflabel" ng-model="suggestion.preflabel" type="text" class="form-control" id="preflabel" new-concept in-vocab="ysa">
       <span ng-show="suggestionForm.preflabel.$invalid">Ehdottamasi termi löytyy jo YSAsta.</span>
     </div>
   </div>
@@ -30,14 +30,14 @@
   <div class="form-group">
     <label for="broader" class="col-sm-4">Yläkäsite YSOssa (LT): *</label>
     <div class="col-sm-8">
-      <input name="broader" ng-model="suggestionCtrl.suggestion.broader" type="text" class="form-control col-sm-10" id="broader" existing-concept in-vocab="yso">
+      <input name="broader" ng-model="suggestion.broader" type="text" class="form-control col-sm-10" id="broader" existing-concept in-vocab="yso">
       <span ng-show="suggestionForm.broader.$invalid">Asiasanaa ei löytynyt YSAsta.</span>
     </div>
   </div>
   <div class="form-group">
     <label for="narrower" class="col-sm-4">Alakäsitteet (ST):</label>
     <div class="col-sm-8">
-      <input name="narrower" ng-model="suggestionCtrl.suggestion.narrower" type="text" class="form-control col-sm-10" id="narrower">
+      <input name="narrower" ng-model="suggestion.narrower" type="text" class="form-control col-sm-10" id="narrower">
       <span ng-show="suggestionForm.narrower.$invalid">Asiasanaa ei löytynyt YSAsta.</span>
     </div>
   </div>
@@ -50,10 +50,12 @@
   <div class="form-group">
     <label for="groups" class="col-sm-4">YSA/YSO temaattinen ryhmä: *</label>
     <div class="col-sm-8">
-      <select ng-model="suggestionCtrl.suggestion.groups" name="groups" class="form-control" required>
-        <option value="" selected>Valitse ryhmä</option>
-        <option value="{{group.label}}" ng-repeat="group in groupList">{{group.label}}</option>
-      </select>
+      <ui-select ng-model="suggestionCtrl.suggestion.groups" theme="bootstrap">
+        <ui-select-match placeholder="Valitse ryhmä listasta">{{$select.selected.label}}</ui-select-match>
+        <ui-select-choices repeat="item in groupList">
+        <div ng-bind-html="trustAsHtml(item.label)">{{item.label}}</div>
+        </ui-select-choices>
+      </ui-select>
     </div>
   </div>
   <div class="form-group">

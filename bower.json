@@ -10,6 +10,7 @@
     "angular-route": "~1.4.0",
     "angular-loader": "~1.4.0",
     "angular-mocks": "~1.4.0",
+    "angular-ui-select": "~0.12.1",
     "bootstrap": "~3.3.5"
   }
 }

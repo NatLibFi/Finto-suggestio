@@ -5,8 +5,8 @@ var app = angular.module('myApp', [
   'ngRoute',
   'myApp.list',
   'myApp.new',
-  'myApp.change',
-  'myApp.version'
+  'ui.select',
+  'myApp.change'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {

@@ -9,12 +9,17 @@ angular.module('myApp.new', ['ngRoute'])
   });
 }])
 
-.controller('SuggestionController', ['$http','$scope', function($http, $scope) {
+.controller('SuggestionController', ['$http','$scope','$sce', function($http, $scope, $sce) {
+  
+  $scope.trustAsHtml = function(value) {
+    return $sce.trustAsHtml(value);
+  };
     
   $scope.groupList = [];
   $http.get('http://localhost/Skosmos/rest/v1/yso/groups').then(function(response) {
     var groups = response.data.groupHierarchy;
-    $scope.groupList = groups;
+    for (var uri in groups)
+      $scope.groupList.push(groups[uri]);
   });
 
   this.suggestion = {type: 'Lisäys', preflabel: '', state: 'Käsittelyssä', date: Date.now()};
