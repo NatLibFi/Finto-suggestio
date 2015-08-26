@@ -1,30 +1,30 @@
 <h3>Ehdota uutta käsitettä YSAan ja YSOon</h3>
 
-<form name="suggestionForm" ng-controller="SuggestionController as suggestionCtrl" ng-submit="suggestionForm.$valid && suggestionCtrl.addSuggestion()" class="form-horizontal" action="" novalidate>
+<form name="suggestionForm" ng-controller="SuggestionController as suggestionCtrl" ng-submit="suggestionForm.$valid && suggestionCtrl.addSuggestion()" class="form-horizontal" novalidate>
   <!--<div> suggestionForm is {{suggestionForm.$valid}}</div>-->
   <div class="form-group">
     <label for="preflabel" class="col-sm-4">Päätermi/asiasana: *</label>
     <div class="col-sm-8">
-      <input name="preflabel" ng-model="suggestion.preflabel" type="text" class="form-control" id="preflabel" new-concept in-vocab="ysa">
-      <span ng-show="suggestionForm.preflabel.$invalid">Ehdottamasi termi löytyy jo YSAsta.</span>
+      <input name="preflabelfi" ng-model="suggestion.preflabelfi" type="text" class="form-control" id="preflabel" new-concept in-vocab="ysa">
+      <span ng-show="suggestionForm.preflabelfi.$invalid">Ehdottamasi termi löytyy jo YSAsta.</span>
     </div>
   </div>
   <div class="form-group">
     <label for="altlabel" class="col-sm-4">Vaihtoehtoiset termit ja ilmaisut:</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control col-sm-10" id="altlabel">
+      <input name="altlabel" ng-model="suggestion.altlabel" type="text" class="form-control col-sm-10" id="altlabel">
     </div>
   </div>
   <div class="form-group">
     <label for="preflabel-sv" class="col-sm-4">Termi ruotsiksi:</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control col-sm-10" id="preflabel-sv">
+      <input name="preflabelsv" ng-model="suggestion.preflabelsv" type="text" class="form-control col-sm-10" id="preflabel-sv">
     </div>
   </div>
   <div class="form-group">
     <label for="preflabel-en" class="col-sm-4">Termi englanniksi:</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control col-sm-10" id="preflabel-en">
+      <input name="preflabelen" ng-model="suggestion.preflabelen" type="text" class="form-control col-sm-10" id="preflabel-en">
     </div>
   </div>
   <div class="form-group">
