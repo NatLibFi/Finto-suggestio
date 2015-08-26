@@ -4,8 +4,8 @@
   <div class="form-group">
     <label for="preflabel" class="col-sm-4">Päätermi/asiasana: *</label>
     <div class="col-sm-8">
-      <input name="preflabel" ng-model="ChangeCtrl.suggestion.preflabel" type="text" class="form-control" id="preflabel" existing-concept>
-      <span ng-show="!changeForm.preflabel.$valid">Asiasanaa ei löytynyt YSAsta.</span>
+      <input name="preflabel" ng-model="ChangeCtrl.suggestion.preflabel" type="text" class="form-control" id="preflabel" existing-concept in-vocab="ysa">
+      <span ng-show="changeForm.preflabel.$invalid">Asiasanaa ei löytynyt YSAsta.</span>
     </div>
   </div>
   <div class="form-group">
