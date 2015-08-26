@@ -109,16 +109,8 @@
   <div class="form-group">
     <div class="col-sm-4">
       <label>Ehdotuksen laatu:</label>
-      <span ng-show="suggestionForm.$invalid" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-      <span ng-show="suggestionForm.$valid" class="glyphicon glyphicon-star" aria-hidden="true"></span>
-      <span ng-show="suggestionForm.$invalid || suggestionCtrl.getStars() < 2" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-      <span ng-show="suggestionForm.$valid && suggestionCtrl.getStars() >= 2" class="glyphicon glyphicon-star" aria-hidden="true"></span>
-      <span ng-show="suggestionForm.$invalid || suggestionCtrl.getStars() < 3" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-      <span ng-show="suggestionForm.$valid && suggestionCtrl.getStars() >= 3" class="glyphicon glyphicon-star" aria-hidden="true"></span>
-      <span ng-show="suggestionForm.$invalid || suggestionCtrl.getStars() < 4" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-      <span ng-show="suggestionForm.$valid && suggestionCtrl.getStars() >= 4" class="glyphicon glyphicon-star" aria-hidden="true"></span>
-      <span ng-show="suggestionForm.$invalid || suggestionCtrl.getStars() < 5" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-      <span ng-show="suggestionForm.$valid && suggestionCtrl.getStars() >= 5" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      <span ng-repeat="i in getNumber(suggestionCtrl.getStars()) track by $index" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      <span ng-repeat="i in getNumber(5 - suggestionCtrl.getStars()) track by $index" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
     </div>
     <div class="col-sm-2">
       <input class="btn btn-default" type="submit" value="Lähetä ehdotus">

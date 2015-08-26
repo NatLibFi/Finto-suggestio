@@ -38,6 +38,10 @@ angular.module('myApp.new', ['ngRoute'])
     }
     return stars;
   };
+
+  $scope.getNumber = function(num) {
+    return new Array(num);   
+  };
 }])
 
 .directive('uiSelectRequired', function () { 
