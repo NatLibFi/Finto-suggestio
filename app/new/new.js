@@ -17,9 +17,7 @@ angular.module('myApp.new', ['ngRoute'])
     
   $scope.groupList = [];
   $http.get('http://localhost/Skosmos/rest/v1/yso/groups').then(function(response) {
-    var groups = response.data.groupHierarchy;
-    for (var uri in groups)
-      $scope.groupList.push(groups[uri]);
+    $scope.groupList = response.data.groups;
   });
 
   this.suggestion = {type: 'Lisäys', preflabel: '', state: 'Käsittelyssä', date: Date.now()};
@@ -30,6 +28,8 @@ angular.module('myApp.new', ['ngRoute'])
   };
   
   this.getStars = function() {
+    if ($scope.suggestionForm.$invalid)
+      return 0;
     var stars = 1; // when the required fields have been filled out
     var required = ['type', 'preflabel', 'state', 'date', 'broader', 'groups', 'name', 'email', 'explanation'];
     for (var prop in this.suggestion) {
