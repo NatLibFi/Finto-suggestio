@@ -16,7 +16,7 @@ angular.module('myApp.new', ['ngRoute'])
   };
     
   $scope.groupList = [];
-  $http.get('http://localhost/Skosmos/rest/v1/yso/groups').then(function(response) {
+  $http.get('http://dev.finto.fi/rest/v1/yso/groups').then(function(response) {
     $scope.groupList = response.data.groups;
   });
 
