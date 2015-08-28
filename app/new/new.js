@@ -9,7 +9,7 @@ angular.module('myApp.new', ['ngRoute'])
   });
 }])
 
-.controller('SuggestionController', ['$http','$scope','$sce', function($http, $scope, $sce) {
+.controller('SuggestionController', ['$http','$scope','$sce','FormFormatter' , function($http, $scope, $sce, FormFormatter) {
   
   $scope.trustAsHtml = function(value) {
     return $sce.trustAsHtml(value);
@@ -24,11 +24,12 @@ angular.module('myApp.new', ['ngRoute'])
     $scope.groupList = response.data.groups;
   });
 
-  this.suggestion = {type: 'Lisäys', preflabelfi: '', state: 'Käsittelyssä', date: Date.now()};
+  this.suggestion = {type: 'Lisäys', state: 'Käsittelyssä'};
 
   this.addSuggestion = function() {
-    console.log(this.suggestion);
-    this.suggestion = {type: 'Lisäys', preflabelfi: '', state: 'Käsittelyssä', date: Date.now()};
+    var msg_body = FormFormatter.markdown(this.suggestion);
+    console.log(msg_body);
+    this.suggestion = {type: 'Lisäys', state: 'Käsittelyssä'};
   };
   
   this.getStars = function() {

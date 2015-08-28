@@ -19,8 +19,7 @@ app.controller('ChangeController', ['$scope','FormFormatter', function($scope, F
   this.suggestion = {type: 'Muutos olemassa olevaan käsitteeseen', preflabel: '', state: 'Käsittelyssä'};
 
   this.submitSuggestion = function() {
-    var msg_body = '';
-    msg_body = FormFormatter.markdown(this.suggestion);
+    var msg_body = FormFormatter.markdown(this.suggestion);
     console.log(msg_body);
     this.suggestion = {type: 'Muutos olemassa olevaan käsitteeseen', preflabel: '', state: 'Käsittelyssä'};
   };

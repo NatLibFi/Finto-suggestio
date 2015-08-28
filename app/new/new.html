@@ -2,28 +2,28 @@
 
 <form name="suggestionForm" ng-controller="SuggestionController as suggestionCtrl" ng-submit="suggestionForm.$valid && suggestionCtrl.addSuggestion()" class="form-horizontal" novalidate>
   <div class="form-group">
-    <label for="preflabel" class="col-sm-4">Päätermi/asiasana: *</label>
+    <label for="preflabelfi" class="col-sm-4">Päätermi/asiasana: *</label>
     <div class="col-sm-8">
-      <input name="preflabelfi" ng-model="suggestion.preflabelfi" type="text" class="form-control" id="preflabel" new-concept in-vocab="ysa">
+      <input name="preflabelfi" ng-model="suggestionCtrl.suggestion.preflabelfi" type="text" class="form-control" id="preflabel" new-concept in-vocab="ysa">
       <span ng-show="suggestionForm.preflabelfi.$invalid">Ehdottamasi termi löytyy jo YSAsta.</span>
     </div>
   </div>
   <div class="form-group">
     <label for="altlabel" class="col-sm-4">Vaihtoehtoiset termit ja ilmaisut:</label>
     <div class="col-sm-8">
-      <input name="altlabel" ng-model="suggestion.altlabel" type="text" class="form-control col-sm-10" id="altlabel">
+      <input name="altlabel" ng-model="suggestionCtrl.suggestion.altlabel" type="text" class="form-control col-sm-10" id="altlabel">
     </div>
   </div>
   <div class="form-group">
     <label for="preflabel-sv" class="col-sm-4">Termi ruotsiksi:</label>
     <div class="col-sm-8">
-      <input name="preflabelsv" ng-model="suggestion.preflabelsv" type="text" class="form-control col-sm-10" id="preflabel-sv">
+      <input name="preflabelsv" ng-model="suggestionCtrl.suggestion.preflabelsv" type="text" class="form-control col-sm-10" id="preflabel-sv">
     </div>
   </div>
   <div class="form-group">
     <label for="preflabel-en" class="col-sm-4">Termi englanniksi:</label>
     <div class="col-sm-8">
-      <input name="preflabelen" ng-model="suggestion.preflabelen" type="text" class="form-control col-sm-10" id="preflabel-en">
+      <input name="preflabelen" ng-model="suggestionCtrl.suggestion.preflabelen" type="text" class="form-control col-sm-10" id="preflabel-en">
     </div>
   </div>
   <div class="form-group">
@@ -34,7 +34,7 @@
               pause="400"
               minlength="3"
               field-required="true"
-              selected-object="suggestion.broader"
+              selected-object="suggestionCtrl.suggestion.broader"
               remote-url="http://api.finto.fi/rest/v1/yso/search"
               remote-url-request-formatter="requestFormatter"
               remote-url-data-field="results"
@@ -45,7 +45,7 @@
   <div class="form-group">
     <label for="narrower" class="col-sm-4">Alakäsitteet (RT):</label>
     <div class="col-sm-8">
-      <input name="narrower" ng-model="suggestion.narrower" type="text" class="form-control col-sm-10" id="narrower">
+      <input name="narrower" ng-model="suggestionCtrl.suggestion.narrower" type="text" class="form-control col-sm-10" id="narrower">
       <span ng-show="suggestionForm.narrower.$invalid">Asiasanaa ei löytynyt YSAsta.</span>
     </div>
   </div>
