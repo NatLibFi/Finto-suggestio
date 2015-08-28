@@ -70,3 +70,22 @@ app.directive('newConcept', function($http) {
     }
   };
 });
+
+app.factory('FormFormatter', [function() {
+  return {
+    markdown: function(suggestion) { 
+      var msg_body = '';
+      var labels = {'type': 'Ehdotuksen tyyppi', 'preflabel': 'Päätermi/asiasana', 'state': 'Tila', 'change':'Ehdotettu muutos', 'explanation': 'Perustelut ehdotukselle', 'fromname': 'Ehdottajan nimi', 'fromemail': 'Ehdottajan sähköpostiosoite'};
+
+      for (var property in suggestion) {
+        var proplabel = labels[property] ? labels[property] : property;
+        var propval = suggestion[property];
+        if (propval.originalObject) // if there is an uri available from the autocomplete linking to that
+  msg_body += '### ' + proplabel + '   \n\n' + '[' + propval.originalObject.prefLabel + '](' + propval.originalObject.uri + ')  \n\n';
+        else // the property value is only a string
+  msg_body += '### ' + proplabel + '   \n\n' + propval + '  \n\n';
+      }
+      return msg_body;  
+    }
+  };
+}]);
