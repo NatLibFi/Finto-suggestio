@@ -20,10 +20,11 @@ app.controller('ChangeController', ['$scope', function($scope) {
   this.submitSuggestion = function() {
     var msg_body = '';
     for (var property in this.suggestion) {
-      if (this.suggestion[property].originalObject)
-        msg_body += '### ' + property + '   \n' + this.suggestion[property].originalObject.prefLabel + '  \n';
-      else
-        msg_body += '### ' + property + '   \n' + this.suggestion[property] + '  \n';
+      var propval = this.suggestion[property];
+      if (propval.originalObject) // if there is an uri available from the autocomplete linking to that
+        msg_body += '### ' + property + '   \n' + '[' + propval.originalObject.prefLabel + '](' + propval.originalObject.uri + ')  \n';
+      else // the property value is only a string
+        msg_body += '### ' + property + '   \n' + propval + '  \n';
     }
     console.log(msg_body);
     this.suggestion = {type: 'Muutos', preflabel: '', state: 'Käsittelyssä', date: Date.now(), comments: 0};
