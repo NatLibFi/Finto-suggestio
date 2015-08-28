@@ -6,6 +6,7 @@ var app = angular.module('myApp', [
   'myApp.list',
   'myApp.new',
   'ui.select',
+  'angucomplete-alt',
   'myApp.change'
 ]);
 

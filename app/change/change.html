@@ -4,8 +4,17 @@
   <div class="form-group">
     <label for="preflabel" class="col-sm-4">Päätermi/asiasana: *</label>
     <div class="col-sm-8">
-      <input name="preflabel" ng-model="ChangeCtrl.suggestion.preflabel" type="text" class="form-control" id="preflabel" existing-concept in-vocab="ysa">
-      <span ng-show="changeForm.preflabel.$invalid">Asiasanaa ei löytynyt YSAsta.</span>
+      <angucomplete-alt id="preflabel"
+              placeholder="Hae käsitettä"
+              pause="400"
+              minlength="3"
+              field-required="true"
+              selected-object="ChangeCtrl.suggestion.preflabel"
+              remote-url="http://api.finto.fi/rest/v1/yso/search"
+              remote-url-request-formatter="requestFormatter"
+              remote-url-data-field="results"
+              title-field="prefLabel"
+              input-class="form-control form-control-small" />
     </div>
   </div>
   <div class="form-group">

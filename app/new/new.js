@@ -14,6 +14,10 @@ angular.module('myApp.new', ['ngRoute'])
   $scope.trustAsHtml = function(value) {
     return $sce.trustAsHtml(value);
   };
+
+  $scope.requestFormatter = function(qstring) {
+    return {query: qstring + '*'};
+  };
     
   $scope.groupList = [];
   $http.get('http://dev.finto.fi/rest/v1/yso/groups').then(function(response) {
