@@ -1,4 +1,7 @@
 /* app css stylesheet */
+.vocabulary-select {
+  padding-right: 0px !important;
+}
 
 .ui-select-search {
   padding-left: 12px !important;
