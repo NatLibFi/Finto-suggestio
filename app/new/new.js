@@ -5,7 +5,8 @@ angular.module('myApp.new', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/new', {
     templateUrl: 'new/new.html',
-    controller: 'SuggestionController'
+    controller: 'SuggestionController',
+    controllerAs: 'suggestionCtrl'
   });
 }])
 

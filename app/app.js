@@ -19,22 +19,43 @@ app.config(['$routeProvider', function($routeProvider) {
 app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.translations('fi', {
     'TITLE': 'Ehdotusjärjestelmä',
-    'PREFLABEL': 'Päätermi/asiasana',
-    'ALTLABELS': 'Vaihtoehtoiset termit ja ilmaisut',
-    'NARROWERS': 'Alakäsitteet (RT)',
-    'BROADER': 'Yläkäsite YSOssa (LT)',
     'SUGGESTIONS': 'Ehdotukset',
+    'NOTINYSA': 'Asiasanaa ei löytynyt YSAsta.',
+    'INYSA': 'Ehdottamasi termi löytyy jo YSAsta.',
+    'PREFLABEL': 'Päätermi/asiasana',
+    'ALTLABEL': 'Vaihtoehtoiset termit ja ilmaisut',
+    'NARROWER': 'Alakäsitteet (RT)',
+    'BROADER': 'Yläkäsite YSOssa (LT)',
     'SEARCH': 'Hae käsitettä',
+    'RELATED': 'Assosiatiiviset (ST)',
+    'GROUP': 'YSA/YSO temaattinen ryhmä',
+    'MATCHING': 'Vastaava käsite muussa sanastossa',
+    'SCOPENOTE': 'Tarkoitusta täsmentävä selite',
+    'EXPLANATION': 'Perustelut ehdotukselle',
+    'USEDFOR': 'Minkä aineiston kuvailussa tarvitsisit käsitettä? (esim. nimeke tai URL)',
+    'NAME': 'Ehdottajan nimi',
+    'EMAIL': 'Ehdottajan organisaatio',
     'SUBMIT': 'Lähetä ehdotus'
   });
 
   $translateProvider.translations('sv', {
     'TITLE': 'Förslag system',
-    'PREFLABEL': 'Term/ämnesord',
-    'NARROWERS': 'Underordnade begrepp',
-    'BROADER': 'Överordnadt begrepp i ALLFO',
     'SUGGESTIONS': 'Förslag',
+    'NOTINYSA': 'Asiasanaa ei löytynyt YSAsta.',
+    'INYSA': 'Ehdottamasi termi löytyy jo YSAsta.',
+    'PREFLABEL': 'Term/ämnesord',
+    'ALTLABEL': 'Vaihtoehtoiset termit ja ilmaisut',
+    'NARROWER': 'Underordnade begrepp',
+    'BROADER': 'Överordnadt begrepp i ALLFO',
     'SEARCH': 'Sök begrepp',
+    'RELATED': 'Assosiatiiviset (ST)',
+    'GROUP': 'YSA/YSO temaattinen ryhmä',
+    'MATCHING': 'Vastaava käsite muussa sanastossa',
+    'SCOPENOTE': 'Tarkoitusta täsmentävä selite',
+    'EXPLANATION': 'Perustelut ehdotukselle',
+    'USEDFOR': 'Minkä aineiston kuvailussa tarvitsisit käsitettä? (esim. nimeke tai URL)',
+    'NAME': 'Ehdottajan nimi',
+    'EMAIL': 'Ehdottajan organisaatio',
     'SUBMIT': 'Skicka förslaget'
   });
 

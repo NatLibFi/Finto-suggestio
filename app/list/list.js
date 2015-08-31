@@ -5,25 +5,24 @@ angular.module('myApp.list', ['ngRoute'])
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/list', {
     templateUrl: 'list/list.html',
-    controller: 'ListCtrl'
+    controller: 'ListController',
+    controllerAs: 'listCtrl'
   });
 }])
 
-.controller('ListCtrl', ['$http','$scope', function($http, $scope) {
-  this.suggestions = [];
+.controller('ListController', ['$http','$scope', function($http, $scope) {
+  $scope.suggestions = [];
   $http.get('https://api.github.com/repos/NatLibFi/Skosmos/issues?state=open').then(function(data){
     var issues = data.data;
     for(var i in issues) {
-      if ($scope.data) {
-        $scope.data.suggestions.push({
-          type: 'Lisäys', 
-          preflabel: issues[i].title, 
-          state: 'Käsittelyssä', 
-          date: issues[i].created_at, 
-          comments: issues[i].comments,
-          href: issues[i].html_url
-        });
-      }
+      $scope.suggestions.push({
+        type: 'Lisäys', 
+        preflabel: issues[i].title, 
+        state: 'Käsittelyssä', 
+        date: issues[i].created_at, 
+        comments: issues[i].comments,
+        href: issues[i].html_url
+      });
     }
   },function() {});
 }]);

@@ -5,7 +5,8 @@ var app = angular.module('myApp.change', ['ngRoute']);
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/change', {
     templateUrl: 'change/change.html',
-    controller: 'ChangeController'
+    controller: 'ChangeController',
+    controllerAs: 'changeCtrl'
   });
 }]);
 

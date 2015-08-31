@@ -1,15 +1,15 @@
 <h3>Ehdota uutta käsitettä YSAan ja YSOon</h3>
 
-<form name="suggestionForm" ng-controller="SuggestionController as suggestionCtrl" ng-submit="suggestionForm.$valid && suggestionCtrl.addSuggestion()" class="form-horizontal" novalidate>
+<form name="suggestionForm" ng-submit="suggestionForm.$valid && suggestionCtrl.addSuggestion()" class="form-horizontal" novalidate>
   <div class="form-group">
-    <label for="preflabelfi" class="col-sm-4">{{ 'PREFLABEL' | translate }}: *</label>
+    <label for="preflabelfi" class="col-sm-4" translate>{{'PREFLABEL'}}: *</label>
     <div class="col-sm-8">
       <input name="preflabelfi" ng-model="suggestionCtrl.suggestion.preflabelfi" type="text" class="form-control" id="preflabel" new-concept in-vocab="ysa">
-      <span ng-show="suggestionForm.preflabelfi.$invalid">Ehdottamasi termi löytyy jo YSAsta.</span>
+      <span ng-show="suggestionForm.preflabelfi.$invalid" translate>{{'INYSA'}}</span>
     </div>
   </div>
   <div class="form-group">
-    <label for="altlabel" class="col-sm-4">Vaihtoehtoiset termit ja ilmaisut:</label>
+    <label for="altlabel" class="col-sm-4" translate>{{'ALTLABEL'}}:</label>
     <div class="col-sm-8">
       <input name="altlabel" ng-model="suggestionCtrl.suggestion.altlabel" type="text" class="form-control col-sm-10" id="altlabel">
     </div>
@@ -27,7 +27,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="broader" class="col-sm-4">Yläkäsite YSOssa (LT): *</label>
+    <label for="broader" class="col-sm-4" translate>{{'BROADER'}}: *</label>
     <div class="col-sm-8">
       <angucomplete-alt id="broader"
               placeholder="{{ 'SEARCH' | translate }}"
@@ -43,10 +43,10 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="narrower" class="col-sm-4">{{ 'NARROWERS' | translate }}:</label>
+    <label for="narrower" class="col-sm-4" translate>{{'NARROWER'}}:</label>
     <div class="col-sm-8">
       <input name="narrower" ng-model="suggestionCtrl.suggestion.narrower" type="text" class="form-control col-sm-10" id="narrower">
-      <span ng-show="suggestionForm.narrower.$invalid">Asiasanaa ei löytynyt YSAsta.</span>
+      <span ng-show="suggestionForm.narrower.$invalid" translate>{{'NOTINYSA'}}</span>
     </div>
   </div>
   <div class="form-group">
