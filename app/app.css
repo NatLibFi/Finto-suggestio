@@ -1,4 +1,8 @@
 /* app css stylesheet */
+#broader_value, select.form-control {
+  padding-left: 4px !important;
+}
+
 .glyphicon {
  font-size: 24px !important;
  top: 5px;
