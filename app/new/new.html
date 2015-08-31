@@ -50,13 +50,13 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="related" class="col-sm-4">Assosiatiiviset (ST):</label>
+    <label for="related" class="col-sm-4" translate>{{'RELATED'}}:</label>
     <div class="col-sm-8">
       <input name="related" ng-model="suggestionCtrl.suggestion.related" type="text" class="form-control col-sm-10" id="related">
     </div>
   </div>
   <div class="form-group">
-    <label for="groups" class="col-sm-4">YSA/YSO temaattinen ryhmä: *</label>
+    <label for="groups" class="col-sm-4" translate>{{'GROUP'}}: *</label>
     <div class="col-sm-8">
       <ui-select multiple ng-model="suggestionCtrl.suggestion.groups" theme="bootstrap" ui-select-required>
         <ui-select-match placeholder="Valitse ryhmä listasta">{{$item.label}}</ui-select-match>
@@ -67,7 +67,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="exactmatch" class="col-sm-4">Vastaava käsite muussa sanastossa:</label>
+    <label for="exactmatch" class="col-sm-4" translate>{{'MATCHING'}}:</label>
     <div class="col-sm-2">
       <select class="form-control">
         <option>LCSH</option>
@@ -79,37 +79,37 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="scopenote" class="col-sm-4">Tarkoitusta täsmentävä selite:</label>
+    <label for="scopenote" class="col-sm-4" translate>{{'SCOPENOTE'}}:</label>
     <div class="col-sm-8">
       <input ng-model="suggestionCtrl.suggestion.scopenote" type="text" class="form-control col-sm-10" id="scopenote">
     </div>
   </div>
   <div class="form-group">
-    <label for="explanation" class="col-sm-4">Perustelut ehdotukselle: *</label>
+    <label for="explanation" class="col-sm-4" translate>{{'EXPLANATION'}}: *</label>
     <div class="col-sm-8">
       <input ng-model="suggestionCtrl.suggestion.explanation" type="text" class="form-control col-sm-10" id="explanation" required>
     </div>
   </div>
   <div class="form-group">
-    <label for="neededfor" class="col-sm-4">Minkä aineiston kuvailussa tarvitsisit käsitettä? (esim. nimeke tai URL):</label>
+    <label for="neededfor" class="col-sm-4" translate>{{'NEEDEDFOR'}}:</label>
     <div class="col-sm-8">
       <input ng-model="suggestionCtrl.suggestion.neededfor" type="text" class="form-control col-sm-10" id="x">
     </div>
   </div>
   <div class="form-group">
-    <label for="fromname" class="col-sm-4">Ehdottajan nimi: *</label>
+    <label for="fromname" class="col-sm-4" translate>{{'NAME'}}: *</label>
     <div class="col-sm-8">
       <input ng-model="suggestionCtrl.suggestion.name" type="text" class="form-control col-sm-10" id="fromname" required>
     </div>
   </div>
   <div class="form-group">
-    <label for="fromorg" class="col-sm-4">Ehdottajan organisaatio:</label>
+    <label for="fromorg" class="col-sm-4" translate>{{'ORG'}}:</label>
     <div class="col-sm-8">
       <input ng-model="suggestionCtrl.suggestion.org" type="text" class="form-control col-sm-10" id="fromorg">
     </div>
   </div>
   <div class="form-group">
-    <label for="email" class="col-sm-4">Sähköpostiosoite: * <span>Saat sähköpostiisi tietoa käsittelyn etenemisestä.</span></label>
+    <label for="email" class="col-sm-4" translate>{{'EMAIL'}}: * <span>Saat sähköpostiisi tietoa käsittelyn etenemisestä.</span></label>
     <div class="col-sm-8">
       <input ng-model="suggestionCtrl.suggestion.email" type="email" class="form-control col-sm-10" id="email" required>
     </div>

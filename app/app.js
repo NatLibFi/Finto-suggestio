@@ -32,9 +32,10 @@ app.config(['$translateProvider', function ($translateProvider) {
     'MATCHING': 'Vastaava käsite muussa sanastossa',
     'SCOPENOTE': 'Tarkoitusta täsmentävä selite',
     'EXPLANATION': 'Perustelut ehdotukselle',
-    'USEDFOR': 'Minkä aineiston kuvailussa tarvitsisit käsitettä? (esim. nimeke tai URL)',
+    'NEEDEDFOR': 'Minkä aineiston kuvailussa tarvitsisit käsitettä? (esim. nimeke tai URL)',
     'NAME': 'Ehdottajan nimi',
-    'EMAIL': 'Ehdottajan organisaatio',
+    'ORG': 'Ehdottajan organisaatio',
+    'EMAIL': 'Sähköpostiosoite',
     'SUBMIT': 'Lähetä ehdotus'
   });
 
@@ -53,9 +54,10 @@ app.config(['$translateProvider', function ($translateProvider) {
     'MATCHING': 'Vastaava käsite muussa sanastossa',
     'SCOPENOTE': 'Tarkoitusta täsmentävä selite',
     'EXPLANATION': 'Perustelut ehdotukselle',
-    'USEDFOR': 'Minkä aineiston kuvailussa tarvitsisit käsitettä? (esim. nimeke tai URL)',
+    'NEEDEDFOR': 'Minkä aineiston kuvailussa tarvitsisit käsitettä? (esim. nimeke tai URL)',
     'NAME': 'Ehdottajan nimi',
-    'EMAIL': 'Ehdottajan organisaatio',
+    'ORG': 'Ehdottajan organisaatio',
+    'EMAIL': 'E-postadress',
     'SUBMIT': 'Skicka förslaget'
   });
 
