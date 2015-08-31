@@ -3,6 +3,10 @@
   padding-left: 4px !important;
 }
 
+.vocabulary-select {
+  padding-right: 0px !important;
+}
+
 .vocabulary-select > select {
   padding-left: 0px !important;
 }
