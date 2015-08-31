@@ -1,4 +1,4 @@
-<h3>Ehdota muutosta olemassa olevaan käsitteeseen YSAssa ja YSOssa</h3>
+<h3 translate>CHANGEHEADING</h3>
 
 <form name="changeForm" ng-submit="changeForm.$valid && changeCtrl.submitSuggestion()" class="form-horizontal" novalidate>
   <div class="form-group">
@@ -18,31 +18,34 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="altlabel" class="col-sm-4">Ehdotettu muutos: *</label>
+    <label for="altlabel" class="col-sm-4" translate>{{'CHANGE'}}: *</label>
     <div class="col-sm-8">
       <input ng-model="changeCtrl.suggestion.change" type="text" class="form-control col-sm-10" id="change" required>
     </div>
   </div>
   <div class="form-group">
-    <label for="explanation" class="col-sm-4">Perustelut ehdotukselle: *</label>
+    <label for="explanation" class="col-sm-4" translate>{{'EXPLANATION'}}: *</label>
     <div class="col-sm-8">
       <input ng-model="changeCtrl.suggestion.explanation" type="text" class="form-control col-sm-10" id="explanation" required>
     </div>
   </div>
   <div class="form-group">
-    <label for="fromname" class="col-sm-4">Ehdottajan nimi: *</label>
+    <label for="fromname" class="col-sm-4" translate>{{'NAME'}}: *</label>
     <div class="col-sm-8">
       <input ng-model="changeCtrl.suggestion.fromname" type="text" class="form-control col-sm-10" id="fromname" required>
     </div>
   </div>
   <div class="form-group">
-    <label for="fromorg" class="col-sm-4">Ehdottajan organisaatio:</label>
+    <label for="fromorg" class="col-sm-4" translate>{{'ORG'}}:</label>
     <div class="col-sm-8">
       <input ng-model="changeCtrl.suggestion.fromorg" type="text" class="form-control col-sm-10" id="fromorg">
     </div>
   </div>
   <div class="form-group">
-    <label for="email" class="col-sm-4">Sähköpostiosoite: * <span>Saat sähköpostiisi tietoa käsittelyn etenemisestä.</span></label>
+    <div class="col-sm-4">
+      <label for="email" translate>{{'EMAIL'}}: *</label>
+      <p translate>{{'EMAILINFO'}}.</p>
+    </div>
     <div class="col-sm-8">
       <input ng-model="changeCtrl.suggestion.fromemail" type="email" class="form-control col-sm-10" id="email" required>
     </div>

@@ -19,6 +19,8 @@ app.config(['$routeProvider', function($routeProvider) {
 app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.translations('fi', {
     'TITLE': 'Ehdotusjärjestelmä',
+    'NEWHEADING': 'Ehdota uutta käsitettä YSAan ja YSOon',
+    'CHANGEHEADING': 'Ehdota muutosta olemassa olevaan käsitteeseen YSAssa ja YSOssa',
     'SUGGESTIONS': 'Ehdotukset',
     'NOTINYSA': 'Asiasanaa ei löytynyt YSAsta.',
     'INYSA': 'Ehdottamasi termi löytyy jo YSAsta.',
@@ -39,7 +41,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     'EMAILINFO' : 'Saat sähköpostiisi tietoa käsittelyn etenemisestä',
     'QUALITY' : 'Ehdotuksen laatu',
     'REQUIRED' : 'merkityt kohdat ovat pakollisia',
-    'SUBMIT': 'Lähetä ehdotus'
+    'SUBMIT': 'Lähetä ehdotus',
+    'CHANGE': 'Ehdotettu muutos',
   });
 
   $translateProvider.translations('sv', {
@@ -64,7 +67,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     'EMAILINFO' : 'Saat sähköpostiisi tietoa käsittelyn etenemisestä',
     'QUALITY' : 'Ehdotuksen laatu',
     'REQUIRED' : 'merkityt kohdat ovat pakollisia',
-    'SUBMIT': 'Skicka förslaget'
+    'SUBMIT': 'Skicka förslaget',
+    'CHANGE': 'Ehdotettu muutos',
   });
 
   $translateProvider.preferredLanguage('fi');
