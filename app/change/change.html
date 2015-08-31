@@ -2,7 +2,7 @@
 
 <form name="changeForm" ng-controller="ChangeController as ChangeCtrl" ng-submit="changeForm.$valid && ChangeCtrl.submitSuggestion()" class="form-horizontal" novalidate>
   <div class="form-group">
-    <label for="preflabel" class="col-sm-4">Päätermi/asiasana: *</label>
+    <label for="preflabel" class="col-sm-4">{{ 'preflabel' | translate }}: *</label>
     <div class="col-sm-8">
       <angucomplete-alt id="preflabel"
               placeholder="Hae käsitettä"
@@ -51,7 +51,7 @@
     <div class="col-sm-4">
     </div>
     <div class="col-sm-2">
-      <input class="btn btn-default" type="submit" value="Lähetä ehdotus">
+      <input class="btn btn-default" type="submit" value="{{ 'submit' | translate }}">
     </div>
     <div class="col-sm-6"><p>* merkityt kohdat ovat pakollisia.</p></div>
   </div>

@@ -14,9 +14,9 @@
   <link rel="stylesheet" href="bower_components/angucomplete-alt/angucomplete-alt.css">
   <link rel="stylesheet" href="app.css">
 </head>
-<body>
+<body ng-controller="Ctrl">
 <!-- Fixed navbar -->
-  <nav class="navbar navbar-default" ng-controller="Ctrl">
+  <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -30,7 +30,7 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Ehdotukset<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'suggestions' | translate }}<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="#/list">Olemassaolevat ehdotukset</a></li>
             <li><a href="#/new">Uuden käsitteen lisäys</a></li>
@@ -39,8 +39,8 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li ng-class="{active: language === 'fi'}"><a href="" ng-click="changeLanguage('fi')">{{ 'fi' | translate }}</a></li>
-          <li ng-class="{active: language === 'sv'}"><a href="" ng-click="changeLanguage('sv')">{{ 'sv' | translate }}</a></li>
+          <li ng-class="{active: language === 'fi'}"><a href="" ng-click="changeLanguage('fi')">suomeksi</a></li>
+          <li ng-class="{active: language === 'sv'}"><a href="" ng-click="changeLanguage('sv')">på svenska</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>

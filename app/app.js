@@ -18,14 +18,23 @@ app.config(['$routeProvider', function($routeProvider) {
 app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.translations('fi', {
     'TITLE': 'Ehdotusjärjestelmä',
-    'fi': 'suomeksi',
-    'sv': 'på svenska'
+    'preflabel': 'Päätermi/asiasana',
+    'altlabels': 'Vaihtoehtoiset termit ja ilmaisut',
+    'narrowers': 'Alakäsitteet (RT)',
+    'broader': 'Yläkäsite YSOssa (LT)',
+    'suggestions': 'Ehdotukset',
+    'search': 'Hae käsitettä',
+    'submit': 'Lähetä ehdotus'
   });
 
   $translateProvider.translations('sv', {
     'TITLE': 'Förslag system',
-    'fi': 'på finska',
-    'sv': 'på svenska'
+    'preflabel': 'Term/ämnesord',
+    'narrowers': 'Underordnade begrepp',
+    'broader': 'Överordnadt begrepp i ALLFO',
+    'suggestions': 'Förslag',
+    'search': 'Hae käsitettä',
+    'submit': 'Skicka förslaget'
   });
 
   $translateProvider.preferredLanguage('fi');

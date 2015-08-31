@@ -2,7 +2,7 @@
 
 <form name="suggestionForm" ng-controller="SuggestionController as suggestionCtrl" ng-submit="suggestionForm.$valid && suggestionCtrl.addSuggestion()" class="form-horizontal" novalidate>
   <div class="form-group">
-    <label for="preflabelfi" class="col-sm-4">Päätermi/asiasana: *</label>
+    <label for="preflabelfi" class="col-sm-4">{{ 'preflabel' | translate }}: *</label>
     <div class="col-sm-8">
       <input name="preflabelfi" ng-model="suggestionCtrl.suggestion.preflabelfi" type="text" class="form-control" id="preflabel" new-concept in-vocab="ysa">
       <span ng-show="suggestionForm.preflabelfi.$invalid">Ehdottamasi termi löytyy jo YSAsta.</span>
@@ -43,7 +43,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="narrower" class="col-sm-4">Alakäsitteet (RT):</label>
+    <label for="narrower" class="col-sm-4">{{ 'narrowers' | translate }}:</label>
     <div class="col-sm-8">
       <input name="narrower" ng-model="suggestionCtrl.suggestion.narrower" type="text" class="form-control col-sm-10" id="narrower">
       <span ng-show="suggestionForm.narrower.$invalid">Asiasanaa ei löytynyt YSAsta.</span>
@@ -121,7 +121,7 @@
       <span ng-repeat="i in getNumber(5 - suggestionCtrl.getStars()) track by $index" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
     </div>
     <div class="col-sm-2">
-      <input class="btn btn-default" type="submit" value="Lähetä ehdotus">
+      <input class="btn btn-default" type="submit" value="{{ 'submit' | translate }}">
     </div>
     <div class="col-sm-6"><p>* merkityt kohdat ovat pakollisia.</p></div>
   </div>
