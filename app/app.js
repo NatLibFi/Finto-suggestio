@@ -37,6 +37,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     'ORG': 'Ehdottajan organisaatio',
     'EMAIL': 'Sähköpostiosoite',
     'EMAILINFO' : 'Saat sähköpostiisi tietoa käsittelyn etenemisestä',
+    'QUALITY' : 'Ehdotuksen laatu',
+    'REQUIRED' : 'merkityt kohdat ovat pakollisia',
     'SUBMIT': 'Lähetä ehdotus'
   });
 
@@ -60,6 +62,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     'ORG': 'Ehdottajan organisaatio',
     'EMAIL': 'E-postadress',
     'EMAILINFO' : 'Saat sähköpostiisi tietoa käsittelyn etenemisestä',
+    'QUALITY' : 'Ehdotuksen laatu',
+    'REQUIRED' : 'merkityt kohdat ovat pakollisia',
     'SUBMIT': 'Skicka förslaget'
   });
 
