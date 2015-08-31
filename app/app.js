@@ -36,6 +36,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'NAME': 'Ehdottajan nimi',
     'ORG': 'Ehdottajan organisaatio',
     'EMAIL': 'Sähköpostiosoite',
+    'EMAILINFO' : 'Saat sähköpostiisi tietoa käsittelyn etenemisestä',
     'SUBMIT': 'Lähetä ehdotus'
   });
 
@@ -58,6 +59,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'NAME': 'Ehdottajan nimi',
     'ORG': 'Ehdottajan organisaatio',
     'EMAIL': 'E-postadress',
+    'EMAILINFO' : 'Saat sähköpostiisi tietoa käsittelyn etenemisestä',
     'SUBMIT': 'Skicka förslaget'
   });
 
