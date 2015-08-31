@@ -33,7 +33,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'narrowers': 'Underordnade begrepp',
     'broader': 'Överordnadt begrepp i ALLFO',
     'suggestions': 'Förslag',
-    'search': 'Hae käsitettä',
+    'search': 'Sök begrepp',
     'submit': 'Skicka förslaget'
   });
 
