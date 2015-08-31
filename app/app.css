@@ -14,10 +14,15 @@
   
 .navbar {
   border: none !important;
+  margin-bottom: 0 !important;
 }
 
 .navbar * {
   color: #394554 !important;
+}
+
+.navbar-brand {
+  width: 220px !important;
 }
 
 #navbar > .navbar-nav > li.active > a, #navbar > .navbar-nav > .dropdown > .dropdown-toggle {

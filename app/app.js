@@ -19,23 +19,23 @@ app.config(['$routeProvider', function($routeProvider) {
 app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.translations('fi', {
     'TITLE': 'Ehdotusjärjestelmä',
-    'preflabel': 'Päätermi/asiasana',
-    'altlabels': 'Vaihtoehtoiset termit ja ilmaisut',
-    'narrowers': 'Alakäsitteet (RT)',
-    'broader': 'Yläkäsite YSOssa (LT)',
-    'suggestions': 'Ehdotukset',
-    'search': 'Hae käsitettä',
-    'submit': 'Lähetä ehdotus'
+    'PREFLABEL': 'Päätermi/asiasana',
+    'ALTLABELS': 'Vaihtoehtoiset termit ja ilmaisut',
+    'NARROWERS': 'Alakäsitteet (RT)',
+    'BROADER': 'Yläkäsite YSOssa (LT)',
+    'SUGGESTIONS': 'Ehdotukset',
+    'SEARCH': 'Hae käsitettä',
+    'SUBMIT': 'Lähetä ehdotus'
   });
 
   $translateProvider.translations('sv', {
     'TITLE': 'Förslag system',
-    'preflabel': 'Term/ämnesord',
-    'narrowers': 'Underordnade begrepp',
-    'broader': 'Överordnadt begrepp i ALLFO',
-    'suggestions': 'Förslag',
-    'search': 'Sök begrepp',
-    'submit': 'Skicka förslaget'
+    'PREFLABEL': 'Term/ämnesord',
+    'NARROWERS': 'Underordnade begrepp',
+    'BROADER': 'Överordnadt begrepp i ALLFO',
+    'SUGGESTIONS': 'Förslag',
+    'SEARCH': 'Sök begrepp',
+    'SUBMIT': 'Skicka förslaget'
   });
 
   $translateProvider.preferredLanguage('fi');

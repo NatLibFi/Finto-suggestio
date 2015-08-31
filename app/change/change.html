@@ -2,10 +2,10 @@
 
 <form name="changeForm" ng-controller="ChangeController as ChangeCtrl" ng-submit="changeForm.$valid && ChangeCtrl.submitSuggestion()" class="form-horizontal" novalidate>
   <div class="form-group">
-    <label for="preflabel" class="col-sm-4">{{ 'preflabel' | translate }}: *</label>
+    <label for="preflabel" class="col-sm-4">{{ 'PREFLABEL' | translate }}: *</label>
     <div class="col-sm-8">
       <angucomplete-alt id="preflabel"
-              placeholder="{{ 'search' | translate }}"
+              placeholder="{{ 'SEARCH' | translate }}"
               pause="400"
               minlength="3"
               field-required="true"
@@ -51,7 +51,7 @@
     <div class="col-sm-4">
     </div>
     <div class="col-sm-2">
-      <input class="btn btn-default" type="submit" value="{{ 'submit' | translate }}">
+      <input class="btn btn-default" type="submit" value="{{ 'SUBMIT' | translate }}">
     </div>
     <div class="col-sm-6"><p>* merkityt kohdat ovat pakollisia.</p></div>
   </div>
