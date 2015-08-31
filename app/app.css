@@ -3,6 +3,10 @@
   padding-left: 4px !important;
 }
 
+.vocabulary-select > select {
+  padding-left: 0px !important;
+}
+
 .glyphicon {
  font-size: 24px !important;
  top: 5px;
