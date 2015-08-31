@@ -6,11 +6,12 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "angucomplete-alt": "~1.1.0",
     "angular": "~1.4.0",
-    "angular-route": "~1.4.0",
     "angular-loader": "~1.4.0",
     "angular-mocks": "~1.4.0",
-    "angucomplete-alt": "~1.1.0",
+    "angular-route": "~1.4.0",
+    "angular-translate": "~2.7.2",
     "angular-ui-select": "~0.12.1",
     "bootstrap": "~3.3.5"
   }

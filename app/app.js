@@ -7,11 +7,39 @@ var app = angular.module('myApp', [
   'myApp.new',
   'ui.select',
   'angucomplete-alt',
+  'pascalprecht.translate',
   'myApp.change'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/list'});
+}]);
+
+app.config(['$translateProvider', function ($translateProvider) {
+  $translateProvider.translations('fi', {
+    'TITLE': 'Ehdotusjärjestelmä',
+    'fi': 'suomeksi',
+    'sv': 'på svenska'
+  });
+
+  $translateProvider.translations('sv', {
+    'TITLE': 'Förslag system',
+    'fi': 'på finska',
+    'sv': 'på svenska'
+  });
+
+  $translateProvider.preferredLanguage('fi');
+
+  $translateProvider.useSanitizeValueStrategy('escape');
+}]);
+
+app.controller('Ctrl', ['$translate', '$scope', function ($translate, $scope) {
+  $scope.changeLanguage = function (langKey) {
+    $translate.use(langKey);
+    $scope.language = langKey;
+  };
+  
+  $scope.language = $translate.preferredLanguage();
 }]);
 
 app.directive('existingConcept', function($http) {

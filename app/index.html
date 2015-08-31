@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Ehdotusjärjestelmä</title>
+  <title>{{ 'TITLE' | translate }}</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -16,7 +16,7 @@
 </head>
 <body>
 <!-- Fixed navbar -->
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default" ng-controller="Ctrl">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -25,7 +25,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Ehdotusjärjestelmä</a>
+        <a class="navbar-brand" href="#">{{ 'TITLE' | translate }}</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
@@ -39,8 +39,8 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#fi">suomeksi</a></li>
-          <li><a href="#sv">på svenska</a></li>
+          <li ng-class="{active: language === 'fi'}"><a href="" ng-click="changeLanguage('fi')">{{ 'fi' | translate }}</a></li>
+          <li ng-class="{active: language === 'sv'}"><a href="" ng-click="changeLanguage('sv')">{{ 'sv' | translate }}</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -50,7 +50,6 @@
   <div class="container">
 
     <div ng-view></div>
-
   </div>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -61,6 +60,7 @@
   <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="bower_components/angular-ui-select/dist/select.min.js"></script>
   <script src="bower_components/angucomplete-alt/dist/angucomplete-alt.min.js"></script>
+  <script src="bower_components/angular-translate/angular-translate.min.js"></script>
   <script src="app.js"></script>
   <script src="suggestions.js"></script>
   <script src="list/list.js"></script>
