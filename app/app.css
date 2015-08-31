@@ -1,14 +1,7 @@
 /* app css stylesheet */
-#broader_value, select.form-control {
-  padding-left: 4px !important;
-}
 
-.vocabulary-select {
-  padding-right: 0px !important;
-}
-
-.vocabulary-select > select {
-  padding-left: 0px !important;
+.ui-select-search {
+  padding-left: 12px !important;
 }
 
 .glyphicon {
