@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 var app = angular.module('myApp', [
   'ngRoute',
+  'ngCookies',
   'myApp.list',
   'myApp.new',
   'ui.select',
@@ -38,8 +39,8 @@ app.config(['$translateProvider', function ($translateProvider) {
   });
 
   $translateProvider.preferredLanguage('fi');
-
   $translateProvider.useSanitizeValueStrategy('escape');
+  $translateProvider.useCookieStorage();
 }]);
 
 app.controller('Ctrl', ['$translate', '$scope', function ($translate, $scope) {
@@ -48,7 +49,7 @@ app.controller('Ctrl', ['$translate', '$scope', function ($translate, $scope) {
     $scope.language = langKey;
   };
   
-  $scope.language = $translate.preferredLanguage();
+  $scope.language = $translate.use();
 }]);
 
 app.directive('existingConcept', function($http) {
