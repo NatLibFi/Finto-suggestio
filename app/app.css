@@ -1,4 +1,8 @@
 /* app css stylesheet */
+.dropdown-menu {
+  padding: 0px !important;
+}
+
 .vocabulary-select {
   padding-right: 0px !important;
 }
@@ -29,7 +33,7 @@
   color: #394554 !important;
 }
 
-.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+a, a:focus, a:hover {
   outline: 0 !important;
 }
 
