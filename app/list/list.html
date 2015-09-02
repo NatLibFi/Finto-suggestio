@@ -1,6 +1,6 @@
-<h3>Olemassaolevat ehdotukset</h3>
+<h3 translate>LIST</h3>
 <table class="table">
-  <tr><th>Tyyppi</th><th>Käsite</th><th>Tila</th><th>Päivämäärä</th><th>Kommentit</th></tr>
+  <tr><th translate>TYPE</th><th translate>CONCEPT</th><th translate>STATE</th><th translate>DATE</th><th translate>COMMENTS</th></tr>
   <tr ng-repeat="suggestion in suggestions | orderBy:'!date'"><td>{{suggestion.type}}</td><td><a href="{{suggestion.href}}">{{suggestion.preflabel}}</a></td><td>{{suggestion.state}}</td><td>{{suggestion.date | date}}</td><td>{{suggestion.comments}}</td></tr>
 </table>
   

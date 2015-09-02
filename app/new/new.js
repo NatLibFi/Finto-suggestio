@@ -10,7 +10,7 @@ angular.module('myApp.new', ['ngRoute'])
   });
 }])
 
-.controller('SuggestionController', ['$http','$scope','$sce','FormFormatter' , function($http, $scope, $sce, FormFormatter) {
+.controller('SuggestionController', ['$http','$location','$scope','$sce','FormFormatter' , function($http, $location, $scope, $sce, FormFormatter) {
   
   $scope.trustAsHtml = function(value) {
     return $sce.trustAsHtml(value);
@@ -29,8 +29,11 @@ angular.module('myApp.new', ['ngRoute'])
 
   this.addSuggestion = function() {
     var msg_body = FormFormatter.markdown(this.suggestion);
-    console.log(msg_body);
-    this.suggestion = {type: 'Lisäys', state: 'Käsittelyssä'};
+    var msg_title = this.suggestion.preflabelfi;
+    var msg = {'title': msg_title, 'body': msg_body, 'labels': ['uusi']};
+    $http({method: 'POST', url: '../post.php', data: msg}).then(function(response) {
+      $location.path('/list');
+    });
   };
   
   this.getStars = function() {

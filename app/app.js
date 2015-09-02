@@ -22,6 +22,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'NEWHEADING': 'Ehdota uutta käsitettä YSAan ja YSOon',
     'CHANGEHEADING': 'Ehdota muutosta olemassa olevaan käsitteeseen YSAssa ja YSOssa',
     'SUGGESTIONS': 'Ehdotukset',
+    'LIST': 'Uusimmat ehdotukset',
     'NOTINYSA': 'Asiasanaa ei löytynyt YSAsta.',
     'INYSA': 'Ehdottamasi termi löytyy jo YSAsta.',
     'PREFLABEL': 'Päätermi/asiasana',
@@ -43,6 +44,11 @@ app.config(['$translateProvider', function ($translateProvider) {
     'REQUIRED' : 'merkityt kohdat ovat pakollisia',
     'SUBMIT': 'Lähetä ehdotus',
     'CHANGE': 'Ehdotettu muutos',
+    'TYPE': 'Tyyppi',
+    'CONCEPT': 'Käsite',
+    'STATE': 'Tila',
+    'DATE': 'Päivämäärä',
+    'COMMENTS': 'Kommentit',
   });
 
   $translateProvider.translations('sv', {
@@ -50,6 +56,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'NEWHEADING': 'Ehdota uutta käsitettä YSAan ja YSOon',
     'CHANGEHEADING': 'Ehdota muutosta olemassa olevaan käsitteeseen YSAssa ja YSOssa',
     'SUGGESTIONS': 'Förslag',
+    'LIST': 'Nyaste förslag',
     'NOTINYSA': 'Asiasanaa ei löytynyt YSAsta.',
     'INYSA': 'Ehdottamasi termi löytyy jo YSAsta.',
     'PREFLABEL': 'Term/ämnesord',
@@ -71,6 +78,11 @@ app.config(['$translateProvider', function ($translateProvider) {
     'REQUIRED' : 'merkityt kohdat ovat pakollisia',
     'SUBMIT': 'Skicka förslaget',
     'CHANGE': 'Ehdotettu muutos',
+    'TYPE': 'Typ',
+    'CONCEPT': 'Begrepp',
+    'STATE': 'Tila',
+    'DATE': 'Datum',
+    'COMMENTS': 'Kommentit',
   });
 
   $translateProvider.preferredLanguage('fi');
@@ -153,9 +165,14 @@ app.factory('FormFormatter', [function() {
       for (var property in suggestion) {
         var proplabel = labels[property] ? labels[property] : property;
         var propval = suggestion[property];
-        if (propval.originalObject) // if there is an uri available from the autocomplete linking to that
+        var groups = '';
+        if (Object.prototype.toString.call(propval) === '[object Array]') {
+          for (var i in propval)
+            groups += '[' + propval[i].label + '](' + propval[i].uri + ')  \n\n';
+          msg_body += '### ' + proplabel + '   \n\n' + groups;
+        } else if (propval.originalObject) // if there is an uri available from the autocomplete linking to that
   msg_body += '### ' + proplabel + '   \n\n' + '[' + propval.originalObject.prefLabel + '](' + propval.originalObject.uri + ')  \n\n';
-        else // the property value is only a string
+        else if (propval !== '')// the property value is only a string
   msg_body += '### ' + proplabel + '   \n\n' + propval + '  \n\n';
       }
       return msg_body;  

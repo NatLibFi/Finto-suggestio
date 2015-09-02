@@ -12,11 +12,11 @@ angular.module('myApp.list', ['ngRoute'])
 
 .controller('ListController', ['$http','$scope', function($http, $scope) {
   $scope.suggestions = [];
-  $http.get('https://api.github.com/repos/NatLibFi/Skosmos/issues?state=open').then(function(data){
+  $http.get('../list.php').then(function(data){
     var issues = data.data;
     for(var i in issues) {
       $scope.suggestions.push({
-        type: 'Lisäys', 
+        type: issues[i].labels[0].name, 
         preflabel: issues[i].title, 
         state: 'Käsittelyssä', 
         date: issues[i].created_at, 

@@ -10,7 +10,7 @@ app.config(['$routeProvider', function($routeProvider) {
   });
 }]);
 
-app.controller('ChangeController', ['$scope','FormFormatter', function($scope, FormFormatter) {
+app.controller('ChangeController', ['$scope','$http','$location','FormFormatter', function($scope, $http, $location, FormFormatter) {
 
   $scope.requestFormatter = function(qstring) {
     return {query: qstring + '*'};
@@ -21,8 +21,11 @@ app.controller('ChangeController', ['$scope','FormFormatter', function($scope, F
 
   this.submitSuggestion = function() {
     var msg_body = FormFormatter.markdown(this.suggestion);
-    console.log(msg_body);
-    this.suggestion = {type: 'Muutos olemassa olevaan käsitteeseen', preflabel: '', state: 'Käsittelyssä'};
+    var msg_title = this.suggestion.preflabel.title;
+    var msg = {'title': msg_title, 'body': msg_body, 'labels': ['muutos']};
+    $http({method: 'POST', url: '../post.php', data: msg}).then(function(response) {
+      $location.path('/list');
+    });
   };
 }]);
 
