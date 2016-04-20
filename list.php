@@ -1,9 +1,9 @@
 <?php
 header("Content-type: application/json");
 
-require_once('.token');
+require_once('../../.token');
 
-$url = 'https://api.github.com/repos/henriyli/issuetest/issues?state=open';
+$url = 'https://api.github.com/repos/Finto-ehdotus/YSE/issues?state=open';
 $session = curl_init($url);
 curl_setopt($session, CURLOPT_USERPWD, $suggestio_token);
 curl_setopt($session, CURLOPT_USERAGENT, "https://github.com/NatLibFi/Finto-suggestio");
