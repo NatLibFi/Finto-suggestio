@@ -1,12 +1,12 @@
 <?php
 header("Content-type: application/json");
 
-$url = 'https://api.github.com/repos/henriyli/issuetest/issues';
+$url = 'https://api.github.com/repos/Finto-ehdotus/YSE/issues';
 $session = curl_init($url);
 
 $post_body = file_get_contents('php://input');
 
-require_once('.token');
+require_once('../../.token');
 
 curl_setopt($session, CURLOPT_USERPWD, $suggestio_token);
 curl_setopt($session, CURLOPT_USERAGENT, "https://github.com/NatLibFi/Finto-suggestio");
