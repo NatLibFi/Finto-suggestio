@@ -25,7 +25,7 @@ angular.module('myApp.new', ['ngRoute'])
     $scope.groupList = response.data.groups;
   });
 
-  this.suggestion = {type: 'Lisäys', state: 'Käsittelyssä'};
+  //this.suggestion = {state: 'Käsittelyssä'};
 
   this.addSuggestion = function() {
     var msg_body = FormFormatter.markdown(this.suggestion);

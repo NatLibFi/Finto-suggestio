@@ -160,20 +160,21 @@ app.factory('FormFormatter', [function() {
   return {
     markdown: function(suggestion) { 
       var msg_body = '';
-      var labels = {'type': 'Ehdotuksen tyyppi', 'preflabel': 'Päätermi/asiasana', 'state': 'Tila', 'change':'Ehdotettu muutos', 'explanation': 'Perustelut ehdotukselle', 'fromname': 'Ehdottajan nimi', 'fromemail': 'Ehdottajan sähköpostiosoite'};
+      var labels = {'type': 'Ehdotuksen tyyppi', 'preflabelfi': 'Ehdotettu termi suomeksi', 'preflabelsv': 'Ehdotettu termi ruotsiksi', 'preflabelen': 'Ehdotettu termi englanniksi', 'state': 'Tila', 'change':'Ehdotettu muutos', 'explanation': 'Perustelut ehdotukselle', 'broader': 'Ehdotettu yläkäsite', 'groups': 'Ehdotetut temaattiset ryhmät (YSA-ryhmät)','name': 'Ehdottajan nimi', 'email': 'Ehdottajan sähköpostiosoite'};
 
       for (var property in suggestion) {
         var proplabel = labels[property] ? labels[property] : property;
         var propval = suggestion[property];
         var groups = '';
         if (Object.prototype.toString.call(propval) === '[object Array]') {
-          for (var i in propval)
-            groups += '[' + propval[i].label + '](' + propval[i].uri + ')  \n\n';
-          msg_body += '### ' + proplabel + '   \n\n' + groups;
+          for (var i in propval) {
+            groups += '[' + propval[i].prefLabel + '](' + propval[i].uri + ')  \n\n';
+          }
+          msg_body += '#### ' + proplabel + '   \n\n' + groups;
         } else if (propval.originalObject) // if there is an uri available from the autocomplete linking to that
-  msg_body += '### ' + proplabel + '   \n\n' + '[' + propval.originalObject.prefLabel + '](' + propval.originalObject.uri + ')  \n\n';
+  msg_body += '#### ' + proplabel + '   \n\n' + '[' + propval.originalObject.prefLabel + '](' + propval.originalObject.uri + ')  \n\n';
         else if (propval !== '')// the property value is only a string
-  msg_body += '### ' + proplabel + '   \n\n' + propval + '  \n\n';
+  msg_body += '#### ' + proplabel + '   \n\n' + propval + '  \n\n';
       }
       return msg_body;  
     }
