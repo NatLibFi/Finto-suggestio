@@ -10,15 +10,27 @@ angular.module('myApp.list', ['ngRoute'])
   });
 }])
 
+.filter('determineType', function() {
+  return function(input) {
+    for(var i in input) {
+      if(input[i].name === 'muutos') {
+        return 'Muutosehdotus';
+      }
+      return 'Käsite-ehdotus';
+    }
+  };
+})
+
 .controller('ListController', ['$http','$scope', function($http, $scope) {
   $scope.suggestions = [];
+
   $http.get('../list.php').then(function(data){
     var issues = data.data;
     for(var i in issues) {
       $scope.suggestions.push({
-        type: issues[i].labels[0].name, 
+        type: issues[i].labels, 
         preflabel: issues[i].title, 
-        state: 'Käsittelyssä', 
+        state: issues[i].labels, 
         date: issues[i].created_at, 
         comments: issues[i].comments,
         href: issues[i].html_url
@@ -26,15 +38,4 @@ angular.module('myApp.list', ['ngRoute'])
     }
   },function() {});
 }]);
-
-var stubSuggestions = [
-  { type: 'Lisäys', preflabel: 'matkustustase', state: 'Käsittelyssä', date: '3.8.2014', comments: 0},
-  { type: 'Lisäys', preflabel: 'työllisyysturva', state: 'Käsittelyssä', date: '3.8.2014', comments: 1},
-  { type: 'Lisäys', preflabel: 'hybridiammatit', state: 'Käsittelyssä', date: '3.8.2014', comments: 2},
-  { type: 'Lisäys', preflabel: 'y-sukupolvi', state: 'Käsittelyssä', date: '3.8.2014', comments: 0},
-  { type: 'Lisäys', preflabel: 'klusterianalyysi', state: 'Käsittelyssä', date: '3.8.2014', comments: 0},
-  { type: 'Lisäys', preflabel: 'osaamisenhallinta', state: 'Käsittelyssä', date: '3.8.2014', comments: 0},
-  { type: 'Lisäys', preflabel: 'minäpystyvyys', state: 'Käsittelyssä', date: '3.8.2014', comments: 4},
-  { type: 'Lisäys', preflabel: 'puunmukailu', state: 'Käsittelyssä', date: '3.8.2014', comments: 2}
-];
 

@@ -40,7 +40,7 @@ angular.module('myApp.new', ['ngRoute'])
     if ($scope.suggestionForm.$invalid)
       return 0;
     var stars = 1; // when the required fields have been filled out
-    var required = ['type', 'preflabelfi', 'state', 'date', 'broader', 'groups', 'name', 'email', 'explanation'];
+    var required = ['type', 'preflabelfi', 'state', 'date', 'groups', 'name', 'email', 'explanation'];
     for (var prop in this.suggestion) {
       if (required.indexOf(prop) === -1 && this.suggestion[prop] !== '' && stars < 5)
         stars += 1;
