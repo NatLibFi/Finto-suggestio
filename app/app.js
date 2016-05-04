@@ -19,8 +19,10 @@ app.config(['$routeProvider', function($routeProvider) {
 app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.translations('fi', {
     'TITLE': 'Ehdotusjärjestelmä',
+    'NEWSUGGESTION': 'Ehdota uutta käsitettä',
     'NEWHEADING': 'Ehdota uutta käsitettä YSAan ja YSOon',
     'CHANGEHEADING': 'Ehdota muutosta olemassa olevaan käsitteeseen YSAssa ja YSOssa',
+    'CHANGESUGGESTION': 'Ehdota muutosta olemassa olevaan käsitteeseen',
     'SUGGESTIONS': 'Ehdotukset',
     'LIST': 'Uusimmat ehdotukset',
     'NOTINYSA': 'Asiasanaa ei löytynyt YSAsta.',
@@ -49,12 +51,17 @@ app.config(['$translateProvider', function ($translateProvider) {
     'STATE': 'Tila',
     'DATE': 'Päivämäärä',
     'COMMENTS': 'Kommentit',
+    'PREFFI': 'Päätermi/asiasana',
+    'PREFSV': 'Termi ruotsiksi',
+    'PREFEN': 'Termi englanniksi',
   });
 
   $translateProvider.translations('sv', {
     'TITLE': 'Förslag system',
+    'NEWSUGGESTION': 'Ehdota uutta käsitettä',
     'NEWHEADING': 'Ehdota uutta käsitettä YSAan ja YSOon',
     'CHANGEHEADING': 'Ehdota muutosta olemassa olevaan käsitteeseen YSAssa ja YSOssa',
+    'CHANGESUGGESTION': 'Ehdota muutosta olemassa olevaan käsitteeseen',
     'SUGGESTIONS': 'Förslag',
     'LIST': 'Nyaste förslag',
     'NOTINYSA': 'Asiasanaa ei löytynyt YSAsta.',
@@ -80,9 +87,12 @@ app.config(['$translateProvider', function ($translateProvider) {
     'CHANGE': 'Ehdotettu muutos',
     'TYPE': 'Typ',
     'CONCEPT': 'Begrepp',
-    'STATE': 'Tila',
+    'STATE': 'Status',
     'DATE': 'Datum',
-    'COMMENTS': 'Kommentit',
+    'COMMENTS': 'Kommentarer',
+    'PREFFI': 'Term/ämnesord på finska',
+    'PREFSV': 'Term/ämnesord på svenska',
+    'PREFEN': 'Term/ämnesord på engelska',
   });
 
   $translateProvider.preferredLanguage('fi');
