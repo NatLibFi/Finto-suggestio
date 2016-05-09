@@ -57,7 +57,7 @@ app.config(['$translateProvider', function ($translateProvider) {
   });
 
   $translateProvider.translations('sv', {
-    'TITLE': 'Förslag system',
+    'TITLE': 'Förslagssystem',
     'NEWSUGGESTION': 'Ehdota uutta käsitettä',
     'NEWHEADING': 'Ehdota uutta käsitettä YSAan ja YSOon',
     'CHANGEHEADING': 'Ehdota muutosta olemassa olevaan käsitteeseen YSAssa ja YSOssa',
