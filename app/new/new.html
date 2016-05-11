@@ -44,14 +44,31 @@
   <div class="form-group">
     <label for="narrower" class="col-sm-4" translate>{{'NARROWER'}}:</label>
     <div class="col-sm-8">
-      <input name="narrower" ng-model="suggestionCtrl.suggestion.narrower" type="text" class="form-control col-sm-10" id="narrower">
-      <span ng-show="suggestionForm.narrower.$invalid" translate>{{'NOTINYSA'}}</span>
+      <angucomplete-alt id="narrower"
+              placeholder="{{ 'SEARCH' | translate }}"
+              pause="400"
+              minlength="3"
+              selected-object="suggestionCtrl.suggestion.narrower"
+              remote-url="http://api.finto.fi/rest/v1/ysa/search"
+              remote-url-request-formatter="requestFormatter"
+              remote-url-data-field="results"
+              title-field="prefLabel"
+              input-class="form-control form-control-small" />
     </div>
   </div>
   <div class="form-group">
     <label for="related" class="col-sm-4" translate>{{'RELATED'}}:</label>
     <div class="col-sm-8">
-      <input name="related" ng-model="suggestionCtrl.suggestion.related" type="text" class="form-control col-sm-10" id="related">
+      <angucomplete-alt id="related"
+              placeholder="{{ 'SEARCH' | translate }}"
+              pause="400"
+              minlength="3"
+              selected-object="suggestionCtrl.suggestion.related"
+              remote-url="http://api.finto.fi/rest/v1/ysa/search"
+              remote-url-request-formatter="requestFormatter"
+              remote-url-data-field="results"
+              title-field="prefLabel"
+              input-class="form-control form-control-small" />
     </div>
   </div>
   <div class="form-group">
