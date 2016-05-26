@@ -79,7 +79,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'EXPLANATION': 'Motiveringar för förslaget',
     'NEEDEDFOR': 'I beskrivningen av vilket material behöver du begreppet (t.ex. titel eller URL)',
     'NAME': 'Förslagsställarens namn',  
-    'ORG': 'Ehdottajan organisaatio',
+    'ORG': 'Förslagsställarens organisation',
     'EMAIL': 'E-postadress',
     'EMAILINFO' : 'Du får information om hur behandlingen av förslaget framskrider till din e-post',
     'QUALITY' : 'Förslagets kvalitet',
