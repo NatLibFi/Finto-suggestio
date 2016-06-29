@@ -56,6 +56,9 @@ angular.module('myApp.new', ['ngRoute'])
 .directive('uiSelectRequired', function () { 
   return { require: 'ngModel', link: function (scope, elm, attrs, ctrl) { 
     ctrl.$validators.uiSelectRequired = function (modelValue, viewValue) {
+            if (scope.suggestionCtrl.suggestion.concepttype !== 'Käsite') {
+                return true;
+            }
             var determineVal;
             if (angular.isArray(modelValue)) {
                 determineVal = modelValue;
