@@ -59,10 +59,10 @@ app.config(['$translateProvider', function ($translateProvider) {
 
   $translateProvider.translations('sv', {
     'TITLE': 'Förslagssystem',
-    'NEWSUGGESTION': 'Ehdota uutta käsitettä',
+    'NEWSUGGESTION': 'Föreslå ett nytt begrepp',
     'NEWHEADING': 'Ehdota uutta käsitettä YSAan ja YSOon',
     'CHANGEHEADING': 'Ehdota muutosta olemassa olevaan käsitteeseen YSAssa ja YSOssa',
-    'CHANGESUGGESTION': 'Ehdota muutosta olemassa olevaan käsitteeseen',
+    'CHANGESUGGESTION': 'Föreslå en ändring av ett begrepp',
     'SUGGESTIONS': 'Förslag',
     'LIST': 'Nyaste förslag',
     'NOTINYSA': 'Asiasanaa ei löytynyt YSAsta.',
