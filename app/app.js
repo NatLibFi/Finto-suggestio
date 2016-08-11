@@ -117,7 +117,6 @@ app.directive('existingConcept', function($http) {
     restrict: 'A',
     require: 'ngModel',
     link: function(scope, elem, attr, ctrl) { 
-      //when the scope changes, check the email.
       scope.$watch(attr.ngModel, function(value) {
         // if there was a previous attempt, stop it.
         if (!value)
@@ -146,7 +145,6 @@ app.directive('newConcept', function($http) {
     restrict: 'A',
     require: 'ngModel',
     link: function(scope, elem, attr, ctrl) { 
-      //when the scope changes, check the email.
       scope.$watch(attr.ngModel, function(value) {
         // if there was a previous attempt, stop it.
         if (!value)

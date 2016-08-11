@@ -13,7 +13,7 @@ app.config(['$routeProvider', function($routeProvider) {
 app.controller('ChangeController', ['$scope','$http','$location','FormFormatter', function($scope, $http, $location, FormFormatter) {
 
   $scope.requestFormatter = function(qstring) {
-    return {query: qstring + '*'};
+    return {query: qstring + '*', lang: $scope.language, vocab: 'ysa allars'};
   };
   this.labels = {'type': 'Ehdotuksen tyyppi', 'preflabel': 'Päätermi/asiasana', 'state': 'Tila', 'change':'Ehdotettu muutos', 'explanation': 'Perustelut ehdotukselle', 'fromname': 'Ehdottajan nimi', 'fromemail': 'Ehdottajan sähköpostiosoite'};
 
