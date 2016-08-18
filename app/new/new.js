@@ -37,15 +37,16 @@ angular.module('myApp.new', ['ngRoute'])
   };
   
   this.getStars = function() {
-    if ($scope.suggestionForm.$invalid)
+    if ($scope.suggestionForm.$invalid || (!this.suggestion.preflabelfi && !this.suggestion.preflabelsv)) {
       return 0;
-    var stars = 1; // when the required fields have been filled out
-    var required = ['type', 'preflabelfi', 'state', 'date', 'groups', 'name', 'email', 'explanation'];
+    }
+    var stars = 0;
+    var required = ['concepttype', 'state', 'date', 'groups', 'name', 'email', 'explanation'];
     for (var prop in this.suggestion) {
       if (required.indexOf(prop) === -1 && this.suggestion[prop] !== '' && stars < 5)
-        stars += 1;
+        stars += 1; // one star for each additional field
     }
-    return stars;
+    return stars; // the compulsory first prefLabel is counted as the first star
   };
 
   $scope.getNumber = function(num) {
@@ -56,7 +57,7 @@ angular.module('myApp.new', ['ngRoute'])
 .directive('uiSelectRequired', function () { 
   return { require: 'ngModel', link: function (scope, elm, attrs, ctrl) { 
     ctrl.$validators.uiSelectRequired = function (modelValue, viewValue) {
-            if (scope.suggestionCtrl.suggestion.concepttype !== 'Käsite') {
+            if (scope.suggestionCtrl.suggestion.concepttype !== 'CONCEPT') {
                 return true;
             }
             var determineVal;

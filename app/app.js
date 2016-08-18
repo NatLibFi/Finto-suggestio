@@ -55,6 +55,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'PREFSV': 'Termi ruotsiksi',
     'PREFEN': 'Termi englanniksi',
     'CHOOSEGROUP': 'Valitse ryhmä(t) listalta',
+    'GEO': 'Maantieteellinen paikka'
   });
 
   $translateProvider.translations('sv', {
@@ -95,6 +96,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'PREFSV': 'Term/ämnesord på svenska',
     'PREFEN': 'Term/ämnesord på engelska',
     'CHOOSEGROUP': 'Välj grupp(er) ur listan',
+    'GEO': 'Geografisk plats'
   });
 
   $translateProvider.preferredLanguage('fi');
