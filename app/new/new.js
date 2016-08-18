@@ -29,7 +29,7 @@ angular.module('myApp.new', ['ngRoute'])
 
   this.addSuggestion = function() {
     var msg_body = FormFormatter.markdown(this.suggestion);
-    var msg_title = this.suggestion.preflabelfi;
+    var msg_title = this.suggestion.preflabelfi ? this.suggestion.preflabelfi : this.suggestion.preflabelsv;
     var msg = {'title': msg_title, 'body': msg_body, 'labels': ['uusi']};
     $http({method: 'POST', url: './post.php', data: msg}).then(function(response) {
       $location.path('/list');
