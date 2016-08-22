@@ -1,20 +1,38 @@
 {
   "name": "Finto-suggestio",
-  "private": true,
-  "version": "0.0.0",
-  "description": "Ehdotusjärjestelmän prototyyppi",
-  "repository": "https://github.com/NatLibFi/Finto-suggestio",
-  "license": "MIT",
-  "devDependencies": {
-    "bower": "^1.3.1",
+  "description": "System for suggesting new concepts for vocabularies",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "bower": "^1.5.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "jasmine-core": "^2.3.4",
+    "protractor": "^2.1.0",
     "shelljs": "^0.2.6"
   },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "http-server": "^0.6.1",
+    "karma": "^0.12.37",
+    "karma-chrome-launcher": "^0.1.12",
+    "karma-firefox-launcher": "^0.1.6",
+    "karma-junit-reporter": "^0.2.2",
+    "karma-jasmine": "^0.3.6",
+    "requirejs": "^2.2.0"
+  },
   "scripts": {
-    "postinstall": "bower install",
-
-    "preupdate-webdriver": "npm install",
-    "update-webdriver": "webdriver-manager update",
-
-    "update-index-async": "node -e \"require('shelljs/global'); sed('-i', /\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/, '//@@NG_LOADER_START@@\\n' + sed(/sourceMappingURL=angular-loader.min.js.map/,'sourceMappingURL=bower_components/angular-loader/angular-loader.min.js.map','app/bower_components/angular-loader/angular-loader.min.js') + '\\n//@@NG_LOADER_END@@', 'app/index-async.html');\""
-  }
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://henriyli@github.com/NatLibFi/Finto-suggestio.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NatLibFi/Finto-suggestio/issues"
+  },
+  "homepage": "https://github.com/NatLibFi/Finto-suggestio"
 }
