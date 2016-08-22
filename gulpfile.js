@@ -14,3 +14,9 @@ gulp.task('default', function() {
       .pipe(concat('app/dist.css'))
       .pipe(gulp.dest('.'))
 });
+
+gulp.task('js', function() {
+    gulp.src(['app/app.js', 'app/new/new.js', 'app/change/change.js', 'app/list/list.js'])
+      .pipe(concat('app/dist.js'))
+      .pipe(gulp.dest('.'))
+});

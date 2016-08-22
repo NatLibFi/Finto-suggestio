@@ -23,8 +23,9 @@ app.config(['$translateProvider', function ($translateProvider) {
     'NEWHEADING': 'Ehdota uutta käsitettä YSAan ja YSOon',
     'CHANGEHEADING': 'Ehdota muutosta olemassa olevaan käsitteeseen YSAssa ja YSOssa',
     'CHANGESUGGESTION': 'Ehdota muutosta olemassa olevaan käsitteeseen',
-    'SUGGESTIONS': 'Ehdotukset',
+    'SUGGESTIONS': 'Tee ehdotus',
     'LIST': 'Uusimmat ehdotukset',
+    'LISTHEADING': 'YSAn ja YSOn uusimmat käsite-ehdotukset',
     'NOTINYSA': 'Asiasanaa ei löytynyt YSAsta.',
     'INYSA': 'Ehdottamasi termi löytyy jo YSAsta.',
     'PREFLABEL': 'Päätermi/asiasana',
@@ -64,8 +65,9 @@ app.config(['$translateProvider', function ($translateProvider) {
     'NEWHEADING': 'Föreslå ett nytt begrepp till Allärs och ALLFO',
     'CHANGEHEADING': 'Föreslå en ändring av ett begrepp som redan finns i Allärs och ALLFO',
     'CHANGESUGGESTION': 'Föreslå en ändring av ett begrepp',
-    'SUGGESTIONS': 'Förslag',
+    'SUGGESTIONS': 'Föreslå',
     'LIST': 'Nyaste förslag',
+    'LISTHEADING': 'Nyaste förslag till Allärs och ALLFO',
     'NOTINYSA': 'Ämnesordet finns inte i Allärs.',
     'INYSA': 'Den föreslagna termen finns redan i Allärs.',
     'PREFLABEL': 'Term/ämnesord',
@@ -108,6 +110,9 @@ app.controller('Ctrl', ['$translate', '$scope', function ($translate, $scope) {
   $scope.changeLanguage = function (langKey) {
     $translate.use(langKey);
     $scope.language = langKey;
+  };
+  $scope.changePage = function (page) {
+    $scope.currentpage = page;
   };
   
   $scope.language = $translate.use();
@@ -283,7 +288,6 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.controller('ChangeController', ['$scope','$http','$location','FormFormatter', function($scope, $http, $location, FormFormatter) {
-
   $scope.requestFormatter = function(qstring) {
     return {query: qstring + '*', lang: $scope.language, vocab: 'ysa allars'};
   };
@@ -327,6 +331,7 @@ angular.module('myApp.list', ['ngRoute'])
 
 .controller('ListController', ['$http','$scope', function($http, $scope) {
   $scope.suggestions = [];
+  $scope.changePage('list');
 
   $http.get('./list.php').then(function(data){
     var issues = data.data;

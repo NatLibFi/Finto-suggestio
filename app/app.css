@@ -33,14 +33,14 @@
   color: #394554 !important;
 }
 
+#navbar {
+  padding: 0;
+}
+
 a, a:focus, a:hover {
   outline: 0 !important;
 }
 
-.navbar-brand {
-  width: 220px !important;
-}
-
-#navbar > .navbar-nav > li.active > a, #navbar > .navbar-nav > .dropdown > .dropdown-toggle {
+#navbar > .navbar-nav > li.active > a {
   background-color: #ffffff !important;
 }

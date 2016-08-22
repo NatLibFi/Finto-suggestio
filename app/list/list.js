@@ -23,6 +23,7 @@ angular.module('myApp.list', ['ngRoute'])
 
 .controller('ListController', ['$http','$scope', function($http, $scope) {
   $scope.suggestions = [];
+  $scope.changePage('list');
 
   $http.get('./list.php').then(function(data){
     var issues = data.data;
