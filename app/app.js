@@ -52,7 +52,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'STATE': 'Tila',
     'DATE': 'Päivämäärä',
     'COMMENTS': 'Kommentit',
-    'PREFFI': 'Päätermi/asiasana',
+    'PREFFI': 'Päätermi/asiasana: *',
     'PREFSV': 'Termi ruotsiksi',
     'PREFEN': 'Termi englanniksi',
     'CHOOSEGROUP': 'Valitse ryhmä(t) listalta',
@@ -95,7 +95,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'DATE': 'Datum',
     'COMMENTS': 'Kommentarer',
     'PREFFI': 'Term/ämnesord på finska',
-    'PREFSV': 'Term/ämnesord på svenska',
+    'PREFSV': 'Term/ämnesord på svenska: *',
     'PREFEN': 'Term/ämnesord på engelska',
     'CHOOSEGROUP': 'Välj grupp(er) ur listan',
     'GEO': 'Geografisk plats'
