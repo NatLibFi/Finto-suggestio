@@ -33,6 +33,10 @@
   color: #394554 !important;
 }
 
+#navbar > ul > li:hover, #navbar > ul > .open > a {
+  background-color: #C0E2DF;
+}
+
 #navbar {
   padding: 0;
 }
