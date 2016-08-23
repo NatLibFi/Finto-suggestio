@@ -25,11 +25,12 @@ angular.module('myApp.new', ['ngRoute'])
     $scope.groupList = response.data.groups;
   });
 
-  //this.suggestion = {state: 'Käsittelyssä'};
-
   this.addSuggestion = function() {
     var msg_body = FormFormatter.markdown(this.suggestion);
     var msg_title = this.suggestion.preflabelfi ? this.suggestion.preflabelfi : this.suggestion.preflabelsv;
+    if ($scope.language === 'sv') {
+        msg_title = this.suggestion.preflabelsv ? this.suggestion.preflabelsv : this.suggestion.preflabelfi;
+    }
     var msg = {'title': msg_title, 'body': msg_body, 'labels': ['uusi']};
     $http({method: 'POST', url: './post.php', data: msg}).then(function(response) {
       $location.path('/list');

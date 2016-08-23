@@ -56,6 +56,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'PREFSV': 'Termi ruotsiksi',
     'PREFEN': 'Termi englanniksi',
     'CHOOSEGROUP': 'Valitse ryhmä(t) listalta',
+    'ISSUELINK': 'Selaa ja kommentoi ehdotuksia GitHubissa',
     'GEO': 'Maantieteellinen paikka'
   });
 
@@ -98,6 +99,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'PREFSV': 'Term/ämnesord på svenska: *',
     'PREFEN': 'Term/ämnesord på engelska',
     'CHOOSEGROUP': 'Välj grupp(er) ur listan',
+    'ISSUELINK': 'Sök och kommentera förslagen på GitHub',
     'GEO': 'Geografisk plats'
   });
 
@@ -162,9 +164,7 @@ app.directive('newConcept', function($http) {
         // getting too "chatty".
         toId = setTimeout(function(){
           var vocab = (attr.inVocab) ? attr.inVocab : 'ysa';
-          //$http.get('http://api.finto.fi/rest/v1/' + vocab + '/lookup?label=' + value).then(function(data) {
           $http.get('http://dev.finto.fi/rest/v1/search?query=' + value + '&vocab=yse+' + vocab).then(function(data) {
-            console.log(data.data.results.length);
             if (data.data.results.length > 0) {
               ctrl.$setValidity('newConcept', false); // set to false if the term can already be found
             } else {
@@ -231,11 +231,12 @@ angular.module('myApp.new', ['ngRoute'])
     $scope.groupList = response.data.groups;
   });
 
-  //this.suggestion = {state: 'Käsittelyssä'};
-
   this.addSuggestion = function() {
     var msg_body = FormFormatter.markdown(this.suggestion);
     var msg_title = this.suggestion.preflabelfi ? this.suggestion.preflabelfi : this.suggestion.preflabelsv;
+    if ($scope.language === 'sv') {
+        msg_title = this.suggestion.preflabelsv ? this.suggestion.preflabelsv : this.suggestion.preflabelfi;
+    }
     var msg = {'title': msg_title, 'body': msg_body, 'labels': ['uusi']};
     $http({method: 'POST', url: './post.php', data: msg}).then(function(response) {
       $location.path('/list');

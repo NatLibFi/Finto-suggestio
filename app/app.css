@@ -48,3 +48,8 @@ a, a:focus, a:hover {
 #navbar > .navbar-nav > li.active > a {
   background-color: #ffffff !important;
 }
+
+#github-link {
+  display: block;
+  margin: 0 0 5px 0;
+}

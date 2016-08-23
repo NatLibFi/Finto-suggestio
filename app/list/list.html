@@ -1,4 +1,5 @@
 <h3 translate>LISTHEADING</h3>
+<a id="github-link" href="https://github.com/Finto-ehdotus/YSE/issues" translate>ISSUELINK</a>
 <table class="table">
   <tr><th translate>TYPE</th><th translate>CONCEPT</th><th translate>STATE</th><th translate>DATE</th><th translate>COMMENTS</th></tr>
   <tr ng-repeat="suggestion in suggestions | orderBy:'!date'"><td>{{suggestion.type|determineType}}</td><td><a href="{{suggestion.href}}">{{suggestion.preflabel}}</a></td><td><span ng-repeat="label in suggestion.state"><span ng-if="$index > 0">, </span>{{label.name}}</span></td><td>{{suggestion.date | date:'d.M.yyyy'}}</td><td>{{suggestion.comments}}</td></tr>

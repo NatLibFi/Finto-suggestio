@@ -56,6 +56,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'PREFSV': 'Termi ruotsiksi',
     'PREFEN': 'Termi englanniksi',
     'CHOOSEGROUP': 'Valitse ryhmä(t) listalta',
+    'ISSUELINK': 'Selaa ja kommentoi ehdotuksia GitHubissa',
     'GEO': 'Maantieteellinen paikka'
   });
 
@@ -98,6 +99,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'PREFSV': 'Term/ämnesord på svenska: *',
     'PREFEN': 'Term/ämnesord på engelska',
     'CHOOSEGROUP': 'Välj grupp(er) ur listan',
+    'ISSUELINK': 'Sök och kommentera förslagen på GitHub',
     'GEO': 'Geografisk plats'
   });
 
