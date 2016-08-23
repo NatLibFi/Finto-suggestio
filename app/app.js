@@ -134,7 +134,7 @@ app.directive('existingConcept', function($http) {
         // getting too "chatty".
         toId = setTimeout(function(){
           var vocab = (attr.inVocab) ? attr.inVocab : 'ysa';
-          $http.get('http://api.finto.fi/rest/v1/' + attr.inVocab + '/lookup?label=' + value).then(function(data) {
+          $http.get('http://dev.finto.fi/rest/v1/' + attr.inVocab + '/lookup?label=' + value).then(function(data) {
             //set the validity of the field
             ctrl.$setValidity('existingConcept', true);
           }, function() {
@@ -162,8 +162,12 @@ app.directive('newConcept', function($http) {
         // getting too "chatty".
         toId = setTimeout(function(){
           var vocab = (attr.inVocab) ? attr.inVocab : 'ysa';
-          $http.get('http://api.finto.fi/rest/v1/' + vocab + '/lookup?label=' + value).then(function(data) {
-            ctrl.$setValidity('newConcept', false); // set to false if the term can already be found
+          $http.get('http://dev.finto.fi/rest/v1/search?query=' + value + '&vocab=yse+' + vocab).then(function(data) {
+            if (data.data.results.length > 0) {
+              ctrl.$setValidity('newConcept', false); // set to false if the term can already be found
+            } else {
+              ctrl.$setValidity('newConcept', true);
+            }
           }, function() {
             ctrl.$setValidity('newConcept', true);
           });
