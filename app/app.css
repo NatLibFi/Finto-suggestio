@@ -11,7 +11,7 @@
   padding-left: 12px !important;
 }
 
-.glyphicon {
+.form-group > .col-sm-4 > .glyphicon {
  font-size: 24px !important;
  top: 5px;
 }
