@@ -223,7 +223,7 @@ angular.module('myApp.new', ['ngRoute'])
   };
 
   $scope.requestFormatter = function(qstring) {
-    return {query: qstring + '*'};
+    return {query: qstring + '*', lang: $scope.language};
   };
     
   $scope.groupList = [];
