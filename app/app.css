@@ -53,3 +53,7 @@ a, a:focus, a:hover {
   display: block;
   margin: 0 0 5px 0;
 }
+
+.existing-link {
+  margin-left: 5px;
+}

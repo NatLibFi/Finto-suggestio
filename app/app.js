@@ -27,7 +27,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'LIST': 'Uusimmat ehdotukset',
     'LISTHEADING': 'YSAn ja YSOn uusimmat käsite-ehdotukset',
     'NOTINYSA': 'Asiasanaa ei löytynyt YSAsta.',
-    'INYSA': 'Ehdottamasi termi löytyy jo YSAsta.',
+    'TERMFOUND': 'Ehdottamasi termi löytyy jo:',
     'PREFLABEL': 'Päätermi/asiasana',
     'ALTLABEL': 'Vaihtoehtoiset termit ja ilmaisut',
     'NARROWER': 'Alakäsitteet (ST)',
@@ -70,7 +70,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'LIST': 'Nyaste förslag',
     'LISTHEADING': 'Nyaste förslag till Allärs och ALLFO',
     'NOTINYSA': 'Ämnesordet finns inte i Allärs.',
-    'INYSA': 'Den föreslagna termen finns redan i Allärs.',
+    'TERMFOUND': 'Den föreslagna termen finns redan:',
     'PREFLABEL': 'Term/ämnesord',
     'ALTLABEL': 'Alternativa termer och uttryck',
     'NARROWER': 'Underordnade begrepp',
@@ -165,13 +165,15 @@ app.directive('newConcept', function($http) {
         toId = setTimeout(function(){
           var vocab = (attr.inVocab) ? attr.inVocab : 'ysa';
           $http.get('http://dev.finto.fi/rest/v1/search?query=' + value + '&vocab=yse+' + vocab).then(function(data) {
+            scope.existingConcept = undefined;
             if (data.data.results.length > 0) {
-              ctrl.$setValidity('newConcept', false); // set to false if the term can already be found
+              scope.existingConcept = data.data.results[0];
+              ctrl.$setValidity('pref' + ctrl.language, false); // set to false if the term can already be found
             } else {
-              ctrl.$setValidity('newConcept', true);
+              ctrl.$setValidity('pref' + ctrl.language, true);
             }
           }, function() {
-            ctrl.$setValidity('newConcept', true);
+            ctrl.$setValidity('pref' + ctrl.language, true);
           });
         }, 500);
       });
