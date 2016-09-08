@@ -49,11 +49,6 @@ a, a:focus, a:hover {
   background-color: #ffffff !important;
 }
 
-#github-link {
-  display: block;
-  margin: 0 0 5px 0;
-}
-
 .existing-link {
   margin-left: 5px;
 }
