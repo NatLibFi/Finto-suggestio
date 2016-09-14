@@ -16,7 +16,7 @@
  top: 5px;
 }
 
-.ng-invalid.ng-dirty {
+form.ng-submitted .ng-invalid {
   border-color: #FA787E;
 }
 
