@@ -12,7 +12,7 @@ angular.module('myApp.new', ['ngRoute'])
 
 .controller('SuggestionController', ['$http','$location','$scope','$sce','FormFormatter' , function($http, $location, $scope, $sce, FormFormatter) {
 
-  this.suggestion = {'narrower': []};
+  this.suggestion = {'narrower': [], 'related': []};
   
   $scope.trustAsHtml = function(value) {
     return $sce.trustAsHtml(value);

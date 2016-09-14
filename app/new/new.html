@@ -86,7 +86,19 @@
               placeholder="{{ 'SEARCH' | translate }}"
               pause="400"
               minlength="3"
-              selected-object="suggestionCtrl.suggestion.related"
+              selected-object="suggestionCtrl.suggestion.related[0]"
+              remote-url="http://api.finto.fi/rest/v1/yso/search"
+              remote-url-request-formatter="requestFormatter"
+              remote-url-data-field="results"
+              title-field="prefLabel"
+              input-class="form-control form-control-small" />
+    </div>
+    <div class="col-sm-8 col-sm-offset-4" ng-repeat="n in suggestionCtrl.suggestion.related" ng-show="suggestionCtrl.suggestion.related.length > 0">
+      <angucomplete-alt id="related"
+              placeholder="{{ 'SEARCH' | translate }}"
+              pause="400"
+              minlength="3"
+              selected-object="suggestionCtrl.suggestion.related[$index+1]"
               remote-url="http://api.finto.fi/rest/v1/yso/search"
               remote-url-request-formatter="requestFormatter"
               remote-url-data-field="results"
