@@ -186,24 +186,40 @@ app.directive('newConcept', function($http) {
 app.factory('FormFormatter', [function() {
   return {
     markdown: function(suggestion) { 
-      var msg_body = '';
       var labels = {'type': 'Ehdotuksen tyyppi', 'preflabelfi': 'Ehdotettu termi suomeksi', 'preflabelsv': 'Ehdotettu termi ruotsiksi', 'preflabelen': 'Ehdotettu termi englanniksi', 'state': 'Tila', 'change':'Ehdotettu muutos', 'scopenote': 'Tarkoitusta täsmentävä selite', 'explanation': 'Perustelut ehdotukselle', 'broader': 'Ehdotettu yläkäsite YSOssa (LT)', 'groups': 'Ehdotetut temaattiset ryhmät (YSA-ryhmät)','name': 'Ehdottajan nimi', 'email': 'Ehdottajan sähköpostiosoite', 'altlabel': 'Vaihtoehtoiset termit ja ilmaisut', 'narrower': 'Alakäsitteet (RT)', 'related': 'Assosiatiiviset (ST)', 'fromname': 'Ehdottajan nimi', 'fromorg': 'Ehdottajan organisaatio', 'org': 'Ehdottajan organisaatio', 'fromemail': 'Ehdottajan sähköpostiosoite','neededfor': 'Aineisto jonka kuvailussa käsitettä tarvitaan (esim. nimeke tai URL)', 'concepttype': 'Käsitteen tyyppi'};
+      var propertyMd = '';
+      var priorityMd = '';
+      var contactMd = '';
 
       for (var property in suggestion) {
         var proplabel = labels[property] ? labels[property] : property;
         var propval = suggestion[property];
-        var groups = '';
+        if(propval === '') { continue; }
+        // an array of property values
         if (Object.prototype.toString.call(propval) === '[object Array]') {
+          var valuemd = '';
           for (var i in propval) {
-            groups += '[' + propval[i].prefLabel + '](' + propval[i].uri + ')  \n\n';
+            if(property === 'groups') {
+                valuemd += '[' + propval[i].prefLabel + '](' + propval[i].uri + ') \n';
+            } else if(propval[i].originalObject) {
+                valuemd += '[' + propval[i].originalObject.prefLabel + '](' + propval[i].originalObject.uri + ') \n';   
+            }
           }
-          msg_body += '#### ' + proplabel + '   \n\n' + groups;
-        } else if (propval.originalObject) // if there is an uri available from the autocomplete linking to that
-  msg_body += '#### ' + proplabel + '   \n\n' + '[' + propval.originalObject.prefLabel + '](' + propval.originalObject.uri + ')  \n\n';
-        else if (propval !== '')// the property value is only a string
-  msg_body += '#### ' + proplabel + '   \n\n' + propval + '  \n\n';
+          if (valuemd !== '') {
+              propertyMd += '#### ' + proplabel + '   \n\n' + valuemd + '\n';
+          }
+        } else if (propval.originalObject) { // if there is an uri available add a link
+            propertyMd += '#### ' + proplabel + '   \n\n' + 
+              '[' + propval.originalObject.prefLabel + '](' + propval.originalObject.uri + ') \n\n';
+        } else if (property.indexOf('preflabel') !== -1 || property === 'concepttype') { // placing prefLabels and type at the top
+            priorityMd += '#### ' + proplabel + '   \n\n' + propval + ' \n\n';
+        } else if (property.indexOf('from') !== -1 || property === 'neededfor') { // placing prefLabels and type at the top
+            contactMd += '#### ' + proplabel + '   \n\n' + propval + ' \n\n';
+        } else {
+            propertyMd += '#### ' + proplabel + '   \n\n' + propval + ' \n\n';
+        }
       }
-      return msg_body;  
+      return priorityMd + propertyMd + contactMd;  
     }
   };
 }]);
@@ -221,6 +237,8 @@ angular.module('myApp.new', ['ngRoute'])
 }])
 
 .controller('SuggestionController', ['$http','$location','$scope','$sce','FormFormatter' , function($http, $location, $scope, $sce, FormFormatter) {
+
+  this.suggestion = {'narrower': []};
   
   $scope.trustAsHtml = function(value) {
     return $sce.trustAsHtml(value);

@@ -52,3 +52,11 @@ a, a:focus, a:hover {
 .existing-link {
   margin-left: 5px;
 }
+
+.form-group > .col-sm-8 {
+  margin-top: 10px;
+}
+
+.form-group > .col-sm-8:first-of-type {
+  margin-top: 0;
+}
