@@ -286,7 +286,7 @@ angular.module('myApp.new', ['ngRoute'])
       return 0;
     }
     var stars = 0;
-    var required = ['concepttype', 'state', 'date', 'groups', 'name', 'email', 'explanation'];
+    var required = ['concepttype', 'state', 'date', 'groups', 'name', 'email', 'explanation', 'neededfor'];
     for (var prop in this.suggestion) {
       if (required.indexOf(prop) === -1 && this.suggestion[prop] !== '' && this.suggestion[prop].length > 0 && stars < 5) {
         stars += 1; // one star for each additional field
