@@ -1,25 +1,4 @@
-/* app css stylesheet */
-.dropdown-menu {
-  padding: 0px !important;
-}
-
-.vocabulary-select {
-  padding-right: 0px !important;
-}
-
-.ui-select-search {
-  padding-left: 12px !important;
-}
-
-.form-group > .col-sm-4 > .glyphicon {
- font-size: 24px !important;
- top: 5px;
-}
-
-form.ng-submitted .ng-invalid {
-  border-color: #FA787E;
-}
-
+/** Navigation styles **/
 .navbar {
   background-color: #83CFC8 !important;
   border: none !important;
@@ -27,9 +6,10 @@ form.ng-submitted .ng-invalid {
 }
   
 .navbar, .navbar-nav, .navbar-nav * {
+  border-radius: 0;
   height: 40px;
-  min-height: 40px;
   line-height: 40px;
+  min-height: 40px;
 }
 
 #navbar > .navbar-nav > li > a {
@@ -46,7 +26,7 @@ form.ng-submitted .ng-invalid {
   height: 40px;
 }
 
-#navbar > ul > li:hover, #navbar > ul > .open > a {
+#navbar > ul > li:hover, #navbar > ul > .open > a, .btn-row > .btn:hover {
   background-color: #C0E2DF;
 }
 
@@ -67,6 +47,29 @@ form.ng-submitted .ng-invalid {
   border-color: #83CFC8;
   box-shadow: 0;
   color: #333;
+}
+
+/** Form styles **/
+
+.quality-control {
+  line-height: 34px;
+}
+
+.ui-select-search {
+  padding-left: 12px !important;
+}
+
+.form-group > .col-sm-4 > .glyphicon {
+ font-size: 24px !important;
+ top: 5px;
+}
+
+form.ng-submitted .ng-invalid {
+  border-color: #FA787E;
+}
+
+form.ng-submitted.ng-invalid .quality-control {
+  color: red;
 }
 
 a, a:focus, a:hover {
