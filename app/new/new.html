@@ -131,15 +131,19 @@
   </div>
   <div class="form-group">
     <label for="exactmatch" class="col-sm-4" translate>{{'MATCHING'}}:</label>
-    <div class="col-sm-2 vocabulary-select">
-      <select class="form-control">
-        <option>LCSH</option>
-        <option>Wikipedia</option>
-        <option translate>OTHER</option>
-      </select>
+    <div class="col-sm-3">
+      <input placeholder="{{ 'VOCAB' | translate }}" ng-model="suggestionCtrl.suggestion.exactMatch[0].vocab" type="text" class="form-control col-sm-10" id="exactmatch">
     </div>
-    <div class="col-sm-6">
-      <input ng-model="suggestionCtrl.suggestion.exactmatch" type="text" class="form-control col-sm-10" id="exactmatch">
+    <div class="col-sm-5">
+      <input placeholder="{{ 'TERMURI' | translate }}" ng-model="suggestionCtrl.suggestion.exactMatch[0].value" type="text" class="form-control col-sm-10" id="exactmatch">
+    </div>
+  </div>
+  <div class="form-group" ng-repeat="n in suggestionCtrl.suggestion.exactMatch" ng-show="suggestionCtrl.suggestion.exactMatch.length > 0">
+    <div class="col-sm-3 col-sm-offset-4">
+      <input placeholder="{{ 'VOCAB' | translate }}" ng-model="suggestionCtrl.suggestion.exactMatch[$index+1].vocab" type="text" class="form-control col-sm-10" id="exactmatch">
+    </div>
+    <div class="col-sm-5">
+      <input placeholder="{{ 'TERMURI' | translate }}" ng-model="suggestionCtrl.suggestion.exactMatch[$index+1].value" type="text" class="form-control col-sm-10" id="exactmatch">
     </div>
   </div>
   <div class="form-group">

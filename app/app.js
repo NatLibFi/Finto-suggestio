@@ -58,6 +58,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     'CHOOSEGROUP': 'Valitse ryhmä(t) listalta',
     'ISSUELINK': 'Selaa ja kommentoi ehdotuksia GitHubissa',
     'OTHER': 'Muu',
+    'VOCAB': 'Sanasto (LCSH,Wikipedia, etc.)',
+    'TERMURI': 'URI tai Termi',
     'GEO': 'Maantieteellinen paikka'
   });
 
@@ -102,6 +104,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     'CHOOSEGROUP': 'Välj grupp(er) ur listan',
     'ISSUELINK': 'Sök och kommentera förslagen på GitHub',
     'OTHER': 'Annan',
+    'VOCAB': 'Vokabulär (LCSH,Wikipedia, etc.)',
+    'TERMURI': 'URI eller Term',
     'GEO': 'Geografisk plats'
   });
 
@@ -203,6 +207,9 @@ app.factory('FormFormatter', [function() {
                 valuemd += '[' + propval[i].prefLabel + '](' + propval[i].uri + ') \n';
             } else if(propval[i].originalObject) {
                 valuemd += '[' + propval[i].originalObject.prefLabel + '](' + propval[i].originalObject.uri + ') \n';   
+            } else if(propval[i].vocab || propval[i].value) {
+                var match = (propval[i].value.indexOf('http:') !== -1) ? '<' + propval[i].value + '>' : propval[i].value;
+                valuemd += propval[i].vocab + ' : ' + match + ' \n';   
             }
           }
           if (valuemd !== '') {

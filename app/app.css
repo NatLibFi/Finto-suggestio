@@ -60,3 +60,7 @@ a, a:focus, a:hover {
 .form-group > .col-sm-8:first-of-type {
   margin-top: 0;
 }
+
+form .col-sm-3 {
+  padding-right: 0;
+}
