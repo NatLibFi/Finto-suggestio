@@ -21,10 +21,10 @@ app.config(['$translateProvider', function ($translateProvider) {
     'TITLE': 'Ehdotusjärjestelmä',
     'NEWSUGGESTION': 'Ehdota uutta käsitettä',
     'NEWHEADING': 'Ehdota uutta käsitettä YSAan ja YSOon',
-    'CHANGEHEADING': 'Ehdota muutosta olemassa olevaan käsitteeseen YSAssa ja YSOssa',
-    'CHANGESUGGESTION': 'Ehdota muutosta olemassa olevaan käsitteeseen',
+    'CHANGEHEADING': 'Ehdota muutosta YSA/YSO -käsitteeseen',
+    'CHANGESUGGESTION': 'Ehdota muutosta käsitteeseen',
     'SUGGESTIONS': 'Tee ehdotus',
-    'LIST': 'Uusimmat ehdotukset',
+    'LIST': 'Selaa ehdotuksia',
     'LISTHEADING': 'YSAn ja YSOn uusimmat käsite-ehdotukset',
     'NOTINYSA': 'Asiasanaa ei löytynyt YSAsta.',
     'TERMFOUND': 'Ehdottamasi termi löytyy jo sanastosta',
@@ -56,10 +56,11 @@ app.config(['$translateProvider', function ($translateProvider) {
     'PREFSV': 'Termi ruotsiksi',
     'PREFEN': 'Termi englanniksi',
     'CHOOSEGROUP': 'Valitse ryhmä(t) listalta',
-    'ISSUELINK': 'Selaa ja kommentoi ehdotuksia GitHubissa',
+    'ISSUELINK': 'Hae ja kommentoi ehdotuksia GitHubissa',
     'OTHER': 'Muu',
     'VOCAB': 'Sanasto (LCSH,Wikipedia, etc.)',
     'TERMURI': 'URI tai Termi',
+    'FINTOLINK': 'Selaa ehdotuksia Fintossa',
     'GEO': 'Maantieteellinen paikka'
   });
 
@@ -106,6 +107,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'OTHER': 'Annan',
     'VOCAB': 'Vokabulär (LCSH,Wikipedia, etc.)',
     'TERMURI': 'URI eller Term',
+    'FINTOLINK': 'Sök förslagen i Finto',
     'GEO': 'Geografisk plats'
   });
 
@@ -120,7 +122,9 @@ app.controller('Ctrl', ['$translate', '$scope', function ($translate, $scope) {
     $scope.language = langKey;
   };
   $scope.changePage = function (page) {
+    var titles = {'list': 'LISTHEADING', 'new': 'NEWHEADING', 'change': 'CHANGEHEADING'}
     $scope.currentpage = page;
+    $scope.pagetitle = titles[page];
   };
   
   $scope.language = $translate.use();
@@ -190,7 +194,7 @@ app.directive('newConcept', function($http) {
 app.factory('FormFormatter', [function() {
   return {
     markdown: function(suggestion) { 
-      var labels = {'type': 'Ehdotuksen tyyppi', 'preflabelfi': 'Ehdotettu termi suomeksi', 'preflabelsv': 'Ehdotettu termi ruotsiksi', 'preflabelen': 'Ehdotettu termi englanniksi', 'state': 'Tila', 'change':'Ehdotettu muutos', 'scopenote': 'Tarkoitusta täsmentävä selite', 'explanation': 'Perustelut ehdotukselle', 'broader': 'Ehdotettu yläkäsite YSOssa (LT)', 'groups': 'Ehdotetut temaattiset ryhmät (YSA-ryhmät)','name': 'Ehdottajan nimi', 'email': 'Ehdottajan sähköpostiosoite', 'altlabel': 'Vaihtoehtoiset termit ja ilmaisut', 'narrower': 'Alakäsitteet (RT)', 'related': 'Assosiatiiviset (ST)', 'fromname': 'Ehdottajan nimi', 'fromorg': 'Ehdottajan organisaatio', 'org': 'Ehdottajan organisaatio', 'fromemail': 'Ehdottajan sähköpostiosoite','neededfor': 'Aineisto jonka kuvailussa käsitettä tarvitaan (esim. nimeke tai URL)', 'concepttype': 'Käsitteen tyyppi'};
+      var labels = {'type': 'Ehdotuksen tyyppi', 'preflabelfi': 'Ehdotettu termi suomeksi', 'preflabelsv': 'Ehdotettu termi ruotsiksi', 'preflabelen': 'Ehdotettu termi englanniksi', 'state': 'Tila', 'change':'Ehdotettu muutos', 'scopenote': 'Tarkoitusta täsmentävä selite', 'explanation': 'Perustelut ehdotukselle', 'broader': 'Ehdotettu yläkäsite YSOssa (LT)', 'groups': 'Ehdotetut temaattiset ryhmät (YSA-ryhmät)','name': 'Ehdottajan nimi', 'email': 'Ehdottajan sähköpostiosoite', 'altlabel': 'Vaihtoehtoiset termit ja ilmaisut', 'narrower': 'Alakäsitteet (RT)', 'related': 'Assosiatiiviset (ST)', 'fromname': 'Ehdottaja', 'fromorg': 'Ehdottajan organisaatio', 'org': 'Ehdottajan organisaatio', 'fromemail': 'Ehdottajan sähköpostiosoite','neededfor': 'Aineisto jonka kuvailussa käsitettä tarvitaan (esim. nimeke tai URL)', 'concepttype': 'Käsitteen tyyppi'};
       var propertyMd = '';
       var priorityMd = '';
       var contactMd = '';
@@ -220,11 +224,14 @@ app.factory('FormFormatter', [function() {
               '[' + propval.originalObject.prefLabel + '](' + propval.originalObject.uri + ') \n\n';
         } else if (property.indexOf('preflabel') !== -1 || property === 'concepttype') { // placing prefLabels and type at the top
             priorityMd += '#### ' + proplabel + '   \n\n' + propval + ' \n\n';
-        } else if (property.indexOf('from') !== -1 || property === 'neededfor') { // placing prefLabels and type at the top
-            contactMd += '#### ' + proplabel + '   \n\n' + propval + ' \n\n';
+        } else if (property === 'name' || property === 'email' || property === 'org') { // placing contact info at the bottom in a condensed format
+            contactMd += '**' + proplabel + ':** ' + propval + ' \n';
         } else {
             propertyMd += '#### ' + proplabel + '   \n\n' + propval + ' \n\n';
         }
+      }
+      if (contactMd.substring(contactMd.length-1) === '\n') {
+        contactMd = contactMd.substring(0, contactMd.length-1);
       }
       return priorityMd + propertyMd + contactMd;  
     }
@@ -244,7 +251,7 @@ angular.module('myApp.new', ['ngRoute'])
 }])
 
 .controller('SuggestionController', ['$http','$location','$scope','$sce','FormFormatter' , function($http, $location, $scope, $sce, FormFormatter) {
-
+  $scope.changePage('new');
   this.suggestion = {'broader': [], 'narrower': [], 'related': [], 'exactMatch': []};
   
   $scope.trustAsHtml = function(value) {
@@ -279,8 +286,9 @@ angular.module('myApp.new', ['ngRoute'])
     var stars = 0;
     var required = ['concepttype', 'state', 'date', 'groups', 'name', 'email', 'explanation'];
     for (var prop in this.suggestion) {
-      if (required.indexOf(prop) === -1 && this.suggestion[prop] !== '' && stars < 5)
+      if (required.indexOf(prop) === -1 && this.suggestion[prop] !== '' && this.suggestion[prop].length > 0 && stars < 5) {
         stars += 1; // one star for each additional field
+      }
     }
     return stars; // the compulsory first prefLabel is counted as the first star
   };
@@ -324,6 +332,7 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.controller('ChangeController', ['$scope','$http','$location','FormFormatter', function($scope, $http, $location, FormFormatter) {
+  $scope.changePage('change');
   $scope.requestFormatter = function(qstring) {
     return {query: qstring + '*', lang: $scope.language, vocab: 'ysa allars'};
   };
@@ -368,6 +377,7 @@ angular.module('myApp.list', ['ngRoute'])
 .controller('ListController', ['$http','$scope', function($http, $scope) {
   $scope.suggestions = [];
   $scope.changePage('list');
+  $scope.pagetitle = 'LISTHEADING';
 
   $http.get('./list.php').then(function(data){
     var issues = data.data;

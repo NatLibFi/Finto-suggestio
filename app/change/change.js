@@ -11,6 +11,7 @@ app.config(['$routeProvider', function($routeProvider) {
 }]);
 
 app.controller('ChangeController', ['$scope','$http','$location','FormFormatter', function($scope, $http, $location, FormFormatter) {
+  $scope.changePage('change');
   $scope.requestFormatter = function(qstring) {
     return {query: qstring + '*', lang: $scope.language, vocab: 'ysa allars'};
   };

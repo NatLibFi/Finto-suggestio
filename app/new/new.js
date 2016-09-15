@@ -11,7 +11,7 @@ angular.module('myApp.new', ['ngRoute'])
 }])
 
 .controller('SuggestionController', ['$http','$location','$scope','$sce','FormFormatter' , function($http, $location, $scope, $sce, FormFormatter) {
-
+  $scope.changePage('new');
   this.suggestion = {'broader': [], 'narrower': [], 'related': [], 'exactMatch': []};
   
   $scope.trustAsHtml = function(value) {
@@ -46,8 +46,9 @@ angular.module('myApp.new', ['ngRoute'])
     var stars = 0;
     var required = ['concepttype', 'state', 'date', 'groups', 'name', 'email', 'explanation'];
     for (var prop in this.suggestion) {
-      if (required.indexOf(prop) === -1 && this.suggestion[prop] !== '' && stars < 5)
+      if (required.indexOf(prop) === -1 && this.suggestion[prop] !== '' && this.suggestion[prop].length > 0 && stars < 5) {
         stars += 1; // one star for each additional field
+      }
     }
     return stars; // the compulsory first prefLabel is counted as the first star
   };

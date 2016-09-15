@@ -17,20 +17,8 @@
 <!-- Fixed navbar -->
   <nav class="navbar navbar-default">
     <div class="container">
+      <a class="navbar-brand" translate>{{pagetitle}}</a>
       <div id="navbar" class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li ng-class="{active: currentpage === 'list'}">
-          <a href="#/list">{{ 'LIST' | translate }}</a>         
-          </li>
-          <li class="dropdown" ng-class="{active: currentpage !== 'list'}">
-          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'SUGGESTIONS' | translate }}<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-              <li></li>
-            <li><a ng-click="changePage('new')" href="#/new">{{ 'NEWSUGGESTION' | translate }}</a></li>
-            <li><a ng-click="changePage('change')" href="#/change">{{ 'CHANGESUGGESTION' | translate }}</a></li>
-          </ul>
-          </li>
-        </ul>
         <ul class="nav navbar-nav navbar-right">
           <li ng-class="{active: language === 'fi'}"><a href="" ng-click="changeLanguage('fi')">suomeksi</a></li>
           <li ng-class="{active: language === 'sv'}"><a href="" ng-click="changeLanguage('sv')">på svenska</a></li>
@@ -38,9 +26,15 @@
       </div><!--/.nav-collapse -->
     </div>
   </nav>
-
   
   <div class="container">
+    <nav class="btn-row">
+      <a class="btn btn-default" href="#/list" ng-class="{active: currentpage === 'list'}">{{ 'LIST' | translate }}</a>         
+      <!--    <li class="dropdown" ng-class="{active: currentpage !== 'list'}">-->
+      <a class="btn btn-default" ng-click="changePage('new')" href="#/new" ng-class="{active: currentpage === 'new'}">{{ 'NEWSUGGESTION' | translate }}</a>
+      <a class="btn btn-default" ng-click="changePage('change')" href="#/change" ng-class="{active: currentpage === 'change'}">{{ 'CHANGESUGGESTION' | translate }}</a>
+    </nav>
+
     <div ng-view></div>
   </div>
   

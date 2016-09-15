@@ -22,15 +22,28 @@ form.ng-submitted .ng-invalid {
 
 .navbar {
   background-color: #83CFC8 !important;
-}
-  
-.navbar {
   border: none !important;
   margin-bottom: 0 !important;
 }
+  
+.navbar, .navbar-nav, .navbar-nav * {
+  height: 40px;
+  min-height: 40px;
+  line-height: 40px;
+}
+
+#navbar > .navbar-nav > li > a {
+  padding-top: 10px;
+}
 
 .navbar * {
-  color: #394554 !important;
+  color: #333 !important;
+}
+
+.navbar-brand {
+  line-height: 10px;
+  min-height: 40px;
+  height: 40px;
 }
 
 #navbar > ul > li:hover, #navbar > ul > .open > a {
@@ -41,13 +54,25 @@ form.ng-submitted .ng-invalid {
   padding: 0;
 }
 
+#navbar > .navbar-nav > li.active > a {
+  background-color: #ffffff !important;
+}
+
+.btn-row {
+  margin: 15px 0;
+}
+
+.btn-row > .btn-default.active, .btn-row > .btn-default.active:hover {
+  background-color: #83CFC8;
+  border-color: #83CFC8;
+  box-shadow: 0;
+  color: #333;
+}
+
 a, a:focus, a:hover {
   outline: 0 !important;
 }
 
-#navbar > .navbar-nav > li.active > a {
-  background-color: #ffffff !important;
-}
 
 .existing-link {
   margin-left: 5px;
