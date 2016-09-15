@@ -178,7 +178,6 @@
   <div class="form-group">
     <div class="col-sm-4">
       <label for="email" translate>{{'EMAIL'}}: *</label>
-      <p translate>{{'EMAILINFO'}}.</p>
     </div>
     <div class="col-sm-8">
       <input ng-model="suggestionCtrl.suggestion.email" type="email" class="form-control col-sm-10" id="email" required>
@@ -192,6 +191,9 @@
     </div>
     <div class="col-sm-2">
       <input class="btn btn-default" type="submit" value="{{ 'SUBMIT' | translate }}">
+    </div>
+    <div class="col-sm-6">
+      <p ng-show="!suggestionForm.$valid" class="quality-control" translate>QA</p>
     </div>
   </div>
 </form>

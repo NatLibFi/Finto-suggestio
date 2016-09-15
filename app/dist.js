@@ -61,6 +61,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'VOCAB': 'Sanasto (LCSH,Wikipedia, etc.)',
     'TERMURI': 'URI tai Termi',
     'FINTOLINK': 'Selaa ehdotuksia Fintossa',
+    'QA': 'Ehdotuksen lähetys ei onnistu, jos pakollisissa kentissä on puutteita.',
     'GEO': 'Maantieteellinen paikka'
   });
 
@@ -108,6 +109,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'VOCAB': 'Vokabulär (LCSH,Wikipedia, etc.)',
     'TERMURI': 'URI eller Term',
     'FINTOLINK': 'Sök förslagen i Finto',
+    'QA': 'Du kan skicka förslaget när du har givit all obligatorisk information.',
     'GEO': 'Geografisk plats'
   });
 
@@ -122,7 +124,7 @@ app.controller('Ctrl', ['$translate', '$scope', function ($translate, $scope) {
     $scope.language = langKey;
   };
   $scope.changePage = function (page) {
-    var titles = {'list': 'LISTHEADING', 'new': 'NEWHEADING', 'change': 'CHANGEHEADING'}
+    var titles = {'list': 'LISTHEADING', 'new': 'NEWHEADING', 'change': 'CHANGEHEADING'};
     $scope.currentpage = page;
     $scope.pagetitle = titles[page];
   };
