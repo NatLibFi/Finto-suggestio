@@ -390,7 +390,7 @@ angular.module('myApp.list', ['ngRoute'])
   $scope.issuenum = $routeParams.submitted;
 
   $http.get('./list.php').then(function(data){
-    var issues = data.data;
+    var issues = data.data.splice(0, 15);
     for(var i in issues) {
       $scope.suggestions.push({
         type: issues[i].labels, 

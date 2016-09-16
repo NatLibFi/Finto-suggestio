@@ -60,6 +60,10 @@
   background-color: #384454;
 }
 
+.container > div > p {
+  margin-bottom: 8px;
+}
+
 /** Form styles **/
 
 .quality-control {
