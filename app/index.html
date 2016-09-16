@@ -14,27 +14,26 @@
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 </head>
 <body ng-controller="Ctrl">
-<!-- Fixed navbar -->
   <nav class="navbar navbar-default">
     <div class="container">
       <a class="navbar-brand" translate>{{pagetitle}}</a>
-      <div id="navbar" class="navbar-collapse collapse">
+      <div id="navbar">
         <ul class="nav navbar-nav navbar-right">
           <li ng-class="{active: language === 'fi'}"><a href="" ng-click="changeLanguage('fi')">suomeksi</a></li>
           <li ng-class="{active: language === 'sv'}"><a href="" ng-click="changeLanguage('sv')">på svenska</a></li>
         </ul>
-      </div><!--/.nav-collapse -->
+      </div>
     </div>
   </nav>
   
   <div class="container">
     <nav class="btn-row">
-      <a class="btn btn-default" href="#/list" ng-class="{active: currentpage === 'list'}">{{ 'LIST' | translate }}</a>         
-      <!--    <li class="dropdown" ng-class="{active: currentpage !== 'list'}">-->
-      <a class="btn btn-default" ng-click="changePage('new')" href="#/new" ng-class="{active: currentpage === 'new'}">{{ 'NEWSUGGESTION' | translate }}</a>
-      <a class="btn btn-default" ng-click="changePage('change')" href="#/change" ng-class="{active: currentpage === 'change'}">{{ 'CHANGESUGGESTION' | translate }}</a>
+      <a class="btn btn-default" href="#/list" ng-class="{active: currentpage === 'list'}">{{ 'LIST' | translate }}</a>         
+      <a class="btn btn-default" ng-click="changePage('new')" href="#/new" ng-class="{active: currentpage === 'new'}">{{ 'NEWSUGGESTION' | translate }}</a>
+      <a class="btn btn-default" ng-click="changePage('change')" href="#/change" ng-class="{active: currentpage === 'change'}">{{ 'CHANGESUGGESTION' | translate }}</a>
+      <button class="btn btn-default" ng-click="toggleHelp()" translate>HELP</a>
     </nav>
-
+    <div class="alert alert-help" ng-show="showhelp"><p translate>HELPCONTENT</p><p translate>HELPCONTENT2</p><p translate>HELPCONTENT3</p><p translate>HELPCONTENT4</p></div>
     <div ng-view></div>
   </div>
   

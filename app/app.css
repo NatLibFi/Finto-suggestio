@@ -123,3 +123,11 @@ form .col-sm-3 {
   right: 0; 
   opacity: 0.6;
 }
+
+/** Help box **/
+
+.alert-help {
+  background-color: #fff;
+  color: #384454;
+  border-color: #384454;
+}
