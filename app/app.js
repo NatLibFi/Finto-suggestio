@@ -62,6 +62,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     'TERMURI': 'URI tai Termi',
     'FINTOLINK': 'Selaa ehdotuksia Fintossa',
     'QA': 'Ehdotuksen lähetys ei onnistu, jos pakollisissa kentissä on puutteita.',
+    'THANKS': 'Kiitos ehdotuksestasi! Voit seurata käsittelyn etenemistä ehdotuksen omalla ',
+    'ISSUEPAGE': 'GitHub-sivulla',
     'GEO': 'Maantieteellinen paikka'
   });
 
@@ -110,6 +112,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     'TERMURI': 'URI eller Term',
     'FINTOLINK': 'Sök förslagen i Finto',
     'QA': 'Du kan skicka förslaget när du har givit all obligatorisk information.',
+    'THANKS': 'Tack för förslaget! Du kan följa behandlingen av förslaget på sin egen ',
+    'ISSUEPAGE': 'GitHub sida',
     'GEO': 'Geografisk plats'
   });
 

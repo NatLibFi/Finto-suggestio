@@ -35,7 +35,9 @@ angular.module('myApp.new', ['ngRoute'])
     }
     var msg = {'title': msg_title, 'body': msg_body, 'labels': ['uusi']};
     $http({method: 'POST', url: './post.php', data: msg}).then(function(response) {
-      $location.path('/list');
+      // making sure there is no crap before the actual json response
+      var number = JSON.parse(response.data.substring(response.data.indexOf('{'))).number;
+      $location.path('/list').search({submitted: number});
     });
   };
   

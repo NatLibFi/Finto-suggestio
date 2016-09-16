@@ -62,6 +62,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     'TERMURI': 'URI tai Termi',
     'FINTOLINK': 'Selaa ehdotuksia Fintossa',
     'QA': 'Ehdotuksen lähetys ei onnistu, jos pakollisissa kentissä on puutteita.',
+    'THANKS': 'Kiitos ehdotuksestasi! Voit seurata käsittelyn etenemistä ehdotuksen omalla ',
+    'ISSUEPAGE': 'GitHub-sivulla',
     'GEO': 'Maantieteellinen paikka'
   });
 
@@ -110,6 +112,8 @@ app.config(['$translateProvider', function ($translateProvider) {
     'TERMURI': 'URI eller Term',
     'FINTOLINK': 'Sök förslagen i Finto',
     'QA': 'Du kan skicka förslaget när du har givit all obligatorisk information.',
+    'THANKS': 'Tack för förslaget! Du kan följa behandlingen av förslaget på sin egen ',
+    'ISSUEPAGE': 'GitHub sida',
     'GEO': 'Geografisk plats'
   });
 
@@ -277,7 +281,9 @@ angular.module('myApp.new', ['ngRoute'])
     }
     var msg = {'title': msg_title, 'body': msg_body, 'labels': ['uusi']};
     $http({method: 'POST', url: './post.php', data: msg}).then(function(response) {
-      $location.path('/list');
+      // making sure there is no crap before the actual json response
+      var number = JSON.parse(response.data.substring(response.data.indexOf('{'))).number;
+      $location.path('/list').search({submitted: number});
     });
   };
   
@@ -376,10 +382,12 @@ angular.module('myApp.list', ['ngRoute'])
   };
 })
 
-.controller('ListController', ['$http','$scope', function($http, $scope) {
+.controller('ListController', ['$http','$scope','$routeParams', function($http, $scope, $routeParams) {
   $scope.suggestions = [];
   $scope.changePage('list');
   $scope.pagetitle = 'LISTHEADING';
+  $scope.grateful = $routeParams.submitted !== undefined ? true : false;
+  $scope.issuenum = $routeParams.submitted;
 
   $http.get('./list.php').then(function(data){
     var issues = data.data;

@@ -21,12 +21,13 @@
 }
 
 .navbar-brand {
+  font-size: 20px;
+  height: 40px;
   line-height: 10px;
   min-height: 40px;
-  height: 40px;
 }
 
-#navbar > ul > li:hover, #navbar > ul > .open > a, .btn-row > .btn:hover {
+#navbar > ul > li:hover, #navbar > ul > .open > a {
   background-color: #C0E2DF;
 }
 
@@ -42,11 +43,21 @@
   margin: 15px 0;
 }
 
+.btn-row > .btn {
+  border: 1px solid #384454;
+}
+
+.btn-row > .btn:hover, .btn-row > .btn:focus, .btn-row > .btn:active {
+  color: #353F4C;
+  background-color: #F2F2F2;
+  box-shadow: none !important;
+}
+
 .btn-row > .btn-default.active, .btn-row > .btn-default.active:hover {
-  background-color: #83CFC8;
-  border-color: #83CFC8;
   box-shadow: 0;
-  color: #333;
+  color: #fff;
+  border-color: #384454;
+  background-color: #384454;
 }
 
 /** Form styles **/
@@ -76,7 +87,6 @@ a, a:focus, a:hover {
   outline: 0 !important;
 }
 
-
 .existing-link {
   margin-left: 5px;
 }
@@ -87,4 +97,25 @@ a, a:focus, a:hover {
 
 form .col-sm-3 {
   padding-right: 0;
+}
+
+/** Thank you alert box **/
+
+.thank-you-msg {
+  background-color: #fff;
+  color: #384454;
+  border-color: #384454;
+  font-size: 16px;
+  padding: 4px 12px;
+  margin-bottom: 10px;
+}
+
+.thank-you-msg > .glyphicon {
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+.thank-you-msg > .close {
+  right: 0; 
+  opacity: 0.6;
 }

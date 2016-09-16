@@ -21,10 +21,12 @@ angular.module('myApp.list', ['ngRoute'])
   };
 })
 
-.controller('ListController', ['$http','$scope', function($http, $scope) {
+.controller('ListController', ['$http','$scope','$routeParams', function($http, $scope, $routeParams) {
   $scope.suggestions = [];
   $scope.changePage('list');
   $scope.pagetitle = 'LISTHEADING';
+  $scope.grateful = $routeParams.submitted !== undefined ? true : false;
+  $scope.issuenum = $routeParams.submitted;
 
   $http.get('./list.php').then(function(data){
     var issues = data.data;
