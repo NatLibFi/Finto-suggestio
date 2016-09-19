@@ -132,3 +132,8 @@ form .col-sm-3 {
   color: #384454;
   margin-bottom: 10px;
 }
+
+.alert-help > .btn {
+  float: right;
+  margin-top: -35px;
+}

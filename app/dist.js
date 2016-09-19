@@ -64,11 +64,12 @@ app.config(['$translateProvider', function ($translateProvider) {
     'QA': 'Ehdotuksen lähetys ei onnistu, jos pakollisissa kentissä on puutteita.',
     'THANKS': 'Kiitos ehdotuksestasi! Voit seurata käsittelyn etenemistä ehdotuksen omalla ',
     'ISSUEPAGE': 'GitHub-sivulla',
-    'HELP': 'Näytä/piilota ohje',
+    'HELP': 'Näytä ohje',
     'HELPCONTENT': 'Oheisella lomakkeella voit ehdottaa sekä uusia käsitteitä että muutoksia YSAan ja YSOon. Sanastotyön helpottamiseksi ehdotukselta vaaditaan tiettyä minimitasoa. Minimitaso täyttyy kun lomakkeen pakolliset kentät on täytetty. Tällöin ehdotus saa yhden tähden laatuluokituksen ja ehdotuksen voi lähettää. Jokaisesta täytetystä lisäkentästä ehdotus saa yhden laatutähden lisää. Huolellisesti valmisteltu ehdotus on nopeampi käsitellä ja ottaa mukaan sanastoon. Ehdotusten käsittelyyn voi osallistua kommentoimalla niitä GitHubissa ja antamalla käsittelyä helpottavia tarkennuksia/lisätietoja.',
     'HELPCONTENT2': 'Kun ehdotus uuden termin ottamisesta sanastoon on lähetetty, tarkastetaan ehdotus ylläpidon toimesta. Ehdotus hylätään vain jos ehdotuksessa on asiattomuuksia tai jos sitä ei ole luotu lomakkeen kautta. Muutosehdotuksia ei tarvitse erikseen vahvistaa. Hyväksytyt uudet käsite-ehdotukset siirretään Finton ehdotukset sisältävään "sanastoon" YSEen koneellisesti noin kerran päivässä. Uusi ehdotus näkyy Fintossa yleensä tarkastuksesta seuraavana päivänä.',
     'HELPCONTENT3': 'Ehdotuksia käsitellään sanastoryhmän kokouksissa. Kun ehdotus päätetään ottaa sanastoon, poistetaan ehdotus YSEstä ja ehdotuksen GitHub-issue suljetaan. Tämän jälkeen ehdotus lisätään sanastoon uutena käsitteenä ja sitä voi käyttää kuvailussa.',
     'HELPCONTENT4': 'Voit lähettää palautetta ja kehitysehdotuksia osoitteeseen: finto-posti(ät)helsinki.fi',
+    'CLOSE': 'Sulje',
     'GEO': 'Maantieteellinen paikka'
   });
 
@@ -119,11 +120,12 @@ app.config(['$translateProvider', function ($translateProvider) {
     'QA': 'Du kan skicka förslaget när du har givit all obligatorisk information.',
     'THANKS': 'Tack för förslaget! Du kan följa behandlingen av förslaget på sin egen ',
     'ISSUEPAGE': 'GitHub sida',
-    'HELP': 'Visa/gömma hjälp',
+    'HELP': 'Visa hjälp',
     'HELPCONTENT': 'Oheisella lomakkeella voit ehdottaa sekä uusia käsitteitä että muutoksia YSAan ja YSOon. Sanastotyön helpottamiseksi ehdotukselta vaaditaan tiettyä minimitasoa. Minimitaso täyttyy kun lomakkeen pakolliset kentät on täytetty. Tällöin ehdotus saa yhden tähden laatuluokituksen ja ehdotuksen voi lähettää. Jokaisesta täytetystä lisäkentästä ehdotus saa yhden laatutähden lisää. Huolellisesti valmisteltu ehdotus on nopeampi käsitellä ja ottaa mukaan sanastoon. Ehdotusten käsittelyyn voi osallistua kommentoimalla niitä GitHubissa ja antamalla käsittelyä helpottavia tarkennuksia/lisätietoja.',
     'HELPCONTENT2': 'Kun ehdotus uuden termin ottamisesta sanastoon on lähetetty, tarkastetaan ehdotus ylläpidon toimesta. Ehdotus hylätään vain jos ehdotuksessa on asiattomuuksia tai jos sitä ei ole luotu lomakkeen kautta. Muutosehdotuksia ei tarvitse erikseen vahvistaa. Hyväksytyt uudet käsite-ehdotukset siirretään Finton ehdotukset sisältävään "sanastoon" YSEen koneellisesti noin kerran päivässä. Uusi ehdotus näkyy Fintossa yleensä tarkastuksesta seuraavana päivänä.',
     'HELPCONTENT3': 'Ehdotuksia käsitellään sanastoryhmän kokouksissa. Kun ehdotus päätetään ottaa sanastoon, poistetaan ehdotus YSEstä ja ehdotuksen GitHub-issue suljetaan. Tämän jälkeen ehdotus lisätään sanastoon uutena käsitteenä ja sitä voi käyttää kuvailussa.',
     'HELPCONTENT4': 'Voit lähettää palautetta ja kehitysehdotuksia osoitteeseen: finto-posti(ät)helsinki.fi',
+    'CLOSE': 'Stäng',
     'GEO': 'Geografisk plats'
   });
 

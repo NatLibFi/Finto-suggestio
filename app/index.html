@@ -33,7 +33,7 @@
       <a class="btn btn-default" ng-click="changePage('change')" href="#/change" ng-class="{active: currentpage === 'change'}">{{ 'CHANGESUGGESTION' | translate }}</a>
       <button class="btn btn-default" ng-click="toggleHelp()" translate>HELP</a>
     </nav>
-    <div class="alert alert-help" ng-show="showhelp"><p translate>HELPCONTENT</p><p translate>HELPCONTENT2</p><p translate>HELPCONTENT3</p><p translate>HELPCONTENT4</p></div>
+    <div class="alert alert-help" ng-show="showhelp"><p translate>HELPCONTENT</p><p translate>HELPCONTENT2</p><p translate>HELPCONTENT3</p><p translate>HELPCONTENT4</p><button class="btn btn-default" ng-click="toggleHelp()" title="{{'CLOSE'|translate}}"><span class="glyphicon glyphicon-remove"></span></button></div>
     <div ng-view></div>
   </div>
   
