@@ -84,7 +84,7 @@ label {
 }
 
 form.ng-submitted .ng-invalid {
-  border-color: #FA787E;
+  border: 2px solid #FA787E;
 }
 
 form.ng-submitted.ng-invalid .quality-control {
