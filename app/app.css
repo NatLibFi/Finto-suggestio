@@ -20,13 +20,6 @@
   color: #333 !important;
 }
 
-.navbar-brand {
-  font-size: 20px;
-  height: 40px;
-  line-height: 10px;
-  min-height: 40px;
-}
-
 #navbar > ul > li:hover, #navbar > ul > .open > a {
   background-color: #C0E2DF;
 }
@@ -39,29 +32,36 @@
   background-color: #ffffff !important;
 }
 
-.btn-row {
-  margin: 15px 0;
+.nav-tabs {
+  margin: 15px 0 5px;
 }
 
-.btn-row > .btn {
-  border: 1px solid #384454;
+.nav-tabs, .nav-tabs > li {
+  border-color: #83CFC8 !important;
 }
 
-.btn-row > .btn:hover, .btn-row > .btn:focus, .btn-row > .btn:active {
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:active, .nav-tabs > li.active > a:hover {
+  border-color: #83CFC8 #83CFC8 transparent;
   color: #353F4C;
-  background-color: #F2F2F2;
+}
+
+.nav-tabs > li > a:focus, .nav-tabs > li > a:active, .nav-tabs > li > a:hover {
+  background-color: #FCFFFE;
+  border-color: #AFBBCC #AFBBCC #83CFC8;
+  color: #353F4C;
+}
+
+.btn-default, .btn:hover, .btn:focus, .btn:active {
+  color: #353F4C;
+  background-color: #fff;
+  border-color: #83CFC8;
   box-shadow: none !important;
 }
 
-.btn-row > .btn-default.active, .btn-row > .btn-default.active:hover {
-  box-shadow: 0;
-  color: #fff;
-  border-color: #384454;
-  background-color: #384454;
-}
+/** Typography **/
 
-.container > div > p {
-  margin-bottom: 8px;
+.container > h1 {
+  font-size: 20px;
 }
 
 /** Form styles **/
@@ -74,9 +74,13 @@
   padding-left: 12px !important;
 }
 
+label {
+  margin-top: 6px;
+}
+
 .form-group > .col-sm-4 > .glyphicon {
- font-size: 24px !important;
- top: 5px;
+  font-size: 24px !important;
+  top: 5px;
 }
 
 form.ng-submitted .ng-invalid {
@@ -93,6 +97,12 @@ a, a:focus, a:hover {
 
 .existing-link {
   margin-left: 5px;
+}
+
+.required-msg {
+  line-height: 40px;
+  margin-top: 5px;
+  margin-bottom: 15px;
 }
 
 .form-group > .col-sm-8.col-sm-offset-4 {
@@ -126,6 +136,15 @@ form .col-sm-3 {
 
 /** Help box **/
 
+.btn-help {
+  float: right;
+  margin-top: 10px;
+} 
+
+.btn-help:hover, .btn-help:active, .btn-help:focus {
+  background-color: #F7F7F7;
+}
+
 .alert-help {
   background-color: #fff;
   border-color: #384454;
@@ -134,6 +153,6 @@ form .col-sm-3 {
 }
 
 .alert-help > .btn {
+  border-color: #384454;
   float: right;
-  margin-top: -35px;
 }

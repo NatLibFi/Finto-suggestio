@@ -16,7 +16,6 @@
 <body ng-controller="Ctrl">
   <nav class="navbar navbar-default">
     <div class="container">
-      <a class="navbar-brand" translate>{{pagetitle}}</a>
       <div id="navbar">
         <ul class="nav navbar-nav navbar-right">
           <li ng-class="{active: language === 'fi'}"><a href="" ng-click="changeLanguage('fi')">suomeksi</a></li>
@@ -27,13 +26,18 @@
   </nav>
   
   <div class="container">
-    <nav class="btn-row">
-      <a class="btn btn-default" href="#/list" ng-class="{active: currentpage === 'list'}">{{ 'LIST' | translate }}</a>         
-      <a class="btn btn-default" ng-click="changePage('new')" href="#/new" ng-class="{active: currentpage === 'new'}">{{ 'NEWSUGGESTION' | translate }}</a>
-      <a class="btn btn-default" ng-click="changePage('change')" href="#/change" ng-class="{active: currentpage === 'change'}">{{ 'CHANGESUGGESTION' | translate }}</a>
-      <button class="btn btn-default" ng-click="toggleHelp()" translate>HELP</a>
-    </nav>
-    <div class="alert alert-help" ng-show="showhelp"><p translate>HELPCONTENT</p><p translate>HELPCONTENT2</p><p translate>HELPCONTENT3</p><p translate>HELPCONTENT4</p><button class="btn btn-default" ng-click="toggleHelp()" title="{{'CLOSE'|translate}}"><span class="glyphicon glyphicon-remove"></span></button></div>
+    <ul class="nav nav-tabs">
+      <li role="presentation" ng-class="{active: currentpage === 'list'}"><a href="#/list">{{ 'LIST' | translate }}</a></li>
+      <li role="presentation" ng-class="{active: currentpage === 'new'}"><a ng-click="changePage('new')" href="#/new">{{ 'NEWSUGGESTION' | translate }}</a></li>
+      <li role="presentation" ng-class="{active: currentpage === 'change'}"><a ng-click="changePage('change')" href="#/change">{{ 'CHANGESUGGESTION' | translate }}</a></li>
+    </ul>
+    <a class="btn btn-default btn-help" ng-show="!showhelp" ng-click="toggleHelp()" translate>HELP</a>
+    <div class="alert alert-help" ng-show="showhelp">
+      <button class="btn btn-default" ng-click="toggleHelp()" title="{{'CLOSE'|translate}}">
+        <span class="glyphicon glyphicon-remove"></span>
+      </button>
+      <p translate>HELPCONTENT</p><p translate>HELPCONTENT2</p><p translate>HELPCONTENT3</p><p translate>HELPCONTENT4</p>
+    </div>
     <div ng-view></div>
   </div>
   
