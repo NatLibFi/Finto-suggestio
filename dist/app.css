@@ -1,0 +1,161 @@
+/** Navigation styles **/
+.navbar {
+  background-color: #83CFC8 !important;
+  border: none !important;
+  margin-bottom: 0 !important;
+}
+  
+.navbar, .navbar-nav, .navbar-nav * {
+  border-radius: 0;
+  height: 40px;
+  line-height: 40px;
+  min-height: 40px;
+}
+
+#navbar > .navbar-nav > li > a {
+  padding-top: 10px;
+}
+
+.navbar * {
+  color: #333 !important;
+}
+
+#navbar > ul > li:hover, #navbar > ul > .open > a {
+  background-color: #C0E2DF;
+}
+
+#navbar {
+  padding: 0;
+}
+
+#navbar > .navbar-nav > li.active > a {
+  background-color: #ffffff !important;
+}
+
+.nav-tabs {
+  margin: 15px 0 5px;
+}
+
+.nav-tabs, .nav-tabs > li {
+  border-color: #83CFC8 !important;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:active, .nav-tabs > li.active > a:hover {
+  border-color: #83CFC8 #83CFC8 transparent;
+  color: #353F4C;
+}
+
+.nav-tabs > li > a:focus, .nav-tabs > li > a:active, .nav-tabs > li > a:hover {
+  background-color: #FCFFFE;
+  border-color: #AFBBCC #AFBBCC #83CFC8;
+  color: #353F4C;
+}
+
+.btn-default, .btn:hover, .btn:focus, .btn:active {
+  color: #353F4C;
+  background-color: #fff;
+  border-color: #83CFC8;
+  box-shadow: none !important;
+}
+
+/** Typography **/
+
+.container > h1 {
+  font-size: 20px;
+}
+
+/** Form styles **/
+
+.quality-control {
+  line-height: 34px;
+}
+
+.ui-select-search {
+  padding-left: 12px !important;
+}
+
+label {
+  margin-top: 6px;
+}
+
+.form-group > .col-sm-4 > .glyphicon {
+  font-size: 24px !important;
+  top: 5px;
+}
+
+form.ng-submitted .ng-invalid {
+  border: 2px solid #FA787E;
+}
+
+form.ng-submitted.ng-invalid .quality-control {
+  color: red;
+}
+
+a, a:focus, a:hover {
+  outline: 0 !important;
+}
+
+.existing-link {
+  margin-left: 5px;
+}
+
+.required-msg {
+  line-height: 40px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.form-group > .col-sm-8.col-sm-offset-4 {
+  margin-top: 10px;
+}
+
+form .col-sm-3 {
+  padding-right: 0;
+}
+
+/** Thank you alert box **/
+
+.thank-you-msg {
+  background-color: #fff;
+  color: #384454;
+  border: 2px dashed #FA787E;
+  font-size: 16px;
+  padding: 4px 12px;
+  margin: 15px 0 10px;
+  width: 85%;
+  width: calc(100% - 100px);
+}
+
+.thank-you-msg > .glyphicon {
+  color: #FA787E;
+  margin-left: 5px;
+  font-size: 14px;
+}
+
+.thank-you-msg > .close {
+  right: 0; 
+  opacity: 0.6;
+}
+
+/** Help box **/
+
+.btn-help {
+  float: right;
+  margin-top: 10px;
+} 
+
+.btn-help:hover, .btn-help:active, .btn-help:focus {
+  background-color: #F7F7F7;
+}
+
+.alert-help {
+  background-color: #fff;
+  border-color: #384454;
+  color: #384454;
+  margin-bottom: 10px;
+}
+
+.alert-help > .btn {
+  border-color: #384454;
+  float: right;
+}

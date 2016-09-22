@@ -1,0 +1,199 @@
+<p class="required-msg" translate> * {{'REQUIRED'}}.</p>
+
+<form name="suggestionForm" ng-submit="suggestionForm.$valid && suggestionCtrl.addSuggestion()" class="form-horizontal" novalidate>
+  <div class="form-group">
+    <label for="concepttype" class="col-sm-4" translate>{{'TYPE'}}:</label>
+    <div class="col-sm-4 vocabulary-select">
+      <select class="form-control" ng-init="suggestionCtrl.suggestion.concepttype = 'CONCEPT'" ng-model="suggestionCtrl.suggestion.concepttype">
+        <option translate>CONCEPT</option>
+        <option translate>GEO</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="preflabelfi" class="col-sm-4" translate>{{'PREFFI'}}</label>
+    <div class="col-sm-8">
+      <span ng-show="suggestionForm.preflabelfi.$invalid">{{'TERMFOUND'|translate}} {{existingConcept.vocab}}:</span><span ng-show="existingConcept.altLabel && suggestionForm.preflabelfi.$invalid"> {{existingConcept.altLabel}} &rarr; </span><a ng-show="suggestionForm.preflabelfi.$invalid" href="{{ existingConcept.uri }}" class="existing-link">{{existingConcept.prefLabel}}</a>
+      <input name="preflabelfi" ng-model="suggestionCtrl.suggestion.preflabelfi" type="text" class="form-control" id="preflabel" new-concept in-vocab="ysa">
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="preflabel-sv" class="col-sm-4" translate>{{'PREFSV'}}</label>
+    <div class="col-sm-8">
+      <span ng-show="suggestionForm.preflabelsv.$invalid">{{'TERMFOUND'|translate}} {{existingConcept.vocab}}:</span><span ng-show="existingConcept.altLabel && suggestionForm.preflabelsv.$invalid"> {{existingConcept.altLabel}} &rarr; </span><a ng-show="suggestionForm.preflabelsv.$invalid" href="{{ existingConcept.uri }}" class="existing-link">{{existingConcept.prefLabel}}</a>
+      <input name="preflabelsv" ng-model="suggestionCtrl.suggestion.preflabelsv" type="text" class="form-control col-sm-10" id="preflabel-sv" new-concept in-vocab="allars">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="preflabel-en" class="col-sm-4" translate>{{'PREFEN'}}:</label>
+    <div class="col-sm-8">
+      <input name="preflabelen" ng-model="suggestionCtrl.suggestion.preflabelen" type="text" class="form-control col-sm-10" id="preflabel-en">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="altlabel" class="col-sm-4" translate>{{'ALTLABEL'}}:</label>
+    <div class="col-sm-8">
+      <input name="altlabel" ng-model="suggestionCtrl.suggestion.altlabel" type="text" class="form-control col-sm-10" id="altlabel">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="broader" class="col-sm-4" translate>{{'BROADER'}}:</label>
+    <div class="col-sm-8">
+      <angucomplete-alt id="broader"
+              placeholder="{{ 'SEARCH' | translate }}"
+              pause="400"
+              minlength="3"
+              selected-object="suggestionCtrl.suggestion.broader[0]"
+              remote-url="http://api.finto.fi/rest/v1/yso/search"
+              remote-url-request-formatter="requestFormatter"
+              remote-url-data-field="results"
+              title-field="prefLabel"
+              input-class="form-control form-control-small" />
+    </div>
+	<div class="col-sm-8 col-sm-offset-4" ng-repeat="n in suggestionCtrl.suggestion.broader" ng-show="suggestionCtrl.suggestion.broader.length > 0">
+      <angucomplete-alt id="broader"
+              placeholder="{{ 'SEARCH' | translate }}"
+              pause="400"
+              minlength="3"
+              selected-object="suggestionCtrl.suggestion.broader[$index+1]"
+              remote-url="http://api.finto.fi/rest/v1/yso/search"
+              remote-url-request-formatter="requestFormatter"
+              remote-url-data-field="results"
+              title-field="prefLabel"
+              input-class="form-control form-control-small" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="narrower" class="col-sm-4" translate>{{'NARROWER'}}:</label>
+    <div class="col-sm-8">
+      <angucomplete-alt id="narrower"
+              placeholder="{{ 'SEARCH' | translate }}"
+              pause="400"
+              minlength="3"
+              selected-object="suggestionCtrl.suggestion.narrower[0]"
+              remote-url="http://api.finto.fi/rest/v1/yso/search"
+              remote-url-request-formatter="requestFormatter"
+              remote-url-data-field="results"
+              title-field="prefLabel"
+              input-class="form-control form-control-small" />
+    </div>
+    <div class="col-sm-8 col-sm-offset-4" ng-repeat="n in suggestionCtrl.suggestion.narrower" ng-show="suggestionCtrl.suggestion.narrower.length > 0">
+      <angucomplete-alt id="narrower"
+              placeholder="{{ 'SEARCH' | translate }}"
+              pause="400"
+              minlength="3"
+              selected-object="suggestionCtrl.suggestion.narrower[$index+1]"
+              remote-url="http://api.finto.fi/rest/v1/yso/search"
+              remote-url-request-formatter="requestFormatter"
+              remote-url-data-field="results"
+              title-field="prefLabel"
+              input-class="form-control form-control-small" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="related" class="col-sm-4" translate>{{'RELATED'}}:</label>
+    <div class="col-sm-8">
+      <angucomplete-alt id="related"
+              placeholder="{{ 'SEARCH' | translate }}"
+              pause="400"
+              minlength="3"
+              selected-object="suggestionCtrl.suggestion.related[0]"
+              remote-url="http://api.finto.fi/rest/v1/yso/search"
+              remote-url-request-formatter="requestFormatter"
+              remote-url-data-field="results"
+              title-field="prefLabel"
+              input-class="form-control form-control-small" />
+    </div>
+    <div class="col-sm-8 col-sm-offset-4" ng-repeat="n in suggestionCtrl.suggestion.related" ng-show="suggestionCtrl.suggestion.related.length > 0">
+      <angucomplete-alt id="related"
+              placeholder="{{ 'SEARCH' | translate }}"
+              pause="400"
+              minlength="3"
+              selected-object="suggestionCtrl.suggestion.related[$index+1]"
+              remote-url="http://api.finto.fi/rest/v1/yso/search"
+              remote-url-request-formatter="requestFormatter"
+              remote-url-data-field="results"
+              title-field="prefLabel"
+              input-class="form-control form-control-small" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="groups" class="col-sm-4" translate>{{'GROUP'}}: *</label>
+    <div class="col-sm-8">
+      <ui-select multiple ng-model="suggestionCtrl.suggestion.groups" theme="bootstrap" ui-select-required>
+      <ui-select-match placeholder="{{ 'CHOOSEGROUP' | translate }}">{{$item.prefLabel}}</ui-select-match>
+        <ui-select-choices repeat="item in groupList">
+        <div ng-bind-html="trustAsHtml(item.prefLabel)">{{item.prefLabel}}</div>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exactmatch" class="col-sm-4" translate>{{'MATCHING'}}:</label>
+    <div class="col-sm-3">
+      <input placeholder="{{ 'VOCAB' | translate }}" ng-model="suggestionCtrl.suggestion.exactMatch[0].vocab" type="text" class="form-control col-sm-10" id="exactmatch">
+    </div>
+    <div class="col-sm-5">
+      <input placeholder="{{ 'TERMURI' | translate }}" ng-model="suggestionCtrl.suggestion.exactMatch[0].value" type="text" class="form-control col-sm-10" id="exactmatch">
+    </div>
+  </div>
+  <div class="form-group" ng-repeat="n in suggestionCtrl.suggestion.exactMatch" ng-show="suggestionCtrl.suggestion.exactMatch.length > 0">
+    <div class="col-sm-3 col-sm-offset-4">
+      <input placeholder="{{ 'VOCAB' | translate }}" ng-model="suggestionCtrl.suggestion.exactMatch[$index+1].vocab" type="text" class="form-control col-sm-10" id="exactmatch">
+    </div>
+    <div class="col-sm-5">
+      <input placeholder="{{ 'TERMURI' | translate }}" ng-model="suggestionCtrl.suggestion.exactMatch[$index+1].value" type="text" class="form-control col-sm-10" id="exactmatch">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="scopenote" class="col-sm-4" translate>{{'SCOPENOTE'}}:</label>
+    <div class="col-sm-8">
+        <textarea rows="2" ng-model="suggestionCtrl.suggestion.scopenote" type="text" class="form-control col-sm-10" id="scopenote"></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="explanation" class="col-sm-4" translate>{{'EXPLANATION'}}: *</label>
+    <div class="col-sm-8">
+      <textarea rows="2" ng-model="suggestionCtrl.suggestion.explanation" type="text" class="form-control col-sm-10" id="explanation" required></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="neededfor" class="col-sm-4" translate>{{'NEEDEDFOR'}}: *</label>
+    <div class="col-sm-8">
+      <input ng-model="suggestionCtrl.suggestion.neededfor" type="text" class="form-control col-sm-10" id="x" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fromname" class="col-sm-4" translate>{{'NAME'}}: *</label>
+    <div class="col-sm-8">
+      <input ng-model="suggestionCtrl.suggestion.name" type="text" class="form-control col-sm-10" id="fromname" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="fromorg" class="col-sm-4" translate>{{'ORG'}}:</label>
+    <div class="col-sm-8">
+      <input ng-model="suggestionCtrl.suggestion.org" type="text" class="form-control col-sm-10" id="fromorg">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4">
+      <label for="email" translate>{{'EMAIL'}}: *</label>
+    </div>
+    <div class="col-sm-8">
+      <input ng-model="suggestionCtrl.suggestion.email" type="email" class="form-control col-sm-10" id="email" required>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-4">
+      <label translate>{{'QUALITY'}}:</label>
+      <span ng-repeat="i in getNumber(suggestionCtrl.getStars()) track by $index" class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      <span ng-repeat="i in getNumber(5 - suggestionCtrl.getStars()) track by $index" class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+    </div>
+    <div class="col-sm-2">
+      <input class="btn btn-default" type="submit" value="{{ 'SUBMIT' | translate }}">
+    </div>
+    <div class="col-sm-6">
+      <p ng-show="!suggestionForm.$valid" class="quality-control" translate>QA</p>
+    </div>
+  </div>
+</form>
