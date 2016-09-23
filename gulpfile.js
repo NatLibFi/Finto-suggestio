@@ -40,4 +40,4 @@ gulp.task('watch', function() {
     gulp.watch(paths.code, ['html']);
 });
 
-gulp.task('default', ['watch', 'js', 'html']);
+gulp.task('default', ['watch', 'js', 'html', 'css']);

@@ -12,6 +12,7 @@ angular.module('myApp.new', ['ngRoute'])
 
 .controller('SuggestionController', ['$http','$location','$scope','$sce','FormFormatter' , function($http, $location, $scope, $sce, FormFormatter) {
   $scope.changePage('new');
+  $scope.waitForPost = false;
   this.suggestion = {'broader': [], 'narrower': [], 'related': [], 'exactMatch': []};
   
   $scope.trustAsHtml = function(value) {
@@ -28,6 +29,9 @@ angular.module('myApp.new', ['ngRoute'])
   });
 
   this.addSuggestion = function() {
+    // preventing resubmit if the post takes longer than expected
+    if ($scope.waitForPost) { return; }
+    $scope.waitForPost = true;
     var msg_body = FormFormatter.markdown(this.suggestion);
     var msg_title = this.suggestion.preflabelfi ? this.suggestion.preflabelfi : this.suggestion.preflabelsv;
     if ($scope.language === 'sv') {

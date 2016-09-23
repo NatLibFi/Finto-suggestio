@@ -70,6 +70,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'HELPCONTENT3': 'Ehdotuksia käsitellään sanastoryhmän kokouksissa. Kun ehdotus päätetään ottaa sanastoon, poistetaan ehdotus YSEstä ja ehdotuksen GitHub-issue suljetaan. Tämän jälkeen ehdotus lisätään sanastoon uutena käsitteenä ja sitä voi käyttää kuvailussa.',
     'HELPCONTENT4': 'Voit lähettää palautetta ja kehitysehdotuksia osoitteeseen: finto-posti(ät)helsinki.fi',
     'CLOSE': 'Sulje',
+    'INPROGRESS': 'Ehdotusta lähetetään parhaillaan, odota hetki!',
     'GEO': 'Maantieteellinen paikka'
   });
 
@@ -126,6 +127,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'HELPCONTENT3': 'Ehdotuksia käsitellään sanastoryhmän kokouksissa. Kun ehdotus päätetään ottaa sanastoon, poistetaan ehdotus YSEstä ja ehdotuksen GitHub-issue suljetaan. Tämän jälkeen ehdotus lisätään sanastoon uutena käsitteenä ja sitä voi käyttää kuvailussa.',
     'HELPCONTENT4': 'Voit lähettää palautetta ja kehitysehdotuksia osoitteeseen: finto-posti(ät)helsinki.fi',
     'CLOSE': 'Stäng',
+    'INPROGRESS': 'Ehdotusta lähetetään parhaillaan, odota hetki!',
     'GEO': 'Geografisk plats'
   });
 

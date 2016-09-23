@@ -64,6 +64,10 @@
   font-size: 20px;
 }
 
+.bold-information {
+  font-weight: bold;
+}
+
 /** Form styles **/
 
 .quality-control {

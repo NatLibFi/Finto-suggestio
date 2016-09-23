@@ -70,6 +70,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'HELPCONTENT3': 'Ehdotuksia käsitellään sanastoryhmän kokouksissa. Kun ehdotus päätetään ottaa sanastoon, poistetaan ehdotus YSEstä ja ehdotuksen GitHub-issue suljetaan. Tämän jälkeen ehdotus lisätään sanastoon uutena käsitteenä ja sitä voi käyttää kuvailussa.',
     'HELPCONTENT4': 'Voit lähettää palautetta ja kehitysehdotuksia osoitteeseen: finto-posti(ät)helsinki.fi',
     'CLOSE': 'Sulje',
+    'INPROGRESS': 'Ehdotusta lähetetään parhaillaan, odota hetki!',
     'GEO': 'Maantieteellinen paikka'
   });
 
@@ -126,6 +127,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'HELPCONTENT3': 'Ehdotuksia käsitellään sanastoryhmän kokouksissa. Kun ehdotus päätetään ottaa sanastoon, poistetaan ehdotus YSEstä ja ehdotuksen GitHub-issue suljetaan. Tämän jälkeen ehdotus lisätään sanastoon uutena käsitteenä ja sitä voi käyttää kuvailussa.',
     'HELPCONTENT4': 'Voit lähettää palautetta ja kehitysehdotuksia osoitteeseen: finto-posti(ät)helsinki.fi',
     'CLOSE': 'Stäng',
+    'INPROGRESS': 'Ehdotusta lähetetään parhaillaan, odota hetki!',
     'GEO': 'Geografisk plats'
   });
 
@@ -273,6 +275,7 @@ angular.module('myApp.new', ['ngRoute'])
 
 .controller('SuggestionController', ['$http','$location','$scope','$sce','FormFormatter' , function($http, $location, $scope, $sce, FormFormatter) {
   $scope.changePage('new');
+  $scope.waitForPost = false;
   this.suggestion = {'broader': [], 'narrower': [], 'related': [], 'exactMatch': []};
   
   $scope.trustAsHtml = function(value) {
@@ -289,6 +292,9 @@ angular.module('myApp.new', ['ngRoute'])
   });
 
   this.addSuggestion = function() {
+    // preventing resubmit if the post takes longer than expected
+    if ($scope.waitForPost) { return; }
+    $scope.waitForPost = true;
     var msg_body = FormFormatter.markdown(this.suggestion);
     var msg_title = this.suggestion.preflabelfi ? this.suggestion.preflabelfi : this.suggestion.preflabelsv;
     if ($scope.language === 'sv') {
