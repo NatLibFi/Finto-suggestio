@@ -303,7 +303,7 @@ angular.module('myApp.new', ['ngRoute'])
     var msg = {'title': msg_title, 'body': msg_body, 'labels': ['uusi']};
     $http({method: 'POST', url: './post.php', data: msg}).then(function(response) {
       // making sure there is no crap before the actual json response
-      var number = JSON.parse(response.data.substring(response.data.indexOf('{'))).number;
+      var number = (typeof response.data === 'string') ? JSON.parse(response.data.substring(response.data.indexOf('{'))).number : response.data.number;
       $location.path('/list').search({submitted: number});
     }, function(response) {
       $location.path('/list').search();
