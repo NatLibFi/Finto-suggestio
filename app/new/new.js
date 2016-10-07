@@ -42,6 +42,8 @@ angular.module('myApp.new', ['ngRoute'])
       // making sure there is no crap before the actual json response
       var number = JSON.parse(response.data.substring(response.data.indexOf('{'))).number;
       $location.path('/list').search({submitted: number});
+    }, function(response) {
+      $location.path('/list').search();
     });
   };
   
