@@ -87,11 +87,11 @@ label {
   top: 5px;
 }
 
-form.ng-submitted .ng-invalid {
+form.ng-submitted .ng-invalid, .ng-submitted.ng-invalid-autocomplete-required #preflabel_value {
   border: 2px solid #FA787E;
 }
 
-form.ng-submitted.ng-invalid .quality-control {
+form.ng-submitted.ng-invalid .quality-control, .ng-submitted.ng-invalid-autocomplete-required .invalid-msg {
   color: red;
 }
 

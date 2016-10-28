@@ -5,6 +5,7 @@ var CacheBuster = require('gulp-cachebust');
 var cbust = new CacheBuster(); 
 var paths = {
   code: ['app/app.js', 'app/new/new.js', 'app/change/change.js', 'app/list/list.js'],
+  all: ['app/app.js', 'app/new/new.js', 'app/change/change.js', 'app/list/list.js', 'app/*.html', 'app/*/*.html', 'app/app.css'],
 };
 
 gulp.task('deps', function() {
@@ -37,7 +38,7 @@ gulp.task('css', function() {
 });
 
 gulp.task('watch', function() { 
-    gulp.watch(paths.code, ['html']);
+    gulp.watch(paths.all, ['html']);
 });
 
 gulp.task('default', ['watch', 'js', 'html', 'css']);

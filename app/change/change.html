@@ -7,7 +7,7 @@
       <angucomplete-alt id="preflabel"
               placeholder="{{ 'SEARCH' | translate }}"
               pause="400"
-              minlength="3"
+              minlength="2"
               field-required="true"
               selected-object="changeCtrl.suggestion.preflabel"
               remote-url="http://api.finto.fi/rest/v1/search"
@@ -15,6 +15,10 @@
               remote-url-data-field="results"
               title-field="prefLabel"
               input-class="form-control form-control-small" />
+      <!--<span ng-show="changeCtrl.suggestion.preflabel.$invalid">{{'TERMFOUND'|translate}}</span>-->
+    </div>
+    <div ng-show="!changeCtrl.suggestion.preflabel" class="col-sm-8 col-sm-offset-4">
+      <span class="invalid-msg">{{'CHOOSETERM'|translate}}</span>
     </div>
   </div>
   <div class="form-group">
