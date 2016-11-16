@@ -16,6 +16,11 @@
   padding-top: 10px;
 }
 
+#navbar > h1 {
+  font-size: 18px;
+  display: inline-block;
+}
+
 .navbar * {
   color: #333 !important;
 }

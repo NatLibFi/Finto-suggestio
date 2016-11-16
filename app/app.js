@@ -18,7 +18,7 @@ app.config(['$routeProvider', function($routeProvider) {
 
 app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.translations('fi', {
-    'TITLE': 'Ehdotusjärjestelmä',
+    'TITLE': 'YSAn ja YSOn käsite-ehdotuslomake',
     'NEWSUGGESTION': 'Ehdota uutta käsitettä',
     'NEWHEADING': 'Ehdota uutta käsitettä YSAan ja YSOon',
     'CHANGEHEADING': 'Ehdota muutosta YSA/YSO -käsitteeseen',
@@ -76,7 +76,7 @@ app.config(['$translateProvider', function ($translateProvider) {
   });
 
   $translateProvider.translations('sv', {
-    'TITLE': 'Förslagssystem',
+    'TITLE': 'Formulär för begreppsförslag till Allärs och ALLFO',
     'NEWSUGGESTION': 'Föreslå ett nytt begrepp',
     'NEWHEADING': 'Föreslå ett nytt begrepp till Allärs och ALLFO',
     'CHANGEHEADING': 'Föreslå en ändring av ett begrepp som redan finns i Allärs och ALLFO',
