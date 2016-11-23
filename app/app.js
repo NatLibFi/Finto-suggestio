@@ -9,7 +9,8 @@ var app = angular.module('suggestio', [
   'ui.select',
   'angucomplete-alt',
   'pascalprecht.translate',
-  'suggestio.change'
+  'suggestio.change',
+  'suggestio.help'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {

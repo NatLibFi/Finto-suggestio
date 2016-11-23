@@ -69,6 +69,10 @@
   font-size: 20px;
 }
 
+h2 {
+  font-size: 20px;
+}
+
 .bold-information {
   font-weight: bold;
 }
@@ -147,6 +151,10 @@ form .col-sm-3 {
 }
 
 /** Help box **/
+
+.help-container {
+  padding-bottom: 40px;
+}
 
 .btn-help {
   float: right;

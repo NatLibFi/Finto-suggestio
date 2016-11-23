@@ -9,7 +9,8 @@ var app = angular.module('suggestio', [
   'ui.select',
   'angucomplete-alt',
   'pascalprecht.translate',
-  'suggestio.change'
+  'suggestio.change',
+  'suggestio.help'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
@@ -427,5 +428,22 @@ angular.module('suggestio.list', ['ngRoute'])
       });
     }
   },function() {});
+}]);
+
+
+'use strict';
+
+angular.module('suggestio.help', ['ngRoute'])
+
+.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/help', {
+    templateUrl: 'help/help.html',
+    controller: 'HelpController',
+    controllerAs: 'helpCtrl'
+  });
+}])
+
+.controller('HelpController', ['$http','$scope','$routeParams', function($http, $scope, $routeParams) {
+  $scope.changePage('help');
 }]);
 

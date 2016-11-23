@@ -2,10 +2,10 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var CacheBuster = require('gulp-cachebust');
-var cbust = new CacheBuster(); 
+var cbust = new CacheBuster();
 var paths = {
-  code: ['app/app.js', 'app/new/new.js', 'app/change/change.js', 'app/list/list.js'],
-  all: ['app/app.js', 'app/new/new.js', 'app/change/change.js', 'app/list/list.js', 'app/*.html', 'app/*/*.html', 'app/app.css'],
+  code: ['app/app.js', 'app/new/new.js', 'app/change/change.js', 'app/list/list.js', 'app/help/help.js'],
+  all: ['app/app.js', 'app/new/new.js', 'app/change/change.js', 'app/list/list.js', 'app/help/help.js', 'app/*.html', 'app/*/*.html', 'app/app.css'],
 };
 
 gulp.task('deps', function() {
@@ -37,7 +37,7 @@ gulp.task('css', function() {
       .pipe(gulp.dest('dist'));
 });
 
-gulp.task('watch', function() { 
+gulp.task('watch', function() {
     gulp.watch(paths.all, ['html']);
 });
 

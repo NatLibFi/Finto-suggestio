@@ -25,23 +25,17 @@
       </div>
     </div>
   </nav>
-  
+
   <div class="container">
     <ul class="nav nav-tabs">
       <li role="presentation" ng-class="{active: currentpage === 'list'}"><a href="#/list">{{ 'LIST' | translate }}</a></li>
       <li role="presentation" ng-class="{active: currentpage === 'new'}"><a ng-click="changePage('new')" href="#/new">{{ 'NEWSUGGESTION' | translate }}</a></li>
       <li role="presentation" ng-class="{active: currentpage === 'change'}"><a ng-click="changePage('change')" href="#/change">{{ 'CHANGESUGGESTION' | translate }}</a></li>
+      <li role="presentation" ng-class="{active: currentpage === 'help'}"><a href="#/help">{{ 'HELP' | translate }}</a></li>
     </ul>
-    <a class="btn btn-default btn-help" ng-show="!showhelp" ng-click="toggleHelp()" translate>HELP</a>
-    <div class="alert alert-help" ng-show="showhelp">
-      <button class="btn btn-default" ng-click="toggleHelp()" title="{{'CLOSE'|translate}}">
-        <span class="glyphicon glyphicon-remove"></span>
-      </button>
-      <p translate>HELPCONTENT</p><p translate>HELPCONTENT2</p><p translate>HELPCONTENT3</p><p translate>HELPCONTENT4</p>
-    </div>
     <div ng-view></div>
   </div>
-  
+
   <script src="app/dist_components.js"></script>
   <script src="app/dist.js"></script>
 </body>

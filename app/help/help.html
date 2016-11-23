@@ -1,0 +1,40 @@
+<div class="help-container" ng-if="language === 'fi'">
+<h2>Johdanto</h2>
+<p>Ehdotusjärjestelmä on YSAn, Allärsin ja YSOn uusien käsitteiden luontia ja vanhojen käsitteiden muutoksia varten kehitetty järjestelmäkokonaisuus. Ideana on, että järjestelmän avulla kuka tahansa YSAn, Allärsin tai YSOn käyttäjä voi helposti ehdottaa muutoksia sanastoon.</p>
+<p>Järjestelmä koostuu seuraavista moduuleista:</p>
+<ul>
+  <li>Ehdotuslomake (tämä sivu)</li>
+  <li>Ehdotettujen käsitteiden <a href="https://github.com/Finto-ehdotus/YSE/issues">GitHub-keskustelualusta</a></li>
+  <li>Ehdotettujen käsitteiden <a href="http://finto.fi/yse/fi/">YSE-sanasto Fintossa</a></li>
+</ul>
+<p>Moduulit muodostavat toiminnallisen kokonaisuuden, jossa käyttäjä voi käyttää tarpeensa mukaan vain osaa, tai kaikkia moduuleita.</p>
+<h2>Ehdotuksen tekeminen</h2>
+<ol>
+  <li>Tarkista ensin YSEstä, onko haluamaasi käsitettä ehdotettu aiemmin.
+  <ul>
+   <li>Jos käsite löytyy, voit klikata kohdasta "kotisivu" ja mennä kommentoimaan olemassaolevaa ehdotusta.</li>
+   <li>Jos käsitettä ei löydy ennestään, voit tehdä siitä uuden ehdotuksen ehdotuslomakkeella.</li>
+  </ul>
+  <li>Tee ehdotus ehdotuslomakkeella</li>
+  <ul>
+    <li>ehdotus tehdään yläpalkin pudostusvalikosta, josta valitaan alkuun ehdotuksen tyyppi (uusi käsite tai muutos olemassaolevaan käsitteeseen)</li>
+  </ul>
+  <li>Ehdotuksen tekemisen jälkeen lomake palautuu aloitussivulle, jossa on listaus uusimmista ehdotuksista. Termien linkeistä pääsee ehdotuksen GitHub-sivulle, jossa ehdotuksesta voidaan keskustella.</li>
+</ol>
+<h2>Ehdotuksen eteneminen järjestelmässä</h2>
+<p>Kun ehdotus uuden termin ottamisesta sanastoon on lähetetty, tarkastetaan ehdotus ylläpidon toimesta. Ehdotus hylätään vain jos ehdotuksessa on asiattomuuksia tai jos sitä ei ole luotu lomakkeen kautta.</p>
+<p>Hyväksytyt uudet käsite-ehdotukset siirretään Finton ehdotukset sisältävään "sanastoon" YSEen koneellisesti noin kerran päivässä. YSEen ajon yhteydessä käsite saa oman pysyvän tunnisteensa, URIn. Uusi ehdotus näkyy Fintossa yleensä tarkastuksesta seuraavana päivänä.</p>
+<p>Ehdotuksella on kaksi ominaisuutta, label ja milestone. Label kertoo onko kyseessä uusi käsite, uusi korvattu termi, vai muutos olemassaolevaan käsitteeseen. Milestone kertoo missä vaiheessa ehdotuksen käsittely on. "YSEssä" tarkoittaa että ehdotus on vastaanotettu järjestelmään. "YSA-kokous"-milestone kertoo missä YSA-kokouksessa ehdotusta on viimeksi käsitelty, tai onko se seuraavan tulossa olevan kokouksen asialistalla. Tämä koskee kuitenkin vain järjestelmän käyttöönoton jälkeen pidettyjä kokouksia, aikaisemmin kokouksissa käsitellyillä ehdotuksilla on milestone YSEssä.</p>
+<h2>Ehdotusten käsittely</h2>
+<p>Ehdotukset käsitellään neljä-viisi kertaa vuodessa järjestettävissä YSA-kokouksissa. Tieto kokousten aikataulusta sekä hyväksytyistä ja ei-hyväksytyistä käsitteistä löytyy <a href="https://www.kiwi.fi/display/Asiasanastotjaontologiat/Ajankohtaista">Asiasanastot ja ontologiat -asiakaswikistä</a>.</p>
+<p>Mikäli ehdotettu käsite hyväksytään YSAan, poistetaan ehdotus YSEstä ja ehdotuksen GitHub-issue suljetaan. Tämän jälkeen ehdotus lisätään uutena käsitteenä sanastoon ja sitä voi käyttää kuvailussa. YSAan hyväksytyt käsitteet lisätään YSOon kuukausittain. Ehdotukset joita ei hyväksytä jäävät avoimina GitHubiin ja niitä voi edelleen kommentoida, jolloin ehdotus palautuu uudestaan kokouksen käsittelyyn.</p>
+<p>Maantieteelliset nimet hyväksytään sanastoon ilman kokouksen käsittelyä, mikäli nimeen ei liity epäselvyyksiä. Maantieteelliset nimet eivät sisälly YSOon, mutta ne tullaan julkaisemaan Fintossa erillisenä YSO-paikat ontologiana lähitulevaisuudessa.</p>
+<h2>Ehdotetun käsitteen käyttö kuvailussa</h2>
+<p>Käsite saa jo ehdotusvaiheessa oman pysyvän tunnisteensa, joten sitä on mahdollista käyttää kiireellisissä kuvailutilanteissa. On kuitenkin suositeltavaa odottaa käsitteen hyväksymistä sanastoon ennen sen käyttöä. Jos jo kuvailussä käytettyä ehdotettua käsitettä ei hyväksytänkään sanastoon, hoidetaan käsitteelle uudelleenohjaus toiseen sanaston käsitteeseen tunnisteen perusteella.</p>
+</div>
+<div ng-if="language == 'sv'">
+  <p translate>HELPCONTENT</p>
+  <p translate>HELPCONTENT2</p>
+  <p translate>HELPCONTENT3</p>
+  <p translate>HELPCONTENT4</p>
+</div>
