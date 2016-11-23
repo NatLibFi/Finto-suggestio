@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.list', ['ngRoute'])
+angular.module('suggestio.list', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/list', {

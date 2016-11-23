@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('myApp.change', ['ngRoute']);
+var app = angular.module('suggestio.change', ['ngRoute']);
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/change', {

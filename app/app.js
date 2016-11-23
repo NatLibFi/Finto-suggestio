@@ -1,15 +1,15 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-var app = angular.module('myApp', [
+var app = angular.module('suggestio', [
   'ngRoute',
   'ngCookies',
-  'myApp.list',
-  'myApp.new',
+  'suggestio.list',
+  'suggestio.new',
   'ui.select',
   'angucomplete-alt',
   'pascalprecht.translate',
-  'myApp.change'
+  'suggestio.change'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {

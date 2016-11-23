@@ -1,15 +1,15 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-var app = angular.module('myApp', [
+var app = angular.module('suggestio', [
   'ngRoute',
   'ngCookies',
-  'myApp.list',
-  'myApp.new',
+  'suggestio.list',
+  'suggestio.new',
   'ui.select',
   'angucomplete-alt',
   'pascalprecht.translate',
-  'myApp.change'
+  'suggestio.change'
 ]);
 
 app.config(['$routeProvider', function($routeProvider) {
@@ -265,7 +265,7 @@ app.factory('FormFormatter', [function() {
 
 'use strict';
 
-angular.module('myApp.new', ['ngRoute'])
+angular.module('suggestio.new', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/new', {
@@ -354,7 +354,7 @@ angular.module('myApp.new', ['ngRoute'])
 
 'use strict';
 
-var app = angular.module('myApp.change', ['ngRoute']);
+var app = angular.module('suggestio.change', ['ngRoute']);
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/change', {
@@ -386,7 +386,7 @@ app.controller('ChangeController', ['$scope','$http','$location','FormFormatter'
 
 'use strict';
 
-angular.module('myApp.list', ['ngRoute'])
+angular.module('suggestio.list', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/list', {

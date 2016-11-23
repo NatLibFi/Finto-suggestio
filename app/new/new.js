@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.new', ['ngRoute'])
+angular.module('suggestio.new', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/new', {
