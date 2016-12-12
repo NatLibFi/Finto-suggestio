@@ -33,8 +33,37 @@
 <p>Käsite saa jo ehdotusvaiheessa oman pysyvän tunnisteensa, joten sitä on mahdollista käyttää kiireellisissä kuvailutilanteissa. On kuitenkin suositeltavaa odottaa käsitteen hyväksymistä sanastoon ennen sen käyttöä. Jos jo kuvailussä käytettyä ehdotettua käsitettä ei hyväksytänkään sanastoon, hoidetaan käsitteelle uudelleenohjaus toiseen sanaston käsitteeseen tunnisteen perusteella.</p>
 </div>
 <div ng-if="language == 'sv'">
-  <p translate>HELPCONTENT</p>
-  <p translate>HELPCONTENT2</p>
-  <p translate>HELPCONTENT3</p>
-  <p translate>HELPCONTENT4</p>
+<h2>Introduktion</h2>
+<p>Förslagssystemet är en systemhelhet utvecklad för skapandet av nya begrepp och ändringar i begrepp från tidigare till YSA, Allärs och ALLFO (YSO). Med hjälp av systemet ska vem som helst som använder YSA, Allärs eller ALLFO enkelt kunna påverka innehållet i vokabulärerna.</p>
+<p>Systemet består av följande moduler:</p>
+<ul>
+  <li>Förslagsblankett (denna sida)</li>
+  <li><a href="https://github.com/Finto-ehdotus/YSE/issues">GitHub-diskussionsplattform</a> för föreslagna begrepp</li>
+  <li>Ordlistan <a href="http://finto.fi/yse/fi/">"Allärs och ALLFO begreppsförslag" i Finto</a> innehållandes alla begreppförslag</li>
+</ul>
+<p>Modulerna bildar en funktionell helhet, i vilken användaren enligt egna behov kan använda bara en del, eller alla moduler.</p>
+<h2>Att göra ett förslag</h2>
+<ol>
+  <li>Kontrollera först i ”Allärs och ALLFO begreppsförslag” om begreppet du önskar har föreslagits tidigare.
+  <ul>
+   <li>Om begreppet redan finns bland tidigare förslag så kan du genom att klicka på hemsidelänken gå till begreppets GitHub-sida och kommentera det ikraftvarande begreppsförslaget.</li>
+   <li>Om begreppet inte finns bland förslagen så kan du lägga till det som ett nytt förslag med förslagsblanketten.</li>
+  </ul>
+  <li>Gör ett förslag med förslagsblanketten.</li>
+  <ul>
+    <li>Förslaget görs via den övre menyraden, där man först väljer typen av förslag (nytt begrepp eller ändring i begrepp som redan finns i vokabulären).</li>
+  </ul>
+  <li>När förslaget gjorts återvänder blanketten till förstasidan med en lista över de nyaste förslagen. Via termernas länkar kommer man till förslagens GitHub-sidor där de kan diskuteras.</li>
+</ol>
+<h2>Hur förslaget går vidare i systemet</h2>
+<p>Efter att ett förslag till en ny term i vokabulären har skickats kontrolleras det av terminologiansvariga. Förslaget förkastas direkt endast om det innehåller osakligheter eller det inte har skapats via blanketten.</p>
+<p>Godkända förslag till nya begrepp överförs maskinellt och nästan dagligen till ”Allärs och ALLFO begreppsförslag”. I samband med detta får begreppet en egen bestående identifikator, URI. Det nya förslaget syns vanligen i Finto dagen efter att det har granskats.</p>
+<p>På förslagets GitHub-sida anges ”labels” och ”milestone”. ”Labels” visar om det är frågan om ett nytt begrepp, en ny ersatt term eller en ändring i ett begrepp som redan finns i vokabulären. ”Milestone” visar i vilket skede av behandlingen begreppet befinner sig. ”YSEssä” betyder att begreppet är mottaget i systemet.”YSA-kokous” visar på vilket YSA-möte begreppet senast har behandlats, eller om det finns på agendan för ett kommande YSA-möte. Detta gäller dock endast möten som ägt rum efter ibruktagandet av systemet, förslag som behandlats på tidigare möten har bara ”YSEssä” som milestone.</p>
+<h2>Behandlingen av förslag</h2>
+<p>Förslagen behandlas på YSA-möten som ordnas 4-5 gånger i året. Information om tidtabellen för mötena och om både godkända och icke-godkända begrepp finns i kundwikin <a href="https://www.kiwi.fi/display/Asiasanastotjaontologiat/Ajankohtaista">Asiasanastot ja ontologiat (på finska)</a>.</p>
+<p>Såvida det föreslagna begreppet godkänns till YSA (och Allärs) avlägsnas förslaget ur ”Allärs och ALLFO begreppsförslag” och förslagets GitHub-issue stängs. Därefter läggs förslaget till som ett nytt begrepp i vokabulären och detta kan därmed användas vid innehållsbeskrivning. De begrepp som godkänts till YSA och Allärs läggs också till i ALLFO månatligen. Förslag som inte godkänns förblir öppna i GitHub och dessa kan fortfarande kommenteras, varvid de igen tas upp till behandling.</p>
+<p>Geografiska namn godkänns till vokabulären utan behandling vid möte, såvida det inte finns oklarheter i anslutning till namnet. ALLFO innehåller inga geografiska namn, men dessa kommer att publiceras i en skild ontologi, ALLFO-platser i Finto inom en nära framtid.</p>
+<h2>Användningen av ett föreslaget begrepp vid innehållsbeskrivning</h2>
+<p>Eftersom begrepp redan i förslagsskedet får en egen bestående identifikator så kan de användas direkt i brådskande situationer. Rekommendationen är ändå att man väntar tills begreppet har godkänts innan man använder det som auktoriserad term. Om ett begrepp som redan använts vid innehållsbeskrivning trots allt inte godkänns till vokabulären så blir begreppet baserat på sin identifikator omdirigerat till ett annat begrepp i vokabulären.</p>
+</div>
 </div>

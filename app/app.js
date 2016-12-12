@@ -66,7 +66,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'QA': 'Ehdotuksen lähetys ei onnistu, jos pakollisissa kentissä on puutteita.',
     'THANKS': 'Kiitos ehdotuksestasi! Voit seurata käsittelyn etenemistä ehdotuksen omalla ',
     'ISSUEPAGE': 'GitHub-sivulla',
-    'HELP': 'Näytä ohje',
+    'HELP': 'Ohje',
     'HELPCONTENT': 'Oheisella lomakkeella voit ehdottaa sekä uusia käsitteitä että muutoksia YSAan ja YSOon. Sanastotyön helpottamiseksi ehdotukselta vaaditaan tiettyä minimitasoa. Minimitaso täyttyy kun lomakkeen pakolliset kentät on täytetty. Tällöin ehdotus saa yhden tähden laatuluokituksen ja ehdotuksen voi lähettää. Jokaisesta täytetystä lisäkentästä ehdotus saa yhden laatutähden lisää. Huolellisesti valmisteltu ehdotus on nopeampi käsitellä ja ottaa mukaan sanastoon. Ehdotusten käsittelyyn voi osallistua kommentoimalla niitä GitHubissa ja antamalla käsittelyä helpottavia tarkennuksia/lisätietoja.',
     'HELPCONTENT2': 'Kun ehdotus uuden termin ottamisesta sanastoon on lähetetty, tarkastetaan ehdotus ylläpidon toimesta. Ehdotus hylätään vain jos ehdotuksessa on asiattomuuksia tai jos sitä ei ole luotu lomakkeen kautta. Hyväksytyt uudet käsite-ehdotukset siirretään Finton ehdotukset sisältävään "sanastoon" YSEen koneellisesti noin kerran päivässä. Uusi ehdotus näkyy Fintossa yleensä tarkastuksesta seuraavana päivänä.',
     'HELPCONTENT3': 'Ehdotuksia käsitellään sanastoryhmän kokouksissa. Kun ehdotus päätetään ottaa sanastoon, poistetaan ehdotus YSEstä ja ehdotuksen GitHub-issue suljetaan. Tämän jälkeen ehdotus lisätään sanastoon uutena käsitteenä ja sitä voi käyttää kuvailussa.',
@@ -77,7 +77,7 @@ app.config(['$translateProvider', function ($translateProvider) {
   });
 
   $translateProvider.translations('sv', {
-    'TITLE': 'Formulär för begreppsförslag till Allärs och ALLFO',
+    'TITLE': 'Blankett för begreppsförslag till Allärs och ALLFO',
     'NEWSUGGESTION': 'Föreslå ett nytt begrepp',
     'NEWHEADING': 'Föreslå ett nytt begrepp till Allärs och ALLFO',
     'CHANGEHEADING': 'Föreslå en ändring av ett begrepp som redan finns i Allärs och ALLFO',
@@ -124,7 +124,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'QA': 'Du kan skicka förslaget när du har givit all obligatorisk information.',
     'THANKS': 'Tack för förslaget! Du kan följa behandlingen av förslaget på sin egen ',
     'ISSUEPAGE': 'GitHub sida',
-    'HELP': 'Visa hjälp',
+    'HELP': 'Hjälp',
     'HELPCONTENT': 'Med vidstående blankett kan du föreslå både nya begrepp och förändringar till Allärs och ALLFO. För att underlätta terminologiarbetet krävs en viss miniminivå på förslagen. Miniminivån uppfylls när de obligatoriska fälten i blanketten är ifyllda. Då får förslaget en enstjärnig kvalitetsnivå och förslaget kan skickas. För varje tilläggsfält som fylls i får förslaget en till kvalitetsstjärna. Ett väl förberett förslag är snabbare att behandla och godkänna till tesauren/ontologin. Man kan delta i behandlingen av förslagen genom att kommentera dem i GitHub och bidra med preciseringar eller tilläggsinformation.',
     'HELPCONTENT2': 'Då förslaget till en ny term har skickats kontrolleras det av terminologiansvariga. Förslaget förkastas endast om det innehåller osakligheter eller om det inte har skapats genom blanketten. Godkända förslag till nya begrepp överförs maskinellt till termlistan ”Allärs och ALLFO begreppsförslag” som finns i Finto. Nya förslag syns vanligen i Finto dagen efter att de har kontrollerats.',
     'HELPCONTENT3': 'Förslagen behandlas på terminologigruppens möten. Då man har fattat beslut om att godkänna ett förslag till tesauren/ontologin raderas förslaget ur listan ”Allärs och ALLFO begreppsförslag” och GitHub-issuen för förslaget stängs. Efter detta läggs förslaget in i tesauren/ontologin som ett nytt begrepp och kan då användas som ämnesord vid indexering.',
