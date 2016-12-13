@@ -8,7 +8,7 @@
 .navbar, .navbar-nav, .navbar-nav * {
   border-radius: 0;
   height: 40px;
-  line-height: 40px;
+  line-height: 45px;
   min-height: 40px;
 }
 
@@ -17,12 +17,12 @@
 }
 
 #navbar > h1 {
-  font-size: 18px;
+  font-size: 16px;
   display: inline-block;
 }
 
 .navbar * {
-  color: #333 !important;
+  color: #394554 !important;
 }
 
 #navbar > ul > li:hover, #navbar > ul > .open > a {
@@ -61,6 +61,12 @@
   background-color: #fff;
   border-color: #83CFC8;
   box-shadow: none !important;
+}
+
+.finto-logo {
+  margin-left: -30px;
+  margin-top: -15px;
+  margin-right: 10px;
 }
 
 /** Typography **/
@@ -102,6 +108,10 @@ form.ng-submitted .ng-invalid, .ng-submitted.ng-invalid-autocomplete-required #p
 
 form.ng-submitted.ng-invalid .quality-control, .ng-submitted.ng-invalid-autocomplete-required .invalid-msg {
   color: red;
+}
+
+a {
+  color: #00748f !important;
 }
 
 a, a:focus, a:hover {
