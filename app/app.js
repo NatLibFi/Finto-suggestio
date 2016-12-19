@@ -73,6 +73,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'HELPCONTENT4': 'Voit lähettää palautetta ja kehitysehdotuksia osoitteeseen: finto-posti(ät)helsinki.fi',
     'CLOSE': 'Sulje',
     'INPROGRESS': 'Ehdotusta lähetetään parhaillaan, odota hetki!',
+    'SHORTDESC': 'Ehdotusjärjestelmän avulla kuka tahansa YSAn, Allärsin tai YSOn käyttäjä voi helposti ehdottaa muutoksia sanastoon. Ehdotus tehdään yläpalkin pudostusvalikosta, josta valitaan alkuun ehdotuksen tyyppi (uusi käsite tai muutos olemassaolevaan käsitteeseen)',
     'GEO': 'Maantieteellinen paikka'
   });
 
@@ -131,6 +132,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'HELPCONTENT4': 'Du kan skicka respons och utvecklingsförslag till adressen: finto-posti(at)helsinki.fi',
     'CLOSE': 'Stäng',
     'INPROGRESS': 'Ehdotusta lähetetään parhaillaan, odota hetki!',
+    'SHORTDESC': 'Med hjälp av förslagssystemet ska vem som helst som använder YSA, Allärs eller ALLFO enkelt kunna påverka innehållet i vokabulärerna. Förslaget görs via den övre menyraden, där man först väljer typen av förslag (nytt begrepp eller ändring i begrepp som redan finns i vokabulären).',
     'GEO': 'Geografisk plats'
   });
 
