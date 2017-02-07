@@ -100,7 +100,7 @@ app.config(['$translateProvider', function ($translateProvider) {
     'SCOPENOTE': 'Förklaring som preciserar betydelsen',
     'EXPLANATION': 'Motiveringar för förslaget',
     'NEEDEDFOR': 'I beskrivningen av vilket material behöver du begreppet (t.ex. titel eller URL)',
-    'NAME': 'Förslagsställarens namn',  
+    'NAME': 'Förslagsställarens namn',
     'ORG': 'Förslagsställarens organisation',
     'EMAIL': 'E-postadress',
     'EMAILINFO' : 'Du får information om hur behandlingen av förslaget framskrider till din e-post',
@@ -163,7 +163,7 @@ app.directive('existingConcept', function($http) {
   return {
     restrict: 'A',
     require: 'ngModel',
-    link: function(scope, elem, attr, ctrl) { 
+    link: function(scope, elem, attr, ctrl) {
       scope.$watch(attr.ngModel, function(value) {
         // if there was a previous attempt, stop it.
         if (!value)
@@ -191,7 +191,7 @@ app.directive('newConcept', function($http) {
   return {
     restrict: 'A',
     require: 'ngModel',
-    link: function(scope, elem, attr, ctrl) { 
+    link: function(scope, elem, attr, ctrl) {
       scope.$watch(attr.ngModel, function(value) {
         // if there was a previous attempt, stop it.
         if (!value)
@@ -221,8 +221,8 @@ app.directive('newConcept', function($http) {
 
 app.factory('FormFormatter', [function() {
   return {
-    markdown: function(suggestion) { 
-      var labels = {'type': 'Ehdotuksen tyyppi', 'preflabelfi': 'Ehdotettu termi suomeksi', 'preflabelsv': 'Ehdotettu termi ruotsiksi', 'preflabelen': 'Ehdotettu termi englanniksi', 'state': 'Tila', 'change':'Ehdotettu muutos', 'scopenote': 'Tarkoitusta täsmentävä selite', 'explanation': 'Perustelut ehdotukselle', 'broader': 'Ehdotettu yläkäsite YSOssa (LT)', 'groups': 'Ehdotetut temaattiset ryhmät (YSA-ryhmät)','name': 'Ehdottajan nimi', 'email': 'Ehdottajan sähköpostiosoite', 'altlabel': 'Vaihtoehtoiset termit ja ilmaisut', 'narrower': 'Alakäsitteet (RT)', 'related': 'Assosiatiiviset (ST)', 'fromname': 'Ehdottaja', 'fromorg': 'Ehdottajan organisaatio', 'org': 'Ehdottajan organisaatio', 'fromemail': 'Ehdottajan sähköpostiosoite','neededfor': 'Aineisto jonka kuvailussa käsitettä tarvitaan (esim. nimeke tai URL)', 'concepttype': 'Käsitteen tyyppi'};
+    markdown: function(suggestion) {
+      var labels = {'type': 'Ehdotuksen tyyppi', 'preflabelfi': 'Ehdotettu termi suomeksi', 'preflabelsv': 'Ehdotettu termi ruotsiksi', 'preflabelen': 'Ehdotettu termi englanniksi', 'state': 'Tila', 'change':'Ehdotettu muutos', 'scopenote': 'Tarkoitusta täsmentävä selite', 'explanation': 'Perustelut ehdotukselle', 'broader': 'Ehdotettu yläkäsite YSOssa (LT)', 'groups': 'Ehdotetut temaattiset ryhmät (YSA-ryhmät)','name': 'Ehdottajan nimi', 'email': 'Ehdottajan sähköpostiosoite', 'altlabel': 'Vaihtoehtoiset termit ja ilmaisut', 'narrower': 'Alakäsitteet (RT)', 'related': 'Assosiatiiviset (RT)', 'fromname': 'Ehdottaja', 'fromorg': 'Ehdottajan organisaatio', 'org': 'Ehdottajan organisaatio', 'fromemail': 'Ehdottajan sähköpostiosoite','neededfor': 'Aineisto jonka kuvailussa käsitettä tarvitaan (esim. nimeke tai URL)', 'concepttype': 'Käsitteen tyyppi'};
       var propertyMd = '';
       var priorityMd = '';
       var contactMd = '';
@@ -238,17 +238,17 @@ app.factory('FormFormatter', [function() {
             if(property === 'groups') {
                 valuemd += '[' + propval[i].prefLabel + '](' + propval[i].uri + ') \n';
             } else if(propval[i].originalObject) {
-                valuemd += '[' + propval[i].originalObject.prefLabel + '](' + propval[i].originalObject.uri + ') \n';   
+                valuemd += '[' + propval[i].originalObject.prefLabel + '](' + propval[i].originalObject.uri + ') \n';
             } else if(propval[i].vocab || propval[i].value) {
                 var match = (propval[i].value.indexOf('http:') !== -1) ? '<' + propval[i].value + '>' : propval[i].value;
-                valuemd += propval[i].vocab + ' : ' + match + ' \n';   
+                valuemd += propval[i].vocab + ' : ' + match + ' \n';
             }
           }
           if (valuemd !== '') {
               propertyMd += '#### ' + proplabel + '   \n\n' + valuemd + '\n';
           }
         } else if (propval.originalObject) { // if there is an uri available add a link
-            propertyMd += '#### ' + proplabel + '   \n\n' + 
+            propertyMd += '#### ' + proplabel + '   \n\n' +
               '[' + propval.originalObject.prefLabel + '](' + propval.originalObject.uri + ') \n\n';
         } else if (property.indexOf('preflabel') !== -1 || property === 'concepttype') { // placing prefLabels and type at the top
             priorityMd += '#### ' + proplabel + '   \n\n' + propval + ' \n\n';
@@ -261,7 +261,7 @@ app.factory('FormFormatter', [function() {
       if (contactMd.substring(contactMd.length-1) === '\n') {
         contactMd = contactMd.substring(0, contactMd.length-1);
       }
-      return priorityMd + propertyMd + contactMd;  
+      return priorityMd + propertyMd + contactMd;
     }
   };
 }]);

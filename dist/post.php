@@ -1,5 +1,7 @@
 <?php
-$url = 'https://api.github.com/repos/Finto-ehdotus/YSETEST/issues';
+header("Content-type: application/json");
+
+$url = 'https://api.github.com/repos/Finto-ehdotus/YSE/issues';
 $session = curl_init($url);
 
 $post_body = file_get_contents('php://input');
