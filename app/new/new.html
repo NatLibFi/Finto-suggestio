@@ -118,9 +118,9 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="groups" class="col-sm-4" translate>{{'GROUP'}}: *</label>
+    <label for="groups" class="col-sm-4" translate>{{'GROUP'}}:</label>
     <div class="col-sm-8">
-      <ui-select multiple ng-model="suggestionCtrl.suggestion.groups" theme="bootstrap" ui-select-required>
+      <ui-select multiple ng-model="suggestionCtrl.suggestion.groups" theme="bootstrap">
       <ui-select-match placeholder="{{ 'CHOOSEGROUP' | translate }}">{{$item.prefLabel}}</ui-select-match>
         <ui-select-choices repeat="item in groupList">
         <div ng-bind-html="trustAsHtml(item.prefLabel)">{{item.prefLabel}}</div>
