@@ -13,7 +13,7 @@ angular.module('suggestio.new', ['ngRoute'])
 .controller('SuggestionController', ['$http','$location','$scope','$sce','FormFormatter' , function($http, $location, $scope, $sce, FormFormatter) {
   $scope.changePage('new');
   $scope.waitForPost = false;
-  this.suggestion = {'broader': [], 'narrower': [], 'related': [], 'exactMatch': []};
+  this.suggestion = {'altLabel': [], 'broader': [], 'narrower': [], 'related': [], 'exactMatch': []};
   
   $scope.trustAsHtml = function(value) {
     return $sce.trustAsHtml(value);

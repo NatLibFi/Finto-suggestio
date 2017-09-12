@@ -222,7 +222,28 @@ app.directive('newConcept', function($http) {
 app.factory('FormFormatter', [function() {
   return {
     markdown: function(suggestion) {
-      var labels = {'type': 'Ehdotuksen tyyppi', 'preflabelfi': 'Ehdotettu termi suomeksi', 'preflabelsv': 'Ehdotettu termi ruotsiksi', 'preflabelen': 'Ehdotettu termi englanniksi', 'state': 'Tila', 'change':'Ehdotettu muutos', 'scopenote': 'Tarkoitusta täsmentävä selite', 'explanation': 'Perustelut ehdotukselle', 'broader': 'Ehdotettu yläkäsite YSOssa (LT)', 'groups': 'Ehdotetut temaattiset ryhmät (YSA-ryhmät)','name': 'Ehdottajan nimi', 'email': 'Ehdottajan sähköpostiosoite', 'altlabel': 'Vaihtoehtoiset termit ja ilmaisut', 'narrower': 'Alakäsitteet (RT)', 'related': 'Assosiatiiviset (RT)', 'fromname': 'Ehdottaja', 'fromorg': 'Ehdottajan organisaatio', 'org': 'Ehdottajan organisaatio', 'fromemail': 'Ehdottajan sähköpostiosoite','neededfor': 'Aineisto jonka kuvailussa käsitettä tarvitaan (esim. nimeke tai URL)', 'concepttype': 'Käsitteen tyyppi'};
+      var labels = {
+          'type': 'Ehdotuksen tyyppi',
+          'preflabelfi': 'Ehdotettu termi suomeksi',
+          'preflabelsv': 'Ehdotettu termi ruotsiksi',
+          'preflabelen': 'Ehdotettu termi englanniksi',
+          'state': 'Tila', 'change':'Ehdotettu muutos',
+          'scopenote': 'Tarkoitusta täsmentävä selite',
+          'explanation': 'Perustelut ehdotukselle',
+          'broader': 'Ehdotettu yläkäsite YSOssa (LT)',
+          'groups': 'Ehdotetut temaattiset ryhmät (YSA-ryhmät)',
+          'name': 'Ehdottajan nimi',
+          'email': 'Ehdottajan sähköpostiosoite',
+          'altLabel': 'Vaihtoehtoiset termit ja ilmaisut',
+          'narrower': 'Alakäsitteet (RT)',
+          'related': 'Assosiatiiviset (RT)',
+          'fromname': 'Ehdottaja',
+          'fromorg': 'Ehdottajan organisaatio',
+          'org': 'Ehdottajan organisaatio',
+          'fromemail': 'Ehdottajan sähköpostiosoite',
+          'neededfor': 'Aineisto jonka kuvailussa käsitettä tarvitaan (esim. nimeke tai URL)',
+          'concepttype': 'Käsitteen tyyppi'
+      };
       var propertyMd = '';
       var priorityMd = '';
       var contactMd = '';
@@ -242,6 +263,8 @@ app.factory('FormFormatter', [function() {
             } else if(propval[i].vocab || propval[i].value) {
                 var match = (propval[i].value.indexOf('http:') !== -1) ? '<' + propval[i].value + '>' : propval[i].value;
                 valuemd += propval[i].vocab + ' : ' + match + ' \n';
+            } else if (property === 'altLabel') {
+                valuemd += propval[i] + ' \n';
             }
           }
           if (valuemd !== '') {
@@ -281,7 +304,7 @@ angular.module('suggestio.new', ['ngRoute'])
 .controller('SuggestionController', ['$http','$location','$scope','$sce','FormFormatter' , function($http, $location, $scope, $sce, FormFormatter) {
   $scope.changePage('new');
   $scope.waitForPost = false;
-  this.suggestion = {'broader': [], 'narrower': [], 'related': [], 'exactMatch': []};
+  this.suggestion = {'altLabel': [], 'broader': [], 'narrower': [], 'related': [], 'exactMatch': []};
   
   $scope.trustAsHtml = function(value) {
     return $sce.trustAsHtml(value);

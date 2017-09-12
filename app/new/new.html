@@ -33,7 +33,10 @@
   <div class="form-group">
     <label for="altlabel" class="col-sm-4" translate>{{'ALTLABEL'}}:</label>
     <div class="col-sm-8">
-      <input name="altlabel" ng-model="suggestionCtrl.suggestion.altlabel" type="text" class="form-control col-sm-10" id="altlabel">
+      <input name="altlabel" ng-model="suggestionCtrl.suggestion.altLabel[0]" type="text" class="form-control col-sm-10" id="altlabel">
+    </div>
+    <div class="col-sm-8 col-sm-offset-4" ng-repeat="n in suggestionCtrl.suggestion.altLabel" ng-show="suggestionCtrl.suggestion.altLabel.length > 0">
+      <input name="altlabel" ng-model="suggestionCtrl.suggestion.altLabel[$index+1]" type="text" class="form-control col-sm-10" id="altlabel">
     </div>
   </div>
   <div class="form-group">
