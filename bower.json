@@ -14,6 +14,7 @@
     "angular-translate": "~2.7.2",
     "angular-translate-storage-cookie": "~2.7.2",
     "angular-ui-select": "~0.12.1",
-    "bootstrap": "~3.3.5"
+    "bootstrap": "~3.3.5",
+    "raven-js": "^3.17.0"
   }
 }

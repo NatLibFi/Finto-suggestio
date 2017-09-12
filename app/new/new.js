@@ -14,7 +14,7 @@ angular.module('suggestio.new', ['ngRoute'])
   $scope.changePage('new');
   $scope.waitForPost = false;
   this.suggestion = {'altLabel': [], 'broader': [], 'narrower': [], 'related': [], 'exactMatch': []};
-  
+
   $scope.trustAsHtml = function(value) {
     return $sce.trustAsHtml(value);
   };
@@ -22,11 +22,15 @@ angular.module('suggestio.new', ['ngRoute'])
   $scope.requestFormatter = function(qstring) {
     return {query: qstring + '*', lang: $scope.language};
   };
-    
+
   $scope.groupList = [];
-  $http.get('http://api.finto.fi/rest/v1/yso/groups?lang=' + $scope.language).then(function(response) {
-    $scope.groupList = response.data.groups;
-  });
+  try {
+    $http.get('http://api.finto.fi/rest/v1/yso/groups?lang=' + $scope.language).then(function(response) {
+      $scope.groupList = response.data.groups;
+    });
+  } catch(e) {
+    Raven.captureException(e);
+  }
 
   this.addSuggestion = function() {
     // preventing resubmit if the post takes longer than expected
@@ -43,10 +47,12 @@ angular.module('suggestio.new', ['ngRoute'])
       var number = (typeof response.data === 'string') ? JSON.parse(response.data.substring(response.data.indexOf('{'))).number : response.data.number;
       $location.path('/list').search({submitted: number});
     }, function(response) {
+      Raven.setExtraContext({post: response, markdown: msg});
+      Raven.captureException(new Error('POST failed'));
       $location.path('/list').search();
     });
   };
-  
+
   this.getStars = function() {
     if ($scope.suggestionForm.$invalid || (!this.suggestion.preflabelfi && !this.suggestion.preflabelsv)) {
       return 0;
@@ -62,12 +68,12 @@ angular.module('suggestio.new', ['ngRoute'])
   };
 
   $scope.getNumber = function(num) {
-    return new Array(num);   
+    return new Array(num);
   };
 }])
 
-.directive('uiSelectRequired', function () { 
-  return { require: 'ngModel', link: function (scope, elm, attrs, ctrl) { 
+.directive('uiSelectRequired', function () {
+  return { require: 'ngModel', link: function (scope, elm, attrs, ctrl) {
     ctrl.$validators.uiSelectRequired = function (modelValue, viewValue) {
             if (scope.suggestionCtrl.suggestion.concepttype !== 'CONCEPT') {
                 return true;
@@ -85,4 +91,4 @@ angular.module('suggestio.new', ['ngRoute'])
         };
     }
   };
-}); 
+});

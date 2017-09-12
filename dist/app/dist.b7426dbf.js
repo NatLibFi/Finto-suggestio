@@ -2,6 +2,7 @@
 
 // Declare app level module which depends on views, and components
 var app = angular.module('suggestio', [
+  'ngRaven',
   'ngRoute',
   'ngCookies',
   'suggestio.list',
@@ -12,6 +13,8 @@ var app = angular.module('suggestio', [
   'suggestio.change',
   'suggestio.help'
 ]);
+
+Raven.config('https://1837b63976394746911473fa08e90761@sentry.io/215910').addPlugin(Raven.Plugins.Angular).install();
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/list'});
@@ -242,11 +245,15 @@ app.factory('FormFormatter', [function() {
           'org': 'Ehdottajan organisaatio',
           'fromemail': 'Ehdottajan sähköpostiosoite',
           'neededfor': 'Aineisto jonka kuvailussa käsitettä tarvitaan (esim. nimeke tai URL)',
-          'concepttype': 'Käsitteen tyyppi'
+          'concepttype': 'Käsitteen tyyppi',
+          'exactMatch': 'Vastaava käsite muussa sanastossa'
       };
       var propertyMd = '';
       var priorityMd = '';
       var contactMd = '';
+      Raven.setUserContext({
+        email: suggestion.email
+      });
 
       for (var property in suggestion) {
         var proplabel = labels[property] ? labels[property] : property;
@@ -305,7 +312,7 @@ angular.module('suggestio.new', ['ngRoute'])
   $scope.changePage('new');
   $scope.waitForPost = false;
   this.suggestion = {'altLabel': [], 'broader': [], 'narrower': [], 'related': [], 'exactMatch': []};
-  
+
   $scope.trustAsHtml = function(value) {
     return $sce.trustAsHtml(value);
   };
@@ -313,11 +320,15 @@ angular.module('suggestio.new', ['ngRoute'])
   $scope.requestFormatter = function(qstring) {
     return {query: qstring + '*', lang: $scope.language};
   };
-    
+
   $scope.groupList = [];
-  $http.get('http://api.finto.fi/rest/v1/yso/groups?lang=' + $scope.language).then(function(response) {
-    $scope.groupList = response.data.groups;
-  });
+  try {
+    $http.get('http://api.finto.fi/rest/v1/yso/groups?lang=' + $scope.language).then(function(response) {
+      $scope.groupList = response.data.groups;
+    });
+  } catch(e) {
+    Raven.captureException(e);
+  }
 
   this.addSuggestion = function() {
     // preventing resubmit if the post takes longer than expected
@@ -334,10 +345,12 @@ angular.module('suggestio.new', ['ngRoute'])
       var number = (typeof response.data === 'string') ? JSON.parse(response.data.substring(response.data.indexOf('{'))).number : response.data.number;
       $location.path('/list').search({submitted: number});
     }, function(response) {
+      Raven.setExtraContext({post: response, markdown: msg});
+      Raven.captureException(new Error('POST failed'));
       $location.path('/list').search();
     });
   };
-  
+
   this.getStars = function() {
     if ($scope.suggestionForm.$invalid || (!this.suggestion.preflabelfi && !this.suggestion.preflabelsv)) {
       return 0;
@@ -353,12 +366,12 @@ angular.module('suggestio.new', ['ngRoute'])
   };
 
   $scope.getNumber = function(num) {
-    return new Array(num);   
+    return new Array(num);
   };
 }])
 
-.directive('uiSelectRequired', function () { 
-  return { require: 'ngModel', link: function (scope, elm, attrs, ctrl) { 
+.directive('uiSelectRequired', function () {
+  return { require: 'ngModel', link: function (scope, elm, attrs, ctrl) {
     ctrl.$validators.uiSelectRequired = function (modelValue, viewValue) {
             if (scope.suggestionCtrl.suggestion.concepttype !== 'CONCEPT') {
                 return true;
@@ -376,7 +389,7 @@ angular.module('suggestio.new', ['ngRoute'])
         };
     }
   };
-}); 
+});
 
 'use strict';
 
