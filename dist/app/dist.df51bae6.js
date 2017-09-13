@@ -296,3 +296,193 @@ app.factory('FormFormatter', [function() {
     }
   };
 }]);
+
+'use strict';
+
+angular.module('suggestio.new', ['ngRoute'])
+
+.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/new', {
+    templateUrl: 'new/new.html',
+    controller: 'SuggestionController',
+    controllerAs: 'suggestionCtrl'
+  });
+}])
+
+.controller('SuggestionController', ['$http','$location','$scope','$sce','FormFormatter' , function($http, $location, $scope, $sce, FormFormatter) {
+  $scope.changePage('new');
+  $scope.waitForPost = false;
+  this.suggestion = {'altLabel': [], 'broader': [], 'narrower': [], 'related': [], 'exactMatch': []};
+
+  $scope.trustAsHtml = function(value) {
+    return $sce.trustAsHtml(value);
+  };
+
+  $scope.requestFormatter = function(qstring) {
+    return {query: qstring + '*', lang: $scope.language};
+  };
+
+  $scope.groupList = [];
+  try {
+    $http.get('http://api.finto.fi/rest/v1/yso/groups?lang=' + $scope.language).then(function(response) {
+      $scope.groupList = response.data.groups;
+    });
+  } catch(e) {
+    Raven.captureException(e);
+  }
+
+  this.addSuggestion = function() {
+    // preventing resubmit if the post takes longer than expected
+    if ($scope.waitForPost) { return; }
+    $scope.waitForPost = true;
+    var msg_body = FormFormatter.markdown(this.suggestion);
+    var msg_title = this.suggestion.preflabelfi ? this.suggestion.preflabelfi : this.suggestion.preflabelsv;
+    if ($scope.language === 'sv') {
+        msg_title = this.suggestion.preflabelsv ? this.suggestion.preflabelsv : this.suggestion.preflabelfi;
+    }
+    var msg = {'title': msg_title, 'body': msg_body, 'labels': ['uusi']};
+    $http({method: 'POST', url: './post.php', data: msg}).then(function(response) {
+      // making sure there is no crap before the actual json response
+      var number = (typeof response.data === 'string') ? JSON.parse(response.data.substring(response.data.indexOf('{'))).number : response.data.number;
+      $location.path('/list').search({submitted: number});
+    }, function(response) {
+      Raven.setExtraContext({post: response, markdown: msg});
+      Raven.captureException(new Error('POST failed'));
+      $location.path('/list').search();
+    });
+  };
+
+  this.getStars = function() {
+    if ($scope.suggestionForm.$invalid || (!this.suggestion.preflabelfi && !this.suggestion.preflabelsv)) {
+      return 0;
+    }
+    var stars = 0;
+    var required = ['concepttype', 'state', 'date', 'groups', 'name', 'email', 'explanation', 'neededfor'];
+    for (var prop in this.suggestion) {
+      if (required.indexOf(prop) === -1 && this.suggestion[prop] !== '' && this.suggestion[prop].length > 0 && stars < 5) {
+        stars += 1; // one star for each additional field
+      }
+    }
+    return stars; // the compulsory first prefLabel is counted as the first star
+  };
+
+  $scope.getNumber = function(num) {
+    return new Array(num);
+  };
+}])
+
+.directive('uiSelectRequired', function () {
+  return { require: 'ngModel', link: function (scope, elm, attrs, ctrl) {
+    ctrl.$validators.uiSelectRequired = function (modelValue, viewValue) {
+            if (scope.suggestionCtrl.suggestion.concepttype !== 'CONCEPT') {
+                return true;
+            }
+            var determineVal;
+            if (angular.isArray(modelValue)) {
+                determineVal = modelValue;
+            } else if (angular.isArray(viewValue)) {
+                determineVal = viewValue;
+            } else {
+                return false;
+            }
+
+            return determineVal.length > 0;
+        };
+    }
+  };
+});
+
+'use strict';
+
+var app = angular.module('suggestio.change', ['ngRoute']);
+
+app.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/change', {
+    templateUrl: 'change/change.html',
+    controller: 'ChangeController',
+    controllerAs: 'changeCtrl'
+  });
+}]);
+
+app.controller('ChangeController', ['$scope','$http','$location','FormFormatter', function($scope, $http, $location, FormFormatter) {
+  $scope.changePage('change');
+  $scope.requestFormatter = function(qstring) {
+    return {query: qstring + '*', lang: $scope.language, vocab: 'ysa allars'};
+  };
+  this.labels = {'type': 'Ehdotuksen tyyppi', 'preflabel': 'Päätermi/asiasana', 'state': 'Tila', 'change':'Ehdotettu muutos', 'explanation': 'Perustelut ehdotukselle', 'fromname': 'Ehdottajan nimi', 'fromemail': 'Ehdottajan sähköpostiosoite'};
+
+  this.suggestion = {type: 'Muutos olemassa olevaan käsitteeseen', preflabel: '', state: 'Käsittelyssä'};
+
+  this.submitSuggestion = function() {
+    var msg_body = FormFormatter.markdown(this.suggestion);
+    var msg_title = this.suggestion.preflabel.title;
+    var msg = {'title': msg_title, 'body': msg_body, 'labels': ['muutos']};
+    $http({method: 'POST', url: '../post.php', data: msg}).then(function(response) {
+      $location.path('/list');
+    });
+  };
+}]);
+
+
+'use strict';
+
+angular.module('suggestio.list', ['ngRoute'])
+
+.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/list', {
+    templateUrl: 'list/list.html',
+    controller: 'ListController',
+    controllerAs: 'listCtrl'
+  });
+}])
+
+.filter('determineType', function() {
+  return function(input) {
+    for(var i in input) {
+      if(input[i].name === 'muutos') {
+        return 'Muutosehdotus';
+      }
+      return 'Käsite-ehdotus';
+    }
+  };
+})
+
+.controller('ListController', ['$http','$scope','$routeParams', function($http, $scope, $routeParams) {
+  $scope.suggestions = [];
+  $scope.changePage('list');
+  $scope.pagetitle = 'LISTHEADING';
+  $scope.grateful = $routeParams.submitted !== undefined ? true : false;
+  $scope.issuenum = $routeParams.submitted;
+
+  $http.get('./list.php').then(function(data){
+    var issues = data.data.splice(0, 15);
+    for(var i in issues) {
+      $scope.suggestions.push({
+        type: issues[i].labels, 
+        preflabel: issues[i].title, 
+        state: issues[i].labels, 
+        date: issues[i].created_at, 
+        comments: issues[i].comments,
+        href: issues[i].html_url
+      });
+    }
+  },function() {});
+}]);
+
+
+'use strict';
+
+angular.module('suggestio.help', ['ngRoute'])
+
+.config(['$routeProvider', function($routeProvider) {
+  $routeProvider.when('/help', {
+    templateUrl: 'help/help.html',
+    controller: 'HelpController',
+    controllerAs: 'helpCtrl'
+  });
+}])
+
+.controller('HelpController', ['$http','$scope','$routeParams', function($http, $scope, $routeParams) {
+  $scope.changePage('help');
+}]);
+
