@@ -264,15 +264,17 @@ app.factory('FormFormatter', [function() {
         if (Object.prototype.toString.call(propval) === '[object Array]') {
           var valuemd = '';
           for (var i in propval) {
-            if(property === 'groups') {
-                valuemd += '[' + propval[i].prefLabel + '](' + propval[i].uri + ') \n';
-            } else if(propval[i].originalObject) {
-                valuemd += '[' + propval[i].originalObject.prefLabel + '](' + propval[i].originalObject.uri + ') \n';
-            } else if(propval[i].vocab || propval[i].value) {
-                var match = (propval[i].value.indexOf('http:') !== -1) ? '<' + propval[i].value + '>' : propval[i].value;
-                valuemd += propval[i].vocab + ' : ' + match + ' \n';
-            } else if (property === 'altLabel') {
-                valuemd += propval[i] + ' \n';
+            if (propval[i] !== null && propval[i] !== undefined) {
+              if(property === 'groups') {
+                  valuemd += '[' + propval[i].prefLabel + '](' + propval[i].uri + ') \n';
+              } else if(propval[i].hasOwnProperty('originalObject')) {
+                  valuemd += '[' + propval[i].originalObject.prefLabel + '](' + propval[i].originalObject.uri + ') \n';
+              } else if(propval[i].vocab || propval[i].value) {
+                  var match = (propval[i].value.indexOf('http:') !== -1) ? '<' + propval[i].value + '>' : propval[i].value;
+                  valuemd += propval[i].vocab + ' : ' + match + ' \n';
+              } else if (property === 'altLabel') {
+                  valuemd += propval[i] + ' \n';
+              }
             }
           }
           if (valuemd !== '') {
