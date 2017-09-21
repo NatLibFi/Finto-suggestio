@@ -23,7 +23,7 @@ app.controller('ChangeController', ['$scope','$http','$location','FormFormatter'
     var msg_body = FormFormatter.markdown(this.suggestion);
     var msg_title = this.suggestion.preflabel.title;
     var msg = {'title': msg_title, 'body': msg_body, 'labels': ['muutos']};
-    $http({method: 'POST', url: '../post.php', data: msg}).then(function(response) {
+    $http({method: 'POST', url: './post.php', data: msg}).then(function(response) {
       $location.path('/list');
     });
   };

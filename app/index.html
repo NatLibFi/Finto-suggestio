@@ -29,10 +29,10 @@
 
   <div class="container">
     <ul class="nav nav-tabs">
-      <li role="presentation" ng-class="{active: currentpage === 'list'}"><a href="#/list">{{ 'LIST' | translate }}</a></li>
-      <li role="presentation" ng-class="{active: currentpage === 'new'}"><a ng-click="changePage('new')" href="#/new">{{ 'NEWSUGGESTION' | translate }}</a></li>
-      <li role="presentation" ng-class="{active: currentpage === 'change'}"><a ng-click="changePage('change')" href="#/change">{{ 'CHANGESUGGESTION' | translate }}</a></li>
-      <li role="presentation" ng-class="{active: currentpage === 'help'}"><a href="#/help">{{ 'HELP' | translate }}</a></li>
+      <li role="presentation" ng-class="{active: currentpage === 'list'}"><a href="#!/list">{{ 'LIST' | translate }}</a></li>
+      <li role="presentation" ng-class="{active: currentpage === 'new'}"><a ng-click="changePage('new')" href="#!/new">{{ 'NEWSUGGESTION' | translate }}</a></li>
+      <li role="presentation" ng-class="{active: currentpage === 'change'}"><a ng-click="changePage('change')" href="#!/change">{{ 'CHANGESUGGESTION' | translate }}</a></li>
+      <li role="presentation" ng-class="{active: currentpage === 'help'}"><a href="#!/help">{{ 'HELP' | translate }}</a></li>
     </ul>
     <div ng-view></div>
   </div>
