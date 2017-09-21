@@ -6,14 +6,14 @@
   "dependencies": {
     "bower": "^1.5.1",
     "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
+    "gulp-concat": "^2.6.1",
     "jasmine-core": "^2.3.4",
     "protractor": "^2.1.0",
     "shelljs": "^0.2.6"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
+    "gulp-concat": "^2.6.1",
     "http-server": "^0.6.1",
     "karma": "^0.12.37",
     "karma-chrome-launcher": "^0.1.12",
