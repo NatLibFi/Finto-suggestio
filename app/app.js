@@ -270,8 +270,12 @@ app.factory('FormFormatter', [function() {
               } else if(propval[i].hasOwnProperty('originalObject')) {
                   valuemd += '[' + propval[i].originalObject.prefLabel + '](' + propval[i].originalObject.uri + ') \n';
               } else if(propval[i].vocab || propval[i].value) {
-                  var match = (propval[i].value.indexOf('http:') !== -1) ? '<' + propval[i].value + '>' : propval[i].value;
-                  valuemd += propval[i].vocab + ' : ' + match + ' \n';
+                  var vocstr = (propval[i].hasOwnProperty('vocab')) ? propval[i].vocab  + ' : ' : '';
+                  var matchstr = '';
+                  if (propval[i].hasOwnProperty('value')) {
+                    matchstr = (propval[i].value.indexOf('http:') !== -1) ? '<' + propval[i].value + '>' : propval[i].value;
+                  }
+                  valuemd += vocstr + matchstr + ' \n';
               } else if (property === 'altLabel') {
                   valuemd += propval[i] + ' \n';
               }
