@@ -289,7 +289,7 @@ app.factory('FormFormatter', [function() {
               '[' + propval.originalObject.prefLabel + '](' + propval.originalObject.uri + ') \n\n';
         } else if (property.indexOf('preflabel') !== -1 || property === 'concepttype') { // placing prefLabels and type at the top
             priorityMd += '#### ' + proplabel + '   \n\n' + propval + ' \n\n';
-        } else if (property === 'name' || property === 'email' || property === 'org') { // placing contact info at the bottom in a condensed format
+        } else if (property === 'org') { // placing contact info at the bottom in a condensed format
             contactMd += '**' + proplabel + ':** ' + propval + ' \n';
         } else {
             propertyMd += '#### ' + proplabel + '   \n\n' + propval + ' \n\n';
