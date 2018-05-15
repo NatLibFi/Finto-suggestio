@@ -289,7 +289,7 @@ app.factory('FormFormatter', [function() {
               '[' + propval.originalObject.prefLabel + '](' + propval.originalObject.uri + ') \n\n';
         } else if (property.indexOf('preflabel') !== -1 || property === 'concepttype') { // placing prefLabels and type at the top
             priorityMd += '#### ' + proplabel + '   \n\n' + propval + ' \n\n';
-        } else if (property === 'name' || property === 'email' || property === 'org') { // placing contact info at the bottom in a condensed format
+        } else if (property === 'org') { // placing contact info at the bottom in a condensed format
             contactMd += '**' + proplabel + ':** ' + propval + ' \n';
         } else {
             propertyMd += '#### ' + proplabel + '   \n\n' + propval + ' \n\n';
@@ -363,7 +363,7 @@ angular.module('suggestio.new', ['ngRoute'])
       return 0;
     }
     var stars = 0;
-    var required = ['concepttype', 'state', 'date', 'groups', 'name', 'email', 'explanation', 'neededfor'];
+    var required = ['concepttype', 'state', 'date', 'groups', 'explanation', 'neededfor'];
     for (var prop in this.suggestion) {
       if (required.indexOf(prop) === -1 && this.suggestion[prop] !== '' && this.suggestion[prop].length > 0 && stars < 5) {
         stars += 1; // one star for each additional field
@@ -415,7 +415,7 @@ app.controller('ChangeController', ['$scope','$http','$location','FormFormatter'
   $scope.requestFormatter = function(qstring) {
     return {query: qstring + '*', lang: $scope.language, vocab: 'ysa allars'};
   };
-  this.labels = {'type': 'Ehdotuksen tyyppi', 'preflabel': 'Päätermi/asiasana', 'state': 'Tila', 'change':'Ehdotettu muutos', 'explanation': 'Perustelut ehdotukselle', 'fromname': 'Ehdottajan nimi', 'fromemail': 'Ehdottajan sähköpostiosoite'};
+  this.labels = {'type': 'Ehdotuksen tyyppi', 'preflabel': 'Päätermi/asiasana', 'state': 'Tila', 'change':'Ehdotettu muutos', 'explanation': 'Perustelut ehdotukselle'};
 
   this.suggestion = {type: 'Muutos olemassa olevaan käsitteeseen', preflabel: '', state: 'Käsittelyssä'};
 
