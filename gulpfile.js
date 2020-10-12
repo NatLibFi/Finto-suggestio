@@ -8,7 +8,7 @@ var paths = {
   all: ['app/app.js', 'app/new/new.js', 'app/change/change.js', 'app/list/list.js', 'app/help/help.js', 'app/*.html', 'app/*/*.html', 'app/app.css'],
 };
 
-gulp.task('deps', function() {
+gulp.task('deps', async function() {
     gulp.src(['app/bower_components/**/*.min.js'])
       .pipe(concat('app/dist_components.js'))
       .pipe(gulp.dest('dist'));
@@ -18,27 +18,27 @@ gulp.task('deps', function() {
       .pipe(gulp.dest('dist'));
 });
 
-gulp.task('js', function() {
+gulp.task('js', async function() {
     return gulp.src(paths.code)
       .pipe(concat('app/dist.js'))
       .pipe(cbust.resources())
       .pipe(gulp.dest('dist'));
 });
 
-gulp.task('html', ['js', 'css'], function() {
-    return gulp.src(['app/index.html', 'app/*/*.html', 'app/*.php'])
-      .pipe(cbust.references())
-      .pipe(gulp.dest('dist'));
-});
-
-gulp.task('css', function() {
+gulp.task('css', async function() {
     gulp.src('app/app.css')
       .pipe(concat('app.css'))
       .pipe(gulp.dest('dist'));
 });
 
-gulp.task('watch', function() {
-    gulp.watch(paths.all, ['html']);
+gulp.task('html', gulp.series('js', 'css'), async function() {
+    return gulp.src(['./app/index.html', './app/*/*.html', './app/*.php'], { base: './' })
+      .pipe(cbust.references())
+      .pipe(gulp.dest('dist'));
 });
 
-gulp.task('default', ['watch', 'js', 'html', 'css']);
+gulp.task('watch', function() {
+    gulp.watch(paths.all, gulp.series('html'));
+});
+
+gulp.task('default', gulp.series('watch', 'js', 'html', 'css'));
