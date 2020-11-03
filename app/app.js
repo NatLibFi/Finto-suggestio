@@ -8,7 +8,6 @@ var app = angular.module('suggestio', [
   'suggestio.new',
   'ui.select',
   'angucomplete-alt',
-  'angular-translate-loader-url',
   'pascalprecht.translate',
   'suggestio.change',
   'suggestio.help'

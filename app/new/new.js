@@ -24,13 +24,9 @@ angular.module('suggestio.new', ['ngRoute'])
   };
 
   $scope.groupList = [];
-  try {
-    $http.get('http://api.finto.fi/rest/v1/yso/groups?lang=' + $scope.language).then(function(response) {
-      $scope.groupList = response.data.groups;
-    });
-  } catch(e) {
-    Raven.captureException(e);
-  }
+  $http.get('http://api.finto.fi/rest/v1/yso/groups?lang=' + $scope.language).then(function(response) {
+    $scope.groupList = response.data.groups;
+  });
 
   this.addSuggestion = function() {
     // preventing resubmit if the post takes longer than expected
@@ -47,8 +43,6 @@ angular.module('suggestio.new', ['ngRoute'])
       var number = (typeof response.data === 'string') ? JSON.parse(response.data.substring(response.data.indexOf('{'))).number : response.data.number;
       $location.path('/list').search({submitted: number});
     }, function(response) {
-      Raven.setExtraContext({post: response, markdown: msg});
-      Raven.captureException(new Error('POST failed'));
       $location.path('/list').search();
     });
   };
