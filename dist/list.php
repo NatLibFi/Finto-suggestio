@@ -1,7 +1,7 @@
 <?php
 header("Content-type: application/json");
 
-require_once('../../../.token');
+require_once('/etc/Finto-suggestio/.token');
 
 $url = 'https://api.github.com/repos/Finto-ehdotus/YSE/issues?state=open';
 $session = curl_init($url);

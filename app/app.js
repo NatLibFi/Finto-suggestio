@@ -2,7 +2,6 @@
 
 // Declare app level module which depends on views, and components
 var app = angular.module('suggestio', [
-  'ngRaven',
   'ngRoute',
   'ngCookies',
   'suggestio.list',
@@ -13,8 +12,6 @@ var app = angular.module('suggestio', [
   'suggestio.change',
   'suggestio.help'
 ]);
-
-Raven.config('https://1837b63976394746911473fa08e90761@sentry.io/215910').addPlugin(Raven.Plugins.Angular).install();
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/list'});
@@ -251,10 +248,6 @@ app.factory('FormFormatter', [function() {
       var propertyMd = '';
       var priorityMd = '';
       var contactMd = '';
-      Raven.setUserContext({
-        email: suggestion.email
-      });
-      Raven.setExtraContext({form: suggestion});
 
       for (var property in suggestion) {
         var proplabel = labels[property] ? labels[property] : property;
