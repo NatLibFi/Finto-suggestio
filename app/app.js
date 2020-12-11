@@ -174,7 +174,7 @@ app.directive('existingConcept', function($http) {
         // getting too "chatty".
         toId = setTimeout(function(){
           var vocab = (attr.inVocab) ? attr.inVocab : 'ysa';
-          $http.get('http://api.finto.fi/rest/v1/' + attr.inVocab + '/lookup?label=' + value).then(function(data) {
+          $http.get('//api.finto.fi/rest/v1/' + attr.inVocab + '/lookup?label=' + value).then(function(data) {
             //set the validity of the field
             ctrl.$setValidity('existingConcept', true);
           }, function() {
@@ -202,7 +202,7 @@ app.directive('newConcept', function($http) {
         // getting too "chatty".
         toId = setTimeout(function(){
           var vocab = (attr.inVocab) ? attr.inVocab : 'ysa';
-          $http.get('http://api.finto.fi/rest/v1/search?query=' + value + '&vocab=yse+' + vocab).then(function(data) {
+          $http.get('//api.finto.fi/rest/v1/search?query=' + value + '&vocab=yse+' + vocab).then(function(data) {
             scope.existingConcept = undefined;
             if (data.data.results.length > 0) {
               scope.existingConcept = data.data.results[0];
