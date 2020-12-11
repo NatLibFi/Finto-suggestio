@@ -24,7 +24,7 @@ angular.module('suggestio.new', ['ngRoute'])
   };
 
   $scope.groupList = [];
-  $http.get('http://api.finto.fi/rest/v1/yso/groups?lang=' + $scope.language).then(function(response) {
+  $http.get('//api.finto.fi/rest/v1/yso/groups?lang=' + $scope.language).then(function(response) {
     $scope.groupList = response.data.groups;
   });
 
